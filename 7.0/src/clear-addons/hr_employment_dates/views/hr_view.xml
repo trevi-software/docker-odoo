@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Employee Records -->
+
+        <record id="hr_employee_view_tree" model="ir.ui.view">
+            <field name="name">hr.employee.tree.employment.dates</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_employee_seniority.hr_employee_view_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='length_of_service']" position="after">
+                        <field name="employment_start"/>
+                        <field name="employment_end"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <record id="hr_employee_view_form_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.form.employment.dates</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_employee_seniority.hr_employee_view_form_inherit"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='length_of_service']" position="after">
+                        <group string="Employment Dates">
+                            <label for="employment_start" string="Employment Dates"/>
+                            <div name="employment_dates">
+                                <field name="employment_start" class="oe_inline"/> - <field name="employment_end" class="oe_inline"/>
+                            </div>
+                        </group>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

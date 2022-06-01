@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="view_al_form" model="ir.ui.view">
+            <field name="name">hr.holidays.al.form</field>
+            <field name="model">hr.holidays.al</field>
+            <field name="arch" type="xml">
+                <form string="Annual Leave by Department" version="7.0">
+                    <header>
+                        <button name="add_records" type="object" string="Save" class="oe_highlight"/>
+                    </header>
+                    <div>
+                        <h2>
+                            <field name="department_id" readonly="1"/>
+                        </h2>
+                    </div>
+                    <group>
+                        <group string="Annual Leave Lines">
+                            <field name="al_line_ids" nolabel="1"/>
+                        </group>
+                        <group></group>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_al_line_tree" model="ir.ui.view">
+            <field name="name">hr.holidays.al.line.tree</field>
+            <field name="model">hr.holidays.al.line</field>
+            <field name="arch" type="xml">
+                <tree string="Annual Leave Lines" editable="top">
+                    <field name="employee_id"/>
+                    <field name="days"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_al_line_form" model="ir.ui.view">
+            <field name="name">hr.holidays.al.line.form</field>
+            <field name="model">hr.holidays.al.line</field>
+            <field name="arch" type="xml">
+                <form string="Annual Leave Line">
+                    <field name="employee_id"/>
+                    <field name="days"/>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="action_hr_holidays_by_department"
+                name="Initial Annual Leave"
+                res_model="hr.holidays.al" 
+                src_model="hr.department"
+                view_mode="form" 
+                key2="client_action_multi"
+                target="new"
+        />
+        
+    </data>
+</openerp>

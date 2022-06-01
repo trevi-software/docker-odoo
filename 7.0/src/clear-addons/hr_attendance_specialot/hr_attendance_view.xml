@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_hr_attendance_weekly_form" model="ir.ui.view">
+            <field name="name">hr.attendance.weekly.restday.form</field>
+            <field name="model">hr.attendance.weekly</field>
+            <field name="inherit_id" ref="hr_attendance_batch_entry.view_hr_attendance_weekly_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//group[@string='Partial Attendance']" position="before">
+                        <group string="Special OT">
+                            <field name="specialot_ids" context="{'weekly_id': id}" nolabel="1">
+                                <tree string="Special OT Sub List" editable="bottom">
+                                    <field name="weekly_id" invisible="1"/>
+                                    <field name="employee_id" domain="['|',('department_id','=',parent.department_id),('saved_department_id','=',parent.department_id)]"/>
+                                    <field name="hours"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    
+    </data>
+</openerp>

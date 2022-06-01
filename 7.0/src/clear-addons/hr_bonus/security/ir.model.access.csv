@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_bonus_payroll,access_hr_bonus,model_hr_bonus,hr_security.group_payroll_manager,1,0,0,0
+access_hr_bonus_user,access_hr_bonus,model_hr_bonus,base.group_hr_user,1,0,0,0
+access_hr_bonus_approve,access_hr_bonus,model_hr_bonus,base.group_hr_bonus,1,1,1,1
+access_hr_bonus_line_user,access_hr_bonus_line,model_hr_bonus_line,base.group_hr_user,1,1,1,1
+access_hr_bonus_line_approve,access_hr_bonus_line,model_hr_bonus_line,base.group_hr_bonus,1,1,1,1
+access_hr_bonus_line_payroll,access_hr_bonus_line,model_hr_bonus_line,hr_security.group_payroll_manager,1,0,0,0

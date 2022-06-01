@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_clock_reader_user,hr_clock_reader.clock user,model_hr_clock_reader_clock,group_hr_clock_reader_user,1,1,1,1
+access_hr_clock_reader_manager,hr_clock_reader.clock manager,model_hr_clock_reader_clock,group_hr_clock_reader_manager,1,1,1,1
+access_hr_clock_reader_job_user,access_hr_clock_reader_job,model_hr_clock_reader_job,group_hr_clock_reader_user,1,0,0,0
+access_hr_clock_reader_job_mgr,access_hr_clock_reader_job,model_hr_clock_reader_job,group_hr_clock_reader_user,1,0,1,1

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="enroll_multi_employee_form" model="ir.ui.view">
+            <field name="name">hr.benefit.enroll.employee.multi.form</field>
+            <field name="model">hr.benefit.enroll.multi.employee</field>
+            <field name="arch" type="xml">
+                <form string="Enroll Employee" version="7.0">
+                    <header>
+                        <button name="do_multi_enroll" type="object" string="Enroll" class="oe_highlight"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="benefit_id"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                        <group>
+                            <field name="advantage_override"/>
+                            <field name="premium_override"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group name="left">
+                            <field name="advantage_amount" attrs="{'readonly': [('advantage_override', '=', False)], 'required': [('advantage_override', '=', True)]}"/>
+                            <field name="premium_amount" attrs="{'readonly': [('premium_override', '=', False)], 'required': [('premium_override', '=', True)]}"/>
+                            <field name="premium_total" attrs="{'readonly': [('premium_override', '=', False)], 'required': [('premium_override', '=', True)]}" on_change="onchange_premium_total(start_date, premium_amount, premium_total)"/>
+                            <field name="premium_installments" readonly="1"/>
+                        </group>
+                    </group>
+                    <newline/>
+                    <group string="Employees">
+                            <field name="employee_ids" nolabel="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <act_window name="Enroll Multiple Employees"
+            res_model="hr.benefit.enroll.multi.employee"
+            src_model="hr.benefit"
+            view_mode="form"
+            view_id="enroll_multi_employee_form"
+            target="new"
+            id="action_enroll_multi_employee"/>
+        
+    </data>
+</openerp>

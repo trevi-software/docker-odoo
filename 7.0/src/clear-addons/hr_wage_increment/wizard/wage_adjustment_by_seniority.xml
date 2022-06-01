@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_wage_adjustment_by_seniority" model="ir.ui.view">
+            <field name="name">Wage adjustment by Seniority</field>
+            <field name="model">wage.adjustment.seniority</field>
+            <field name="arch" type="xml">
+                <form string="Wage Adjustments by Seniority" version="7.0">
+                    <header>
+                        <button icon="gtk-execute" string="Generate" name="create_adjustments" type="object" class="oe_highlight"  />
+                    </header>
+                    <group>
+                        <label colspan="4" nolabel="1"
+                               string="This wizard will generate wage adjustments for employees
+                               based on the number of months service in the organization, as of
+                               the Computation Date." />
+                    </group>
+                    <group colspan="4" >
+                        <group>
+                            <field name="date"/>
+                            <label for="min_month" string="Seniority Minimum and Maximum"/>
+                            <div>
+                                <field name="min_month" nolabel="1" class="oe_inline"/>
+                                <label string="-" class="oe_inline"/>
+                                <field name="max_month" nolabel="1" class="oe_inline"/>
+                            </div>
+                            <field name="ex_negative"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Departments">
+                            <field name="ex_depts"/>
+                            <field name="department_ids"/>
+                        </group>
+                    </group>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_wage_adjustment_by_seniority" model="ir.actions.act_window">
+            <field name="name">Wage Adjustments by Seniority</field>
+            <field name="res_model">wage.adjustment.seniority</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_wage_adjustment_by_seniority"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>

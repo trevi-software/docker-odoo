@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <record id="view_benefits_form" model="ir.ui.view">
+            <field name="name">hr.benefit.payroll.report.form</field>
+            <field name="model">hr.benefit</field>
+            <field name="inherit_id" ref="benefit_management.view_benefits_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='has_premium']" position="after">
+                        <field name="show_on_payroll_report"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    
+    </data>
+</openerp>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <!-- Wage Adjustment -->
+        <record id="report_wage_adj" model="ir.actions.report.xml">
+            <field name="name">Wage Adjustment Report</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">hr.contract.wage.increment</field>
+            <field name="report_name">hr_contract_wage_increment</field>
+            <field name="report_type">aeroo</field>
+            <field name="in_format">oo-odt</field>
+            <field name="parser_loc">hr_report_wage_increment/report/individual_wage_adjustment.py</field>
+            <field name="report_rml">hr_report_wage_increment/report/individual_wage_adjustment.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="tml_source">file</field>
+        </record>
+        <ir_set>
+            <field eval="'action'" name="key"/>
+            <field eval="'client_print_multi'" name="key2"/>
+            <field eval="['hr.contract.wage.increment']" name="models"/>
+            <field name="name">Wage Adjustment Report</field>
+            <field eval="'ir.actions.report.xml,'+str(report_wage_adj)" name="value"/>
+            <field eval="True" name="isobject"/>
+            <field eval="True" name="replace"/>
+        </ir_set>
+    
+        <!-- Wage Adjustment Runs -->
+        <record id="report_batch_wage_adj" model="ir.actions.report.xml">
+            <field name="name">Batch Wage Adjustment Report</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">hr.contract.wage.increment.run</field>
+            <field name="report_name">hr_contract_wage_increment_run</field>
+            <field name="report_type">aeroo</field>
+            <field name="in_format">oo-odt</field>
+            <field name="parser_loc">hr_report_wage_increment/report/wage_adjustment.py</field>
+            <field name="report_rml">hr_report_wage_increment/report/wage_adjustment.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="tml_source">file</field>
+        </record>
+        <ir_set>
+            <field eval="'action'" name="key"/>
+            <field eval="'client_print_multi'" name="key2"/>
+            <field eval="['hr.contract.wage.increment.run']" name="models"/>
+            <field name="name">Wage Adjustment Report</field>
+            <field eval="'ir.actions.report.xml,'+str(report_batch_wage_adj)" name="value"/>
+            <field eval="True" name="isobject"/>
+            <field eval="True" name="replace"/>
+        </ir_set>
+    
+    </data>
+</openerp>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+        
+        <!-- Daily Labour recruitment wizard -->
+        <menuitem action="action_new_labour"
+                  id="menu_new_labour"
+                  parent="hr_labour_recruitment.submenu_hr_recruitment"
+                  groups="base.group_hr_user"
+                  sequence="10"/>
+        
+    </data>
+</openerp>

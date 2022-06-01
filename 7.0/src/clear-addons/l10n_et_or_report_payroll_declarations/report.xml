@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+        
+        <!-- Pension Contribution Declaration -->
+        <record id="report_payroll_pension_or" model="ir.actions.report.xml">
+            <field name="name">Pension Declaration (OR)</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">hr.payroll.register</field>
+            <field name="report_name">hr_payroll_pension_or_report</field>
+            <field name="report_type">aeroo</field>
+            <field name="in_format">oo-ods</field>
+            <field name="parser_loc">l10n_et_or_report_payroll_declarations/report/pension.py</field>
+            <field name="report_rml">l10n_et_or_report_payroll_declarations/report/pension.ods</field>
+            <field name="parser_state">loc</field>
+            <field name="tml_source">file</field>
+        </record>
+        
+        <!-- Income Tax Withholding Declaration -->
+        <record id="report_payroll_fit_or" model="ir.actions.report.xml">
+            <field name="name">Federal Income Tax Withholding Declaration (OR)</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">hr.payroll.register</field>
+            <field name="report_name">hr_payroll_fit_or_report</field>
+            <field name="report_type">aeroo</field>
+            <field name="in_format">oo-ods</field>
+            <field name="parser_loc">l10n_et_or_report_payroll_declarations/report/fit.py</field>
+            <field name="report_rml">l10n_et_or_report_payroll_declarations/report/fit.ods</field>
+            <field name="parser_state">loc</field>
+            <field name="tml_source">file</field>
+        </record>
+
+	</data>
+</openerp>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="view_read_wizard_form" model="ir.ui.view">
+            <field name="name">hr.clock_reader.clock.connect.form</field>
+            <field name="model">hr.clock_reader.clock.connect</field>
+            <field name="arch" type="xml">
+                <form string="Read Clock Reader" version="7.0">
+                    <field name="state" invisible="1"/>
+                    <header states="step1">
+                        <button name="action_next" type="object" string="Read" class="oe_highlight"/>
+                    </header>
+                    <group>
+                        <group>
+                            <label for="date_start" string="Duration"/>
+                            <div>
+                                <field name="date_start" attrs="{'readonly': [('state', '=', 'step2')]}" nolabel="1" class="oe_inline"/> - <field name="date_end" attrs="{'readonly': [('state', '=', 'step2')]}" nolabel="1" class="oe_inline"/>
+                            </div>
+                            <field name="override" attrs="{'readonly': [('state', '=', 'step2')]}"/>
+                        </group>
+                    </group>
+                    <group states="step1" string="Clock Options">
+                        <group>
+                            <field name="unknown" attrs="{'readonly': [('override','=',False)]}"/>
+                            <field name="complete" attrs="{'readonly': [('override','=',False)]}"/>
+                            <field name="tolerance" attrs="{'readonly': [('override','=',False)]}"/>
+                        </group>
+                        <group>
+                            <field name="ignore_signs" attrs="{'readonly': [('override','=',False)]}"/>
+                            <field name="ignore_restrictions" attrs="{'readonly': [('override','=',False)]}"/>
+                        </group>
+                    </group>
+                    <group states="step1">
+                        <field name="clock_ids" nolabel="1"/>
+                    </group>
+                    <group states="step2">
+                        <group>
+                            <field name="count"/>
+                            <field name="errors"/>
+                        </group>
+                        <group></group>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="open_read_wizard_form" model="ir.actions.act_window">
+            <field name="name">Read Clock Readers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.clock_reader.clock.connect</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_read_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!-- Evaluation Sheet -->
+        
+        <record id="view_evaluation_form" model="ir.ui.view">
+            <field name="name">hr.bonus.evaluation.wizard.form</field>
+            <field name="model">hr.bonus.evaluation.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Bonus Evaluation Form" version="7.0">
+                    <header>
+                        <button name="add_records" type="object" string="Save" icon="gtk-execute" class="oe_highlight"/>
+                    </header>
+                    <group>
+                        <label for="date_start" string="Period"/>
+                        <div>
+                            <field name="date_start" class="oe_inline"/> <label string="-" class="oe_inline"/>
+                            <field name="date_end" class="oe_inline"/>
+                        </div>
+                        <field name="department_id"/>
+                        <field name="incentive_type"/>
+                    </group>
+                    <group string="Evaluation Criteria" attrs="{'invisible': [('incentive_type', '!=', 'fixed')]}">
+                        <field name="line_ids" nolabel="1">
+                            <tree string="Evaluation Criteria" editable="top">
+                                <field name="criteria_id" readonly="1"/>
+                                <field name="points"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group string="Daily Bonus" attrs="{'invisible': [('incentive_type', '!=', 'daily')]}">
+                        <field name="daily_line_ids" nolabel="1">
+                            <tree string="Daily Bonus Wizard Lines" editable="bottom">
+                                <field name="date" readonly="1"/>
+                                <field name="points"/>
+                            </tree>
+                        </field>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_evaluation_wizard" model="ir.actions.act_window">
+            <field name="name">Evaluation Wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.bonus.evaluation.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+         
+    </data>
+</openerp>

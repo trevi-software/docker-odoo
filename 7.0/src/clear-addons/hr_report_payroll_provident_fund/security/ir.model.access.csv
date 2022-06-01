@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_payroll_pf_user,access_hr_payroll_pf,model_hr_payroll_pf,base.group_user,1,0,0,0
+access_hr_payroll_pf_hr,access_hr_payroll_pf,model_hr_payroll_pf,base.group_hr_user,1,1,1,1
+access_hr_payroll_pf_payrm,access_hr_payroll_pf,model_hr_payroll_pf,hr_security.group_payroll_manager,1,1,1,1

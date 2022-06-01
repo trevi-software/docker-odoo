@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <!-- Contribution Registers -->
+        
+        <record id="hr_register_ot" model="hr.contribution.register">
+            <field name="name">Register for Overtime</field>
+        </record>
+
+        <record id="hr_register_housing_allowance" model="hr.contribution.register">
+            <field name="name">Register for Housing Allowance</field>
+        </record>
+
+        <record id="hr_register_position_allowance" model="hr.contribution.register">
+            <field name="name">Register for Position Allowance</field>
+        </record>
+
+        <record id="hr_register_transport_allowance" model="hr.contribution.register">
+            <field name="name">Register for Transport Allowance</field>
+        </record>
+
+        <record id="hr_register_ule" model="hr.contribution.register">
+            <field name="name">Register for Unused Leaves converted into cash</field>
+        </record>
+
+        <record id="hr_register_bonus" model="hr.contribution.register">
+            <field name="name">Register for Bonus</field>
+        </record>
+
+        <record id="hr_register_provident_fund" model="hr.contribution.register">
+            <field name="name">Register for Provident Fund</field>
+        </record>
+
+        <record id="hr_register_pension_fund" model="hr.contribution.register">
+            <field name="name">Register for Pension Fund</field>
+        </record>
+
+        <record id="hr_register_fit" model="hr.contribution.register">
+            <field name="name">Register for Federal Income Tax</field>
+        </record>
+
+        <record id="hr_register_advance" model="hr.contribution.register">
+            <field name="name">Register for Repayment of Salary Advances</field>
+        </record>
+
+        <record id="hr_register_loan" model="hr.contribution.register">
+            <field name="name">Register for Repayment of Loan</field>
+        </record>
+
+        <record id="hr_register_costshare" model="hr.contribution.register">
+            <field name="name">Register for Cost Sharing Payments</field>
+        </record>
+
+        <record id="hr_register_garnishment" model="hr.contribution.register">
+            <field name="name">Register for Garnishment of Wages</field>
+        </record>
+
+        <record id="reg_lbru" model="hr.contribution.register">
+            <field name="name">Labour Union Payments</field>
+        </record>
+
+        <record id="hr_register_other_deductions" model="hr.contribution.register">
+            <field name="name">Register for Other Deductions</field>
+        </record>
+
+        <!--
+             DO NOT CHANGE THE CODES BELOW!!!
+             The codes are used in the payroll register module to print out
+             the payroll register.
+        -->
+
+        <!-- Salary Rule Categories -->
+        
+        <record id="hr_categ_info" model="hr.salary.rule.category">
+            <field name="name">Informational</field>
+            <field name="code">INFO</field>
+        </record>
+        
+        <record id="hr_categ_ot" model="hr.salary.rule.category">
+            <field name="name">Overtime</field>
+            <field name="code">OT</field>
+        </record>
+
+        <record id="hr_categ_txbl" model="hr.salary.rule.category">
+            <field name="name">Taxable Earnings</field>
+            <field name="code">TXBL</field>
+        </record>
+
+        <record id="hr_categ_txexmpt" model="hr.salary.rule.category">
+            <field name="name">Tax Exempt Earnings</field>
+            <field name="code">TXEXMPT</field>
+        </record>
+
+        <record id="hr_categ_fitcalc" model="hr.salary.rule.category">
+            <field name="code">FITCALC</field>
+            <field name="name">Federal Income Tax Withholding</field>
+        </record>
+        
+        <record id="hr_categ_er" model="hr.salary.rule.category">
+            <field name="code">ER</field>
+            <field name="name">Employer Contribution</field>
+        </record>
+
+        <record id="hr_categ_dedtotal" model="hr.salary.rule.category">
+            <field name="code">DEDTOTAL</field>
+            <field name="name">Deductions Total</field>
+        </record>
+        
+        <!-- Partial Period Factor for Income Tax purposes -->
+        
+        <record id="hr_rule_fit_ppf" model="hr.salary.rule">
+            <field name="name">Partial Period Factor for FIT Calculation</field>
+            <field name="category_id" ref="hr_categ_info"/>
+            <field name="code">FIT_PPF</field>
+            <field name="sequence" eval="1"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = (utils.CONTRACTS.qty == 1) and 1 or utils.PPF.amount</field>
+            <field name="note">
+                Partial Period Factor for Federal Income Tax Calculation purposes. If there is
+                only one contract the PPF should be '1', regardless of the length of the contract.
+            </field>
+        </record>
+
+        <!-- Basic Salary (adjusted for partial period, if neccessary) -->
+        
+        <record id="hr_payroll.hr_rule_basic" model="hr.salary.rule">
+            <field name="name">Basic Salary</field>
+            <field name="category_id" ref="hr_categ_info"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.wage * utils.PPF.amount</field>
+            <field name="note">
+                Basic Salary adjusted for partial period, if neccessary.
+            </field>
+        </record>
+        
+        <!-- Basic Salary with absent days subtracted -->
+        
+        <record id="hr_salary_rule_basic_attendance" model="hr.salary.rule">
+            <field name="code">WORKWAGE</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.wage_hourly</field>
+            <field name="quantity">((worked_days.MAX.number_of_hours - worked_days.AWOL.number_of_hours) > 0.009) and max((208 * utils.PPF.amount) - worked_days.AWOL.number_of_hours - worked_days.WORKHOL.number_of_hours, 0) or 0</field>
+            <field name="category_id" ref="hr_payroll.BASIC"/>
+            <field name="name">Working Payment</field>
+            <field name="sequence" eval="2"/>
+            <field name="note">
+                Calculate monthly wages according to attendance records of employee. Does not include Overtime.
+            </field>
+        </record>
+
+        <!-- Higher rate working hours (Holiday and Rest Days) -->
+        
+        <record id="hr_salary_rule_holiday" model="hr.salary.rule">
+            <field name="code">WORKHOL</field>
+            <field name="category_id" ref="hr_categ_ot"/>
+            <field name="sequence" eval="17"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = worked_days.WORKHOL.number_of_hours > 0</field>
+            <field name="amount_select">code</field>
+            <field name="quantity">worked_days.WORKHOL.number_of_hours</field>
+            <field name="amount_python_compute">result = worked_days.WORKHOL.rate * contract.wage_hourly</field>
+            <field name="name">Holiday Working Hours</field>
+            <field name="register_id" ref="hr_register_ot"/>
+        </record>
+        
+        <record id="hr_salary_rule_restday" model="hr.salary.rule">
+            <field name="code">WORKRST</field>
+            <field name="category_id" ref="hr_categ_ot"/>
+            <field name="sequence" eval="18"/>
+            <field name="has_accrual" eval="True"/>
+            <field name="accrual_policy_line_id" ref=""/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = worked_days.WORKRST.number_of_hours > 0</field>
+            <field name="amount_select">code</field>
+            <field name="quantity">worked_days.WORKRST.number_of_hours</field>
+            <field name="amount_python_compute">result = worked_days.WORKRST.rate * contract.wage_hourly</field>
+            <field name="name">Rest Day Working Hours</field>
+            <field name="register_id" ref="hr_register_ot"/>
+        </record>
+
+        <!-- Overtime rules -->
+        
+        <record id="hr_salary_rule_daily_ot" model="hr.salary.rule">
+            <field name="code">OTD</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = worked_days.WORKOTD.number_of_hours > 0</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = worked_days.WORKOTD.rate * contract.wage_hourly</field>
+            <field name="quantity">worked_days.WORKOTD.number_of_hours</field>
+            <field name="category_id" ref="hr_categ_ot"/>
+            <field name="name">Day OverTime</field>
+            <field name="register_id" ref="hr_register_ot"/>
+            <field name="sequence" eval="30"/>
+            <field name="note">Applicable to both salaried and hourly employees.</field>
+        </record>
+
+        <record id="hr_salary_rule_night_ot" model="hr.salary.rule">
+            <field name="code">OTN</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = worked_days.WORKOTN.number_of_hours > 0</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = worked_days.WORKOTN.rate * contract.wage_hourly</field>
+            <field name="quantity">worked_days.WORKOTN.number_of_hours</field>
+            <field name="category_id" ref="hr_categ_ot"/>
+            <field name="name">Night OverTime</field>
+            <field name="register_id" ref="hr_register_ot"/>
+            <field name="sequence" eval="33"/>
+            <field name="note">Applicable to both salaried and hourly employees.</field>
+        </record>
+
+        <record id="hr_salary_rule_weekly_ot" model="hr.salary.rule">
+            <field name="code">OTW</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = worked_days.WORKOTW.number_of_hours > 0</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = worked_days.WORKOTW.rate * contract.wage_hourly</field>
+            <field name="quantity">worked_days.WORKOTW.number_of_hours</field>
+            <field name="category_id" ref="hr_categ_ot"/>
+            <field name="name">Weekly OverTime</field>
+            <field name="register_id" ref="hr_register_ot"/>
+            <field name="sequence" eval="35"/>
+            <field name="note">OT for working more than a certain number of days/week regardless of actual rest day.</field>
+        </record>
+
+        <record id="hr_salary_rule_restday_ot" model="hr.salary.rule">
+            <field name="code">OTR</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = worked_days.WORKOTR.number_of_hours > 0</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = worked_days.WORKOTR.rate * contract.wage_hourly</field>
+            <field name="quantity">worked_days.WORKOTR.number_of_hours</field>
+            <field name="category_id" ref="hr_categ_ot"/>
+            <field name="name">Rest Day OverTime</field>
+            <field name="register_id" ref="hr_register_ot"/>
+            <field name="sequence" eval="36"/>
+            <field name="note">OT for working on exact rest day.</field>
+        </record>
+
+        <record id="hr_salary_rule_holiday_ot" model="hr.salary.rule">
+            <field name="code">OTH</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = worked_days.WORKOTH.number_of_hours > 0</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = worked_days.WORKOTH.rate * contract.wage_hourly</field>
+            <field name="quantity">worked_days.WORKOTH.number_of_hours</field>
+            <field name="category_id" ref="hr_categ_ot"/>
+            <field name="name">Holiday OverTime</field>
+            <field name="register_id" ref="hr_register_ot"/>
+            <field name="sequence" eval="40"/>
+            <field name="note">Not applicable to salaried employees.</field>
+        </record>
+
+        <!-- Hr Salary Rules for allowance -->
+
+        <record id="hr_salary_hous_allowance" model="hr.salary.rule">
+            <field name="code">HOUS</field>
+            <field name="name">Housing Allowance</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = benefits.ALLHOUS.qty > 0</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = benefits.ALLHOUS.advantage_amount * utils.PPF.amount</field>
+            <field name="register_id" ref="hr_register_housing_allowance"/>
+            <field name="sequence" eval="100"/>
+            <field name="note"></field>
+        </record>
+
+        <record id="hr_salary_position_allowance" model="hr.salary.rule">
+            <field name="code">POS</field>
+            <field name="name">Position Allowance</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = benefits.ALLPOS.qty > 0</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = benefits.ALLPOS.advantage_amount * utils.PPF.amount</field>
+            <field name="register_id" ref="hr_register_position_allowance"/>
+            <field name="sequence" eval="105"/>
+            <field name="note"></field>
+        </record>
+
+        <record id="hr_salary_trans_allowance" model="hr.salary.rule">
+            <field name="code">TRA</field>
+            <field name="name">Transport Allowance</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = benefits.ALLTRANSP.qty > 0</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = benefits.ALLTRANSP.advantage_amount * utils.PPF.amount</field>
+            <field name="register_id" ref="hr_register_transport_allowance"/>
+            <field name="sequence" eval="110"/>
+            <field name="note"></field>
+        </record>
+
+        <record id="hr_trans_allowance_exempt" model="hr.salary.rule">
+            <field name="code">TRAEX</field>
+            <field name="name">Transport Allowance - Tax Exempt</field>
+            <field name="category_id" ref="hr_categ_txexmpt"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = benefits.ALLTRANSP.qty > 0</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = min(rules.TRA.amount_fix,BASIC*0.15)</field>
+            <field name="sequence" eval="700"/>
+            <field name="note">
+                Tax-Exempt portion of transport allowance.
+            </field>
+        </record>
+
+        <record id="hr_salary_rule_ule" model="hr.salary.rule">
+            <field name="code">ULE</field>
+            <field name="name">Unused Leave</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.ULE.amount</field>
+            <field name="register_id" ref="hr_register_ule"/>
+            <field name="sequence" eval="350"/>
+            <field name="note"></field>
+        </record>
+
+        <record id="hr_salary_rule_bonus" model="hr.salary.rule">
+            <field name="code">BONUS</field>
+            <field name="name">Bonus</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.BNS.amount</field>
+            <field name="register_id" ref="hr_register_bonus"/>
+            <field name="sequence" eval="250"/>
+            <field name="note"></field>
+        </record>
+
+        <record id="hr_salary_rule_othear" model="hr.salary.rule">
+            <field name="code">OEARN</field>
+            <field name="name">Other Earnings</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.OTHEAR.amount</field>
+            <field name="sequence" eval="300"/>
+            <field name="note"></field>
+        </record>
+        
+        <!-- Taxable, Gross, and Net Calculations -->
+        
+        <record id="hr_payroll_rule_taxable_income" model="hr.salary.rule">
+            <field name="code">TXBLINCOM</field>
+            <field name="name">Taxable Earnings</field>
+            <field name="category_id" ref="hr_categ_txbl"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.BASIC + categories.OT + categories.ALW - categories.TXEXMPT</field>
+            <field name="sequence" eval="980"/>
+        </record>
+        
+        <record id="hr_salary_rule_monthly_taxable" model="hr.salary.rule">
+            <field name="name">Estimated Taxable Monthly Earnings</field>
+            <field name="category_id" ref="hr_categ_info"/>
+            <field name="code">TXBLMOINCOM</field>
+            <field name="sequence" eval="981"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = (utils.CONTRACTS.qty == 1 and utils.CONTRACTS.cummulative_ppf &lt; 0.999) and categories.TXBL or (categories.TXBL / FIT_PPF)</field>
+        </record>
+
+        <!-- Gross -->
+        <record id="hr_payroll.hr_rule_taxable" model="hr.salary.rule">
+            <field name="sequence" eval="990"/>
+            <field name="amount_python_compute">result = categories.BASIC + categories.OT + categories.ALW - categories.TXEXMPT</field>
+        </record>
+
+        <record id="hr_payroll.hr_rule_net" model="hr.salary.rule">
+            <field name="amount_python_compute">result = categories.BASIC + categories.OT + categories.ALW - categories.FITCALC - categories.DED</field>
+            <field name="sequence" eval="4000"/>
+        </record>
+        
+        <!-- hr salary rules for Deductions -->
+
+        <record id="hr_payroll_rule_provfee" model="hr.salary.rule">
+            <field name="name">EE Provident Fund Contribution</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="code">PROVFEE</field>
+            <field name="sequence" eval="2000"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = benefits.PROVF.qty > 0 and categories.GROSS >= 0.01</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = BASIC * (benefits.PROVF.premium_amount / 100.0)</field>
+            <field name="register_id" ref="hr_register_provident_fund"/>
+            <field name= "note">Employee contribution to Provident Fund.</field>
+        </record>
+
+        <record id="hr_payroll_rule_penfee" model="hr.salary.rule">
+            <field name="name">EE Pension Fund Contribution</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="code">PENFEE</field>
+            <field name="sequence" eval="2100"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = benefits.PROVF.qty == 0 and categories.GROSS >= 0.01</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">BASIC</field>
+            <field name="amount_percentage" eval="7"/>
+            <field name="register_id" ref="hr_register_pension_fund"/>
+            <field name= "note">Employee contribution to Pension Fund.</field>
+        </record>
+
+        <record id="srule_lbru" model="hr.salary.rule">
+           <field name="code">LBRU</field>
+           <field name="name">Labour Union Dues</field>
+           <field name="category_id" ref="hr_payroll.DED"/>
+           <field name="condition_select">python</field>
+           <field name="condition_python">result = benefits.LBRU.qty > 0</field>
+           <field name="amount_select">code</field>
+           <field name="amount_python_compute">result = benefits.LBRU.premium_amount * utils.PPF.amount</field>
+           <field name="register_id" ref="reg_lbru"/>
+           <field name="sequence" eval="2200"/>
+        </record>
+
+        <record id="hr_payroll_rule_advance" model="hr.salary.rule">
+            <field name="code">ADV</field>
+            <field name="name">Salary Advance Repayment</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = benefits.SADV.qty > 0</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = benefits.SADV.premium_amount * utils.PPF.amount</field>
+            <field name="register_id" ref="hr_register_advance"/>
+            <field name="sequence" eval="2330"/>
+        </record>
+
+        <record id="hr_payroll_rule_loan" model="hr.salary.rule">
+            <field name="code">LOAN</field>
+            <field name="name">Loan Repayment</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = benefits.LOAN.qty > 0</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = benefits.LOAN.premium_amount * utils.PPF.amount</field>
+            <field name="register_id" ref="hr_register_loan"/>
+            <field name="sequence" eval="2330"/>
+        </record>
+
+        <record id="hr_payroll_rule_costshare" model="hr.salary.rule">
+            <field name="code">COSTSHARE</field>
+            <field name="name">Cost Sharing</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = benefits.COSTSHARE.qty > 0</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = benefits.COSTSHARE.premium_amount * utils.PPF.amount</field>
+            <field name="register_id" ref="hr_register_costshare"/>
+            <field name="sequence" eval="2350"/>
+        </record>
+
+        <record id="hr_payroll_rule_garnish" model="hr.salary.rule">
+            <field name="code">GARN</field>
+            <field name="name">Court-mandated Garnishment</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = benefits.GARN.qty > 0</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = benefits.GARN.premium_amount * utils.PPF.amount</field>
+            <field name="register_id" ref="hr_register_garnishment"/>
+            <field name="sequence" eval="2360"/>
+        </record>
+
+        <record id="hr_payroll_rule_provfer" model="hr.salary.rule">
+            <field name="name">ER Provident Fund Contribution</field>
+            <field name="category_id" ref="hr_categ_er"/>
+            <field name="code">PROVFER</field>
+            <field name="sequence" eval="3000"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = benefits.PROVF.qty > 0 and categories.GROSS >= 0.01</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = BASIC * (benefits.PROVFEE.premium_amount / 100.0)</field>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="register_id" ref="hr_register_provident_fund"/>
+            <field name="note">Employer contribution to provident fund.</field>
+        </record>
+
+        <record id="hr_payroll_rule_penfer" model="hr.salary.rule">
+            <field name="name">ER Pension Fund Contribution</field>
+            <field name="category_id" ref="hr_categ_er"/>
+            <field name="code">PENFER</field>
+            <field name="sequence" eval="3100"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = benefits.PROVF.qty == 0 and categories.GROSS >= 0.01</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">BASIC</field>
+            <field name="amount_percentage" eval="11"/>
+            <field name="appears_on_payslip" eval="True"/>
+            <field name="register_id" ref="hr_register_pension_fund"/>
+            <field name="note">Employer contribution to pension fund.</field>
+        </record>
+
+        <record id="hr_payroll_rule_od" model="hr.salary.rule">
+            <field name="code">OD</field>
+            <field name="name">Other Deductions</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = categories.GROSS >= 0.01</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.OTHDED.amount</field>
+            <field name="register_id" ref="hr_register_other_deductions"/>
+            <field name="sequence" eval="2600"/>
+            <field name="note"></field>
+        </record>
+
+        <record id="hr_payroll_rule_dedtotal" model="hr.salary.rule">
+            <field name="code">DEDTOTAL</field>
+            <field name="name">Deductions Total</field>
+            <field name="category_id" ref="hr_categ_dedtotal"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.FITCALC + categories.DED</field>
+            <field name="sequence" eval="2990"/>
+        </record>
+
+        <!-- Rule Inputs -->
+
+        <record id="hr_rule_input_bonus" model="hr.rule.input">
+            <field name="code">BNS</field>
+            <field name="name">Bonus</field>
+            <field name="input_id" ref="hr_salary_rule_bonus"/>
+        </record>
+
+        <record id="hr_rule_input_ule" model="hr.rule.input">
+            <field name="code">ULE</field>
+            <field name="name">Unused Leave</field>
+            <field name="input_id" ref="hr_salary_rule_ule"/>
+        </record>
+
+        <record id="hr_rule_input_othear" model="hr.rule.input">
+            <field name="code">OTHEAR</field>
+            <field name="name">Other Earning</field>
+            <field name="input_id" ref="hr_salary_rule_othear"/>
+        </record>
+
+        <record id="hr_rule_input_other_deduction" model="hr.rule.input">
+            <field name="code">OTHDED</field>
+            <field name="name">Other Deduction</field>
+            <field name="input_id" ref="hr_payroll_rule_od"/>
+        </record>
+
+        <!-- Salary Structure -->
+        
+        <!-- Salary structure for retirees (do not deduct pension) -->
+        <record id="structure_003" model="hr.payroll.structure">
+            <field name="code">ST001</field>
+            <field name="name">No Pension</field>
+            <field eval="[(6, 0, [ref('hr_rule_fit_ppf'), ref('hr_salary_rule_basic_attendance'), ref('hr_policy_absence.hr_salary_rule_basic_psl50_sal'), ref('hr_policy_absence.hr_salary_rule_basic_psl00_sal'), ref('hr_salary_rule_daily_ot'), ref('hr_salary_rule_night_ot'), ref('hr_salary_rule_restday_ot'), ref('hr_salary_rule_holiday_ot'), ref('hr_salary_hous_allowance'), ref('hr_salary_position_allowance'), ref('hr_salary_trans_allowance'), ref('hr_salary_rule_bonus'), ref('hr_salary_rule_ule'), ref('hr_salary_rule_othear'), ref('hr_salary_rule_monthly_taxable'), ref('hr_payroll_rule_taxable_income'), ref('hr_payroll_rule_advance'), ref('hr_payroll_rule_loan'), ref('hr_payroll_rule_costshare'), ref('hr_payroll_rule_garnish'), ref('hr_payroll_rule_od'), ref('hr_payroll_rule_dedtotal')])]" name="rule_ids"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="hr_payroll.structure_base"/>
+        </record>
+
+         <record id="structure_001" model="hr.payroll.structure">
+            <field name="code">ST</field>
+            <field name="name">Standard with Pension</field>
+            <field eval="[(6, 0, [ref('hr_payroll_rule_penfee'), ref('hr_payroll_rule_penfer')])]" name="rule_ids"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="structure_003"/>
+        </record>
+        
+    </data>
+</openerp>

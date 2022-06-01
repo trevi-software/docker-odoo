@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="hr_attendance_batch_entry.report_attendance_sheet" model="ir.actions.report.xml">
+            <field name="in_format">oo-ods</field>
+            <field name="parser_loc">hr_report_attendance_sheet/report/attendance_sheet_report.py</field>
+            <field name="report_rml">hr_report_attendance_sheet/report/attendance_sheet.ods</field>
+        </record>
+
+    </data>
+</openerp>

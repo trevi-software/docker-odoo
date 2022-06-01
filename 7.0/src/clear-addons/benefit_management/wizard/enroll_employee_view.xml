@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="enroll_employee_form" model="ir.ui.view">
+            <field name="name">hr.benefit.enroll.employee.form</field>
+            <field name="model">hr.benefit.enroll.employee</field>
+            <field name="arch" type="xml">
+                <form string="Enroll Employee" version="7.0">
+                    <header>
+                        <button name="do_enroll" type="object" string="Enroll" class="oe_highlight"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="benefit_id"/>
+                            <field name="employee_id"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <act_window name="Enroll Employee"
+            res_model="hr.benefit.enroll.employee"
+            src_model="hr.benefit"
+            view_mode="form"
+            view_id="enroll_employee_form"
+            target="new"
+            id="action_enroll_employee"/>
+        
+    </data>
+</openerp>

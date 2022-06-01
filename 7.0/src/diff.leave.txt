@@ -1,0 +1,34 @@
+diff --git a/src/clear-addons/hr_holidays_extension/hr_holidays.py b/src/clear-addons/hr_holidays_extension/hr_holidays.py
+index 11d3ba0..095a554 100644
+--- a/src/clear-addons/hr_holidays_extension/hr_holidays.py
++++ b/src/clear-addons/hr_holidays_extension/hr_holidays.py
+@@ -355,13 +355,14 @@ class hr_attendance(osv.Model):
+                               ('type', '=', 'remove'),
+                               ('date_from', '<=', vals['name']),
+                               ('date_to', '>=', vals['name']),
+-                              ('state', 'not in', ['cancel', 'refuse'])],
++                              ('state', 'in',
++                               ['validate', 'validate1'])],
+                     context=context)
+                 if len(lv_ids) > 0 and retry_count >= 0:
+                     ee_data = self.pool.get('hr.employee').read(
+                         cr, uid, vals['employee_id'], ['name'],
+                         context=context)
+-                    self.create_adjustments(self, cr, uid,
++                    self.create_adjustments(cr, uid,
+                                             [vals['employee_id']],
+                                             vals['name'], context=context)
+                 elif len(lv_ids) > 0:
+diff --git a/src/clear-addons/hr_schedule/hr_schedule.py b/src/clear-addons/hr_schedule/hr_schedule.py
+index 04ef44c..b6de85d 100644
+--- a/src/clear-addons/hr_schedule/hr_schedule.py
++++ b/src/clear-addons/hr_schedule/hr_schedule.py
+@@ -315,7 +315,7 @@ class hr_schedule(osv.osv):
+             leave_ids = leave_obj.search(cr, uid, [('employee_id', '=', schedule.employee_id.id),
+                                                    ('date_from', '<=', schedule.date_end),
+                                                    ('date_to', '>=', schedule.date_start),
+-                                                   ('state', 'in', ['draft', 'validate', 'validate1'])],
++                                                   ('state', 'in', ['validate', 'validate1'])],
+                                          context=context)
+             for lv in leave_obj.browse(cr, uid, leave_ids, context=context):
+                 utcdtFrom = utc.localize(datetime.strptime(lv.date_from, OE_DTFORMAT), is_dst=False)

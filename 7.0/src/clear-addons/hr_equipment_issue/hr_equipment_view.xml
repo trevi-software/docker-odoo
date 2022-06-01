@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <!-- Main Menu Parent -->
+        <menuitem id="menu_equipment_root"
+            name="Equipment Issue/Return"
+            parent="hr.menu_hr_root"
+            groups="base.group_user"
+            sequence="35"/>
+        
+        <!-- Configuration Menu Parent -->
+        <menuitem id="menu_equipment_configuration"
+            name="Equipment"
+            parent="hr.menu_hr_configuration"
+            groups="base.group_user"
+            sequence="7"/>
+        
+        <!-- Equipment Issue -->
+
+        <record id="view_issue_filter" model="ir.ui.view">
+            <field name="name">Equipment Issue</field>
+            <field name="model">hr.equipment.issue</field>
+            <field name="arch" type="xml">
+                <search string="Equipment and Materials">
+                    <field name="name"/>
+                    <field name="employee_id" />
+                    <filter string="Draft" icon="terp-personal" name="draft_state" domain="[('state','in', ['draft'])]"/>
+                    <filter string="Issued" icon="terp-personal" name="issue_state" domain="[('state','in', ['issue'])]"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Employee" icon="terp-personal+" domain="[]" context="{'group_by':'employee_id'}"/>
+                        <filter string="Issued Date" icon="terp-personal+" domain="[]" context="{'group_by':'date'}"/>
+                        <filter string="Issue Recorded By" icon="terp-personal+" domain="[]" context="{'group_by':'user_id'}"/>
+                    </group>
+                </search>
+             </field>
+         </record>
+        
+        <record id="view_equipment_issue_tree" model="ir.ui.view">
+            <field name="name">hr.equipment.issue.tree</field>
+            <field name="model">hr.equipment.issue</field>
+            <field name="arch" type="xml">
+                <tree string="Equipment Issued">
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="date"/>
+                    <field name="user_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_equipment_issue_form" model="ir.ui.view">
+            <field name="name">hr.equipment.issue.form</field>
+            <field name="model">hr.equipment.issue</field>
+            <field name="arch" type="xml">
+                <form string="Equipment Issued" version="7.0">
+                    <header>
+                        <button name="signal_issue" type="workflow" states="draft" string="Issue" class="oe_highlight"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <div>
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="user_id"/>
+                        </group>
+                    </group>
+                    <group string="Issued Equipment/Materials">
+                        <field name="line_ids">
+                            <tree string="Issued Equipment o2m">
+                                <field name="type_id"/>
+                                <field name="serial"/>
+                                <field name="status"/>
+                                <field name="return_date"/>
+                                <field name="return_user_id"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group string="Notes">
+                        <field name="note" nolabel="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="open_equipment_issue" model="ir.actions.act_window">
+            <field name="name">Equipment Issue</field>
+            <field name="res_model">hr.equipment.issue</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_draft_state': 1}</field>
+            <field name="search_view_id" ref="view_issue_filter"/>
+        </record>
+        <menuitem id="menu_hr_equipment_issue"
+            action="open_equipment_issue"
+            parent="menu_equipment_root"
+            sequence="10"/>
+        
+        <!-- Equipment Issue Line -->
+
+        <record id="view_issue_line_filter" model="ir.ui.view">
+            <field name="name">Equipment Issue Line</field>
+            <field name="model">hr.equipment.issue.line</field>
+            <field name="arch" type="xml">
+                <search string="Equipment and Materials">
+                    <field name="issue_id"/>
+                    <field name="employee_id" />
+                    <filter string="Draft" icon="terp-personal" name="draft_state" domain="[('status','in', ['draft'])]"/>
+                    <filter string="Issued" icon="terp-personal" name="issue_state" domain="[('status','in', ['issue'])]"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Employee" icon="terp-personal+" domain="[]" context="{'group_by':'employee_id'}"/>
+                        <filter string="Issued Date" icon="terp-personal+" domain="[]" context="{'group_by':'date'}"/>
+                        <filter string="Returned Date" icon="terp-personal+" domain="[]" context="{'group_by':'return_date'}"/>
+                        <filter string="Issue Recorded By" icon="terp-personal+" domain="[]" context="{'group_by':'user_id'}"/>
+                        <filter string="Return Recorded By" icon="terp-personal+" domain="[]" context="{'group_by':'return_user_id'}"/>
+                    </group>
+                </search>
+             </field>
+         </record>
+        
+        <record id="view_equipment_issue_line_tree" model="ir.ui.view">
+            <field name="name">hr.equipment.issue.line.tree</field>
+            <field name="model">hr.equipment.issue.line</field>
+            <field name="arch" type="xml">
+                <tree string="Equipment Issue Line">
+                    <field name="issue_id"/>
+                    <field name="employee_id"/>
+                    <field name="type_id"/>
+                    <field name="serial"/>
+                    <field name="status"/>
+                    <field name="date"/>
+                    <field name="return_date"/>
+                    <field name="user_id" invisible="1"/>
+                    <field name="return_user_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_equipment_issue_line_form" model="ir.ui.view">
+            <field name="name">hr.equipment.issue.line.form</field>
+            <field name="model">hr.equipment.issue.line</field>
+            <field name="arch" type="xml">
+                <form string="Equipment Issue Line" version="7.0">
+                    <header>
+                        <field name="status" widget="statusbar"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="type_id"/>
+                            <field name="serial"/>
+                        </group>
+                        <group>
+                            <field name="issue_id"/>
+                            <field name="employee_id"/>
+                            <field name="date"/>
+                            <field name="return_date"/>
+                            <field name="return_user_id"/>
+                        </group>
+                    </group>
+                    <group string="Notes">
+                        <field name="note" nolabel="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="open_equipment_issue_line" model="ir.actions.act_window">
+            <field name="name">Line Items</field>
+            <field name="res_model">hr.equipment.issue.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_issue_state': 1}</field>
+            <field name="search_view_id" ref="view_issue_line_filter"/>
+        </record>
+        <menuitem id="menu_hr_equipment_issue_line"
+            action="open_equipment_issue_line"
+            parent="menu_equipment_root"
+            sequence="15"/>
+        
+        <!-- Equipment Type -->
+        
+        <record id="view_equipment_type_tree" model="ir.ui.view">
+            <field name="name">hr.equiment.type.tree</field>
+            <field name="model">hr.equipment.type</field>
+            <field name="arch" type="xml">
+                <tree string="Equipment Types">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_equipment_type_form" model="ir.ui.view">
+            <field name="name">hr.equiment.type.form</field>
+            <field name="model">hr.equipment.type</field>
+            <field name="arch" type="xml">
+                <form string="Equipment Types" version="7.0">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                        </group>
+                        <group></group>
+                    </group>
+                    <group string="Notes">
+                        <field name="note" nolabel="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="open_equipment_type" model="ir.actions.act_window">
+            <field name="name">Equipment Types</field>
+            <field name="res_model">hr.equipment.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_hr_equipment_type"
+            action="open_equipment_type"
+            parent="menu_equipment_configuration"
+            sequence="10"/>
+        
+    </data>
+</openerp>

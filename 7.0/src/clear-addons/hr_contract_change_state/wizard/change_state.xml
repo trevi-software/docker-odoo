@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_change_contract_state_wizard" model="ir.ui.view">
+            <field name="name">Change Contract State Wizard</field>
+            <field name="model">hr.contract.wizard.state.change</field>
+            <field name="arch" type="xml">
+                <form string="Change Contract State" version="7.0">
+                    <header>
+                        <button icon="gtk-execute" string="Change" name="change_state" type="object" class="oe_highlight"  />
+                    </header>
+                    <group>
+                        <group>
+                            <field name="do_approve" on_change="onchange_approve(do_approve)"/>
+                            <field name="do_trial_ok" on_change="onchange_trialok(do_trial_ok)"/>
+                        </group>
+                    </group>
+                    <group string="Contracts" >
+                        <field name="contract_ids" nolabel="1"/>
+                    </group>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_change_contract_state_wizard" model="ir.actions.act_window">
+            <field name="name">Change State</field>
+            <field name="res_model">hr.contract.wizard.state.change</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_change_contract_state_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+        <ir_set>
+            <field eval="'action'" name="key"/>
+            <field eval="'client_action_multi'" name="key2"/>
+            <field eval="['hr.contract']" name="models"/>
+            <field name="name">Change State</field>
+            <field eval="'ir.actions.act_window,'+str(action_change_contract_state_wizard)" name="value"/>
+            <field eval="True" name="isobject"/>
+            <field eval="True" name="replace"/>
+        </ir_set>
+
+    </data>
+</openerp>

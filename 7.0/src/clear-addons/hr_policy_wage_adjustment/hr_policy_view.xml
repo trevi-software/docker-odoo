@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!-- Policy Lines -->
+        
+        <record id="wageadj_policy_line_tree_view" model="ir.ui.view">
+            <field name="name">hr.policy.line.wageadj.tree</field>
+            <field name="model">hr.policy.line.wageadj</field>
+            <field name="arch" type="xml">
+                <tree string="Accrual Policy Lines">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="wage_limit"/>
+                    <field name="type"/>
+                    <field name="calculation_frequency"/>
+                    <field name="frequency_on_hire_date"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="wageadj_policy_line_form_view" model="ir.ui.view">
+            <field name="name">hr.policy.line.wageadj.form</field>
+            <field name="model">hr.policy.line.wageadj</field>
+            <field name="arch" type="xml">
+                <form string="Adjustment Policy Line" version="7.0">
+                    <sheet>
+                        <h1>
+                            <label for="name" string="Name" class="oe_edit_only"/>
+                            <field name="name"/>
+                        </h1>
+                        <h1>
+                            <label for="code" string="Code" class="oe_edit_only"/>
+                            <field name="code"/>
+                        </h1>
+                        <label for="category_ids"/>
+                        <field name="category_ids" widget="many2many_tags" placeholder="Applies to these categories..."/>
+                        <label for="incjob_ids"/>
+                        <field name="incjob_ids" widget="many2many_tags" placeholder="Applies only to these jobs..."/>
+                        <newline/>
+                        <label for="exjob_ids"/>
+                        <field name="exjob_ids" widget="many2many_tags" placeholder="Does not apply to these jobs.."/>
+                        <notebook>
+                            <page string="General">
+                                <group>
+                                    <group>
+                                        <field name="policy_id"/>
+                                        <field name="wage_limit"/>
+                                        <field name="type"/>
+                                        <field name="calculation_frequency"/>
+                                        <field name="frequency_on_hire_date"/>
+                                        <field name="max_adjustment"/>
+                                        <field name="max_milestone"/>
+                                    </group>
+                                    <group>
+                                        <field name="minimum_employed_days"/>
+                                        <field name="frequency_week_day" attrs="{'invisible': [('calculation_frequency','!=','weekly')], 'required': [('calculation_frequency', '=','weekly')]}"/>
+                                        <field name="frequency_month_day" attrs="{'invisible': [('calculation_frequency','!=','monthly')], 'required': [('calculation_frequency', '=','monthly'), ('frequency_on_hire_date', '=', False)]}"/>
+                                        <field name="frequency_annual_month" attrs="{'invisible': ['|', ('calculation_frequency','!=','annual'), ('frequency_on_hire_date', '=', True)], 'required': [('calculation_frequency', '=','annual'), ('frequency_on_hire_date', '=', False)]}"/>
+                                        <field name="frequency_annual_day" attrs="{'invisible': ['|', ('calculation_frequency','!=','annual'), ('frequency_on_hire_date', '=', True)], 'required': [('calculation_frequency', '=','annual'), ('frequency_on_hire_date', '=', False)]}"/>
+                                    </group>
+                                </group>
+                                <group string="Templates">
+                                    <field name="template_ids" nolabel="1">
+                                        <tree string="Templates" editable="bottom">
+                                            <field name="name"/>
+                                            <field name="milestone"/>
+                                            <field name="type"/>
+                                            <field name="amount"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Adjustments">
+                                <group string="List of Adjustments">
+                                    <field name="run_ids" nolabel="1">
+                                        <tree string="Adjutment Batches">
+                                            <field name="name"/>
+                                            <field name="effective_date"/>
+                                            <field name="type"/>
+                                            <field name="state"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Jobs">
+                                <group string="List of Jobs">
+                                    <field name="job_ids" nolabel="1">
+                                        <tree string="Jobs">
+                                            <field name="name"/>
+                                            <field name="exec"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="open_wageadj_policy_line" model="ir.actions.act_window">
+            <field name="name">Wage Adjustment Policy Lines</field>
+            <field name="res_model">hr.policy.line.wageadj</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem action="open_wageadj_policy_line"
+            id="menu_hr_wageadj_policy_line"
+            parent="hr_policy_group.menu_hr_policy_configuration"
+            sequence="14"/>
+        
+        <!-- Policy -->
+        
+        <record id="wageadj_policy_view_tree" model="ir.ui.view">
+            <field name="name">hr.policy.wageadj.tree</field>
+            <field name="model">hr.policy.wageadj</field>
+            <field name="arch" type="xml">
+                <tree string="Wage Adjustment Policies">
+                    <field name="name"/>
+                    <field name="date"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="wageadj_policy_view_form" model="ir.ui.view">
+            <field name="name">hr.policy.wageadj.form</field>
+            <field name="model">hr.policy.wageadj</field>
+            <field name="arch" type="xml">
+                <form string="Wage Adjustment Policy" version="7.0">
+                    <sheet>
+                        <h1>
+                            <label for="name" string="Name" class="oe_edit_only"/>
+                            <field name="name"/>
+                        </h1>
+                        <group>
+                            <group>
+                                <field name="date"/>
+                            </group>
+                            <group></group>
+                        </group>
+                        <group string="Adjustment Lines">
+                            <field name="line_ids" nolabel="1" editable="top"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="open_wageadj_policy" model="ir.actions.act_window">
+            <field name="name">Wage Adjustment Policies</field>
+            <field name="res_model">hr.policy.wageadj</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem action="open_wageadj_policy"
+            id="menu_hr_wageadj_policy"
+            parent="hr_policy_group.menu_hr_policy_configuration"
+            sequence="11"/>
+        
+        <!-- Policy Group -->
+        
+        <record id="policy_group_view_form" model="ir.ui.view">
+            <field name="name">hr.policy.group.form.wageadjinherit</field>
+            <field name="model">hr.policy.group</field>
+            <field name="inherit_id" ref="hr_policy_group.policy_group_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='right']" position="inside">
+                    <field name="wageadj_policy_ids"/>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

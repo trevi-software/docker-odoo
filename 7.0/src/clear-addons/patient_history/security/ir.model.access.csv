@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_patient_history_nurse,access_hr_patient_history,model_hr_patient_history,patient_history.group_hr_nurse,1,1,1,1
+access_patient_history_hr,access_hr_patient_history,model_hr_patient_history,base.group_hr_user,1,0,0,0
+access_patient_history_rx_nurse,access_hr_patient_history_rx,model_hr_patient_history_rx,patient_history.group_hr_nurse,1,1,1,1
+access_patient_history_rx_hr,access_hr_patient_history_rx,model_hr_patient_history_rx,base.group_hr_user,1,0,0,0
+access_hr_employee_nurse,access_hr_employee,hr.model_hr_employee,patient_history.group_hr_nurse,1,0,0,0
+access_hr_employee_category_nurse,access_hr_employee_category,hr.model_hr_employee_category,patient_history.group_hr_nurse,1,0,0,0
+access_hr_department_nurse,access_hr_department,hr.model_hr_department,patient_history.group_hr_nurse,1,0,0,0

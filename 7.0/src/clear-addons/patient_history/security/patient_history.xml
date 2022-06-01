@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data noupdate="0">
+        
+        <!-- User Groups -->
+        
+        <record id="group_hr_nurse" model="res.groups">
+            <field name="name">Nurse</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+            <field name="comment">has full access to medical records</field>
+        </record>
+        
+    </data>    
+</openerp>

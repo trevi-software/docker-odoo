@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+    
+        <!-- Stock Requisition -->
+        
+        <record id="seq_type_stockreq_ref" model="ir.sequence.type">
+            <field name="name">Stock Requisition Reference</field>
+            <field name="code">stock_requisition.ref</field>
+        </record>
+        <record id="seq_stockreq_ref" model="ir.sequence">
+            <field name="name">Stock Requisition Reference</field>
+            <field name="code">stock_requisition.ref</field>
+            <field name="prefix">REQ/STOCK/%(year)s/</field>
+            <field name="padding">5</field>
+        </record>
+    
+        <!-- Stock Transfer / Consumption -->
+        
+        <record id="seq_type_stockissue_ref" model="ir.sequence.type">
+            <field name="name">Stock Issue Reference</field>
+            <field name="code">stock_issue.ref</field>
+        </record>
+        <record id="seq_stockissue_ref" model="ir.sequence">
+            <field name="name">Stock Issue Reference</field>
+            <field name="code">stock_issue.ref</field>
+            <field name="prefix">SIV/STOCK/%(year)s/</field>
+            <field name="padding">5</field>
+        </record>
+    
+    </data>
+</openerp>

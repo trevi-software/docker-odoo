@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data noupdate="0">
+        
+        <record id="group_hr_cert" model="res.groups">
+            <field name="name">Certification State Change</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+            <field name="comment">the user can change certification state</field>
+        </record>
+        
+    </data>    
+</openerp>

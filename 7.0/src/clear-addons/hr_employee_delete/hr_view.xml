@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="log_delete_employee_tree" model="ir.ui.view">
+            <field name="name">log.delete.employee.tree</field>
+            <field name="model">log.delete.employee</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Removal Change Log">
+                    <field name="employee_name"/>
+                    <field name="employee_dob"/>
+                    <field name="employee_gender"/>
+                    <field name="employee_identification"/>
+                    <field name="department_name"/>
+                    <field name="job_name"/>
+                    <field name="date"/>
+                    <field name="user_id"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="log_delete_employee_form" model="ir.ui.view">
+            <field name="name">log.delete.employee.form</field>
+            <field name="model">log.delete.employee</field>
+            <field name="arch" type="xml">
+                <form string="Employee Removal Change Log" version="7.0">
+                	<group>
+                		<group>
+		                    <field name="employee_name"/>
+		                    <field name="employee_dob"/>
+		                    <field name="employee_gender"/>
+		                    <field name="employee_identification"/>
+                		</group>
+                		<group>
+		                    <field name="department_name"/>
+		                    <field name="job_name"/>
+		                    <field name="date"/>
+		                    <field name="user_id"/>
+                		</group>
+                	</group>
+                	<group name="removed_objects" string="Deleted Records">
+                		<group name="removed_col1">
+                    		<field name="contracts"/>
+                		</group>
+                		<group name="removed_col2">
+                		</group>
+                	</group>
+                </form>
+            </field>
+        </record>
+        <record id="open_log_delete_employee" model="ir.actions.act_window">
+            <field name="name">Deleted Employees</field>
+            <field name="res_model">log.delete.employee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_log_delete_employee"
+            action="open_log_delete_employee"
+            parent="hr_employee_change_uniqueid.menu_hr_changelog_root"
+            sequence="1"/>
+    
+    </data>
+</openerp>

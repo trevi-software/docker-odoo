@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <delete model="ir.ui.menu" id="stock.menu_action_pdct_in" />
+        <delete model="ir.ui.menu" id="stock.menu_action_pdct_out" />
+        <delete model="ir.ui.menu" id="stock.menu_stock_products_moves" />
+        <delete model="ir.ui.menu" id="procurement.menu_stock_proc_schedulers" />
+        <delete model="ir.ui.menu" id="procurement.menu_stock_procurement_action" />
+        <delete model="ir.ui.menu" id="procurement.menu_stock_sched" />
+        
+        <menuitem id="menu_stock_warehouse_goods_issue"
+            name="Stock Transfer &amp; Consumption"
+            parent="stock.menu_stock_root" sequence="2"/>
+        <menuitem id="menu_stock_warehouse_goods_issue_advanced"
+            name="Advanced"
+            parent="menu_stock_warehouse_goods_issue" sequence="3"/>
+
+        <!-- Goods Consumption -->
+        
+        <record id="view_final_issue_tree" model="ir.ui.view">
+            <field name="name">stock.issue.final.tree</field>
+            <field name="model">stock.issue</field>
+            <field name="arch" type="xml">
+                <tree string="Goods Issue List">
+                    <field name="issue_type" invisible="1"/>
+                    <field name="name"/>
+                    <field name="user_id"/>
+                    <field name="date"/>
+                    <field name="reference"/>
+                    <field name="src_location_id"/>
+                    <field name="dst_location_id"/>
+                    <field name="shipped"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_final_issue_form" model="ir.ui.view">
+            <field name="name">stock.issue.final.form</field>
+            <field name="model">stock.issue</field>
+            <field name="arch" type="xml">
+                <form string="Goods Issue" version="7.0">
+                    <sheet>
+                        <header>
+                            <button name="signal_cancel" states="progress,except" string="Cancel"/>
+                            <button name="signal_confirm" states="draft" string="Confirm" class="oe_highlight"/>
+                            <field name="state" widget="statusbar"/>
+                        </header>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="src_location_id"/>
+                                <field name="date"/>
+                                <field name="picking_policy"/>
+                                <label for="reference" string="Patient/Reference"/>
+                                <field name="reference" nolabel="1"/>
+                            </group>
+                            <group>
+                                <field name="user_id"/>
+                                <field name="dst_location_id"/>
+                                <field name="company_id"/>
+                                <field name="shipped"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Goods Issued">
+                                <field name="line_ids" nolabel="1">
+                                    <form string="Goods Issue Line with Parent" version="7.0">
+                                        <header>
+                                            <field name="state" widget="statusbar"/>
+                                        </header>
+                                        <group>
+                                            <group>
+                                                <field name="product_id"
+                                                    on_change="onchange_product(product_id, product_uom_qty, False, parent.date)"/>
+                                                <field name="product_uom_qty"
+                                                    on_change="onchange_product(product_id, product_uom_qty, product_uom, parent.date)"/>
+                                                <field name="product_uom"/>
+                                            </group>
+                                            <group>
+                                                <field name="name"/>
+                                                <field name="issue_id"/>
+                                                <field name="date_planned"/>
+                                            </group>
+                                        </group>
+                                        <notebook>
+                                            <page string="Stock Moves">
+                                                <group>
+                                                    <group string="Outgoing">
+                                                        <field name="out_move_ids" nolabel="1">
+                                                            <tree colors="grey:state == 'cancel'" string="Moves" create="false">
+                                                                <field name="product_id"/>
+                                                                <field name="product_qty"/>
+                                                                <field name="product_uom"  string="Unit of Measure" groups="product.group_uom"/>
+                                                                <field name="location_dest_id" groups="stock.group_locations"/>
+                                                                <field name="state"/>
+                                                            </tree>
+                                                        </field>
+                                                    </group>
+                                                    <group string="Incomming">
+                                                        <field name="in_move_ids" nolabel="1">
+                                                            <tree colors="grey:state == 'cancel'" string="Moves" create="false">
+                                                                <field name="product_id"/>
+                                                                <field name="product_qty"/>
+                                                                <field name="product_uom"  string="Unit of Measure" groups="product.group_uom"/>
+                                                                <field name="location_id" groups="stock.group_locations"/>
+                                                                <field name="state"/>
+                                                            </tree>
+                                                        </field>
+                                                    </group>
+                                                </group>
+                                            </page>
+                                        </notebook>
+                                    </form>
+                                    <tree string="Goods Issue Lines with Parent">
+                                        <field name="product_id"/>
+                                        <field name="issue_id"/>
+                                        <field name="date_planned"/>
+                                        <field name="product_uom_qty"/>
+                                        <field name="state"/>
+                                    </tree>
+                                </field>
+                                <group string="Notes">
+                                    <field name="notes" nolabel="1"/>
+                                </group>
+                            </page>
+                            <page string="Pickings">
+                                <group string="Outgoing">
+                                    <field name="out_picking_ids" nolabel="1"/>
+                                </group>
+                                <group string="Incomming">
+                                    <field name="in_picking_ids" nolabel="1"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_final_issue" model="ir.actions.act_window">
+            <field name="name">Stock Consumption</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.issue</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('issue_type', '=', 'cons')]</field>
+        </record>
+        <record id="action_final_issue_view_tree" model="ir.actions.act_window.view">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_final_issue_tree"/>
+            <field name="act_window_id" ref="action_final_issue"/>
+        </record>
+        <record id="action_final_issue_view_form" model="ir.actions.act_window.view">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_final_issue_form"/>
+            <field name="act_window_id" ref="action_final_issue"/>
+        </record>
+        <menuitem action="action_final_issue"
+            id="menu_action_final_issue_order"
+            parent="menu_stock_warehouse_goods_issue_advanced"
+            sequence="1"/>
+
+        <!-- Stock Transfer -->
+        
+        <record id="view_goods_issue_tree" model="ir.ui.view">
+            <field name="name">stock.issue.tree</field>
+            <field name="model">stock.issue</field>
+            <field name="arch" type="xml">
+                <tree string="Goods Issue List">
+                    <field name="issue_type" invisible="1"/>
+                    <field name="name"/>
+                    <field name="user_id"/>
+                    <field name="date"/>
+                    <field name="reference"/>
+                    <field name="src_warehouse_id"/>
+                    <field name="src_location_id" invisible="1"/>
+                    <field name="dst_warehouse_id"/>
+                    <field name="dst_location_id" invisible="1"/>
+                    <field name="shipped"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_goods_issue_form" model="ir.ui.view">
+            <field name="name">stock.issue.form</field>
+            <field name="model">stock.issue</field>
+            <field name="arch" type="xml">
+                <form string="Goods Issue" version="7.0">
+                    <sheet>
+                        <header>
+                            <button name="signal_cancel" states="progress,except" string="Cancel"/>
+                            <button name="signal_confirm" states="draft" string="Confirm" class="oe_highlight"/>
+                            <field name="state" widget="statusbar"/>
+                        </header>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="src_warehouse_id" on_change="onchange_src_warehouse(src_warehouse_id)"/>
+                                <field name="dst_warehouse_id" required="1" on_change="onchange_dst_warehouse(dst_warehouse_id)"/>
+                                <field name="date"/>
+                                <field name="picking_policy"/>
+                                <field name="reference"/>
+                            </group>
+                            <group>
+                                <field name="user_id"/>
+                                <field name="src_location_id"/>
+                                <field name="dst_location_id"/>
+                                <field name="transit_location_id"/>
+                                <field name="company_id"/>
+                                <field name="shipped"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Goods Issued">
+                                <field name="line_ids" nolabel="1">
+                                    <form string="Goods Issue Line with Parent" version="7.0">
+                                        <header>
+                                            <field name="state" widget="statusbar"/>
+                                        </header>
+                                        <group>
+                                            <group>
+                                                <field name="product_id"
+                                                    on_change="onchange_product(product_id, product_uom_qty, False, parent.date)"/>
+                                                <field name="product_uom_qty"
+                                                    on_change="onchange_product(product_id, product_uom_qty, product_uom, parent.date)"/>
+                                                <field name="product_uom"/>
+                                            </group>
+                                            <group>
+                                                <field name="name"/>
+                                                <field name="issue_id"/>
+                                                <field name="date_planned"/>
+                                            </group>
+                                        </group>
+                                        <notebook>
+                                            <page string="Stock Moves">
+                                                <group>
+                                                    <group string="Outgoing">
+                                                        <field name="out_move_ids" nolabel="1">
+                                                            <tree colors="grey:state == 'cancel'" string="Moves" create="false">
+                                                                <field name="product_id"/>
+                                                                <field name="product_qty"/>
+                                                                <field name="product_uom"  string="Unit of Measure" groups="product.group_uom"/>
+                                                                <field name="location_dest_id" groups="stock.group_locations"/>
+                                                                <field name="state"/>
+                                                            </tree>
+                                                        </field>
+                                                    </group>
+                                                    <group string="Incomming">
+                                                        <field name="in_move_ids" nolabel="1">
+                                                            <tree colors="grey:state == 'cancel'" string="Moves" create="false">
+                                                                <field name="product_id"/>
+                                                                <field name="product_qty"/>
+                                                                <field name="product_uom"  string="Unit of Measure" groups="product.group_uom"/>
+                                                                <field name="location_id" groups="stock.group_locations"/>
+                                                                <field name="state"/>
+                                                            </tree>
+                                                        </field>
+                                                    </group>
+                                                </group>
+                                            </page>
+                                        </notebook>
+                                    </form>
+                                    <tree string="Goods Issue Lines with Parent">
+                                        <field name="product_id"/>
+                                        <field name="issue_id"/>
+                                        <field name="date_planned"/>
+                                        <field name="product_uom_qty"/>
+                                        <field name="state"/>
+                                    </tree>
+                                </field>
+                                <group string="Notes">
+                                    <field name="notes" nolabel="1"/>
+                                </group>
+                            </page>
+                            <page string="Pickings">
+                                <group string="Outgoing">
+                                    <field name="out_picking_ids" nolabel="1"/>
+                                </group>
+                                <group string="Incomming">
+                                    <field name="in_picking_ids" nolabel="1"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_goods_issue" model="ir.actions.act_window">
+            <field name="name">Stock Transfer Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.issue</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_goods_issue_form"/>
+            <field name="domain">[('issue_type', '=', 'trans')]</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a Stock Transfer Order. 
+              </p><p>
+                Stock Issue Orders are used to transfer stock items from one
+                warehouse or location to another.
+              </p>
+            </field>
+        </record>
+        <record id="action_goods_issue_view_tree" model="ir.actions.act_window.view">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_goods_issue_tree"/>
+            <field name="act_window_id" ref="action_goods_issue"/>
+        </record>
+        <record id="action_goods_issue_view_form" model="ir.actions.act_window.view">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_goods_issue_form"/>
+            <field name="act_window_id" ref="action_goods_issue"/>
+        </record>
+        <menuitem action="action_goods_issue"
+            id="menu_action_goods_issue_order"
+            parent="menu_stock_warehouse_goods_issue_advanced"
+            sequence="2"/>
+
+        <!-- Goods Issued Line -->
+        
+        <record id="view_goods_issue_line_tree" model="ir.ui.view">
+            <field name="name">stock.issue.line.tree</field>
+            <field name="model">stock.issue.line</field>
+            <field name="arch" type="xml">
+                <tree string="Goods Issue Lines">
+                    <field name="product_id"/>
+                    <field name="issue_id"/>
+                    <field name="date_planned"/>
+                    <field name="product_uom_qty"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_goods_issue_line_form" model="ir.ui.view">
+            <field name="name">stock.issue.line.form</field>
+            <field name="model">stock.issue.line</field>
+            <field name="arch" type="xml">
+                <form string="Goods Issue Line" version="7.0">
+                    <sheet>
+                        <header>
+                            <field name="state" widget="statusbar"/>
+                        </header>
+                        <group>
+                            <group>
+                                <field name="product_id"
+                                    on_change="onchange_product(product_id, product_uom_qty, False, issue_id.date)"/>
+                                <field name="product_uom_qty"
+                                    on_change="onchange_product(product_id, product_uom_qty, product_uom, issue_id.date)"/>
+                                <field name="product_uom"
+                                    on_change="onchange_uom(product_id, product_uom_qty, False, issue_id.date)"/>
+                            </group>
+                            <group>
+                                <field name="issue_id"/>
+                                <field name="date_planned"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Stock Moves">
+                                <group>
+                                    <group>
+                                        <field name="out_move_ids" nolabel="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="in_move_ids" nolabel="1"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_goods_issue_line" model="ir.actions.act_window">
+            <field name="name">Line Items</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.issue.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem action="action_goods_issue_line"
+            id="menu_action_goods_issue_line"
+            parent="menu_stock_warehouse_goods_issue_advanced"
+            sequence="3"/>
+
+    </data>
+</openerp>

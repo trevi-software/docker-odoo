@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="view_payroll_amendment_filter" model="ir.ui.view">
+            <field name="name">hr.payroll.postclose.amendment.filter</field>
+            <field name="model">hr.payroll.postclose.amendment</field>
+            <field name="arch" type="xml">
+                <search string="Payroll Post-Closing Amendment Search">
+                    <field name="employee_id"/>
+                    <field name="date"/>
+                    <field name="pp_id"/>
+                    <field name="user_id"/>
+                    <field name="old_payslip_id"/>
+                    <field name="new_payslip_id"/>
+                    <filter icon="terp-camera_test" domain="[('state','in',('draft', 'open'))]" string="In Progress" name="unfinished"/>
+                    <group expand="0" string="Group By...">
+                        <filter name="payroll_period" string="Payroll Period" icon="terp-personal" domain="[]" context="{'group_by':'pp_id'}"/>
+                        <filter name="employee" string="Employee" icon="terp-personal" domain="[]" context="{'group_by':'employee_id'}"/>
+                        <filter string="Day" icon="terp-go-today" domain="[]" context="{'group_by':'date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        <record id="view_payroll_postclose_amendment_tree" model="ir.ui.view">
+            <field name="name">hr.payroll.postclose.amendment.tree</field>
+            <field name="model">hr.payroll.postclose.amendment</field>
+            <field name="arch" type="xml">
+                <tree string="Payroll Post-Closing Amendment List">
+                    <field name="employee_id"/>
+                    <field name="date"/>
+                    <field name="pp_id"/>
+                    <field name="old_payslip_id"/>
+                    <field name="new_payslip_id"/>
+                    <field name="user_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_payroll_amendment_form" model="ir.ui.view">
+            <field name="name">hr.payroll.postclose.amendment.form</field>
+            <field name="model">hr.payroll.postclose.amendment</field>
+            <field name="arch" type="xml">
+                <form string="Payroll Post-Closing Amendment" version="7.0">
+                    <header>
+                        <button name="signal_open" type="workflow" states="draft" class="oe_highlight" string="Start"/>
+                        <button name="unlock_period" type="object" states="open" string="Unlock"/>
+                        <button name="relock_period" type="object" states="open" string="Re-Lock"/>
+                        <button name="create_amended_payslip" type="object" states="open" string="Create Pay Slip"/>
+                        <button name="signal_done" type="workflow" states="open" class="oe_highlight" string="Done"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="employee_id" on_change="onchange_employee(employee_id)"/>
+                            <field name="old_payslip_id" on_change="onchange_payslip(old_payslip_id)"/>
+                            <field name="next_pp_id"/>
+                            <field name="new_payslip_id"/>
+                        </group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="date"/>
+                            <field name="pp_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Pay Slip Amendments">
+                            <field name="payslip_amendment_ids" nolabel="1"/>
+                        </group>
+                        <group string="Notes">
+                            <field name="memo" nolabel="1"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="open_payroll_amendment_action" model="ir.actions.act_window">
+            <field name="name">Post-Close Amendments</field>
+            <field name="res_model">hr.payroll.postclose.amendment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_payroll_amendment_filter" />
+            <field name="context">{'default_type': 'to_approve', 'search_default_to_approve':1}</field>
+        </record>
+        <menuitem action="open_payroll_amendment_action"
+                  id="menu_payroll_postclose_amendment"
+                  parent="hr_payroll_period.menu_payroll_advanced"
+                  sequence="50"/>
+        
+        <!-- Post-Closing Amendment from Pay Slip form -->
+        <act_window name="Payroll Amendment"
+            res_model="hr.payroll.postclose.amendment"
+            src_model="hr.payslip"
+            view_mode="form"
+            view_id="view_payroll_amendment_form"
+            target="current"
+            id="open_postclose_amendment"/>
+        
+        <!-- Pay Slip -->
+        <record id="view_payslip_form" model="ir.ui.view">
+            <field name="name">hr.payslip.form.payroll_amendment</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='credit_note']" position="after">
+                    <field name="amended_payslip_id"/>
+                </xpath>
+            </field>
+        </record>
+    
+    </data>
+</openerp>

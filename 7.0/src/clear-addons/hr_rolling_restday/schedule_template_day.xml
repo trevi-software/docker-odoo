@@ -1,0 +1,727 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+      
+        <!-- Working Schedule Templates and Work Times -->
+        
+        <record id="sched_series_rolling" model="hr.schedule.template.series">
+            <field name="name">Rolling Rest Day</field>
+        </record>
+        
+        <record id="sched_templater_1" model="hr.schedule.template">
+            <field name="name">Rolling Monday</field>
+            <field name="series_id" ref="sched_series_rolling"/>
+            <field name="sequence" eval="7"/>
+        </record>
+        <record id="sched_templater_2" model="hr.schedule.template">
+            <field name="name">Rolling Tuesday</field>
+            <field name="series_id" ref="sched_series_rolling"/>
+            <field name="sequence" eval="6"/>
+        </record>
+        <record id="sched_templater_3" model="hr.schedule.template">
+            <field name="name">Rolling Wednesday</field>
+            <field name="series_id" ref="sched_series_rolling"/>
+            <field name="sequence" eval="5"/>
+        </record>
+        <record id="sched_templater_4" model="hr.schedule.template">
+            <field name="name">Rolling Rest Thursday</field>
+            <field name="series_id" ref="sched_series_rolling"/>
+            <field name="sequence" eval="4"/>
+        </record>
+        <record id="sched_templater_5" model="hr.schedule.template">
+            <field name="name">Rolling Rest Friday</field>
+            <field name="series_id" ref="sched_series_rolling"/>
+            <field name="sequence" eval="3"/>
+        </record>
+        <record id="sched_templater_6" model="hr.schedule.template">
+            <field name="name">Rolling Rest Saturday</field>
+            <field name="series_id" ref="sched_series_rolling"/>
+            <field name="sequence" eval="2"/>
+        </record>
+        <record id="sched_templater_7" model="hr.schedule.template">
+            <field name="name">Rolling Rest Sunday</field>
+            <field name="series_id" ref="sched_series_rolling"/>
+            <field name="sequence" eval="1"/>
+        </record>
+
+        <record model="hr.schedule.template.worktime" id="worktime1_tueam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_tuepm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_wedam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_wedpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_thuam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_thupm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_friam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_fripm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_satam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_satpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_sunam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_sunpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_1"/>
+        </record>
+
+        <record model="hr.schedule.template.worktime" id="worktime2_monam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_monpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_wedam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_wedpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_thuam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_thupm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_friam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_fripm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_satam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_satpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_sunam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_sunpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_2"/>
+        </record>
+
+        <record model="hr.schedule.template.worktime" id="worktime3_monam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_monpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_tueam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_tuepm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_thuam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_thupm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_friam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_fripm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_satam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_satpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_sunam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_sunpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_3"/>
+        </record>
+
+        <record model="hr.schedule.template.worktime" id="worktime4_monam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_monpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_tueam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_tuepm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_wedam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_wedpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_friam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_fripm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_satam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_satpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_sunam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_sunpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_4"/>
+        </record>
+
+        <record model="hr.schedule.template.worktime" id="worktime5_monam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_monpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_tueam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_tuepm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_wedam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_wedpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_thuam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_thupm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_satam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_satpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_sunam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_sunpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_5"/>
+        </record>
+        
+        <record model="hr.schedule.template.worktime" id="worktime6_monam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_monpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_tueam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_tuepm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_wedam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_wedpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_thuam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_thupm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_friam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_fripm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_sunam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_sunpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_6"/>
+        </record>
+
+        <record model="hr.schedule.template.worktime" id="worktime7_monam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_monpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_tueam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_tuepm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_wedam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_wedpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_thuam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_thupm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_friam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_fripm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_satam">
+            <field name="name">AM</field>
+            <field name="sequence" eval="1"/>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:30</field>
+            <field name="template_id" ref="sched_templater_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_satpm">
+            <field name="name">PM</field>
+            <field name="sequence" eval="2"/>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">13:30</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_templater_7"/>
+        </record>
+        
+    </data>
+</openerp>

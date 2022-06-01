@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+    
+        <!-- Workflow Definition -->
+        <record id="wkf_bonus_sheet" model="workflow">
+            <field name="name">hr.bonus.sheet.basic</field>
+            <field name="osv">hr.bonus.sheet</field>
+            <field name="on_create">True</field>
+        </record>
+        
+        <!-- Workflow Activities (Stages) -->
+        
+        <record id="act_draft" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_bonus_sheet"/>
+            <field name="name">draft</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'draft'})</field>
+            <field name="flow_start">True</field>
+        </record>
+        
+        <record id="act_approve" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_bonus_sheet"/>
+            <field name="name">approve</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'approve'})</field>
+            <field name="flow_stop">True</field>
+        </record>
+        
+        <record id="act_cancel" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_bonus_sheet"/>
+            <field name="name">cancel</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'cancel'})</field>
+        </record>
+        
+        <!-- Workflow Transitions -->
+        
+        <record id="draft2approve" model="workflow.transition">
+            <field name="act_from" ref="act_draft"/>
+            <field name="act_to" ref="act_approve"/>
+            <field name="condition">bonus_criteria_ok()</field>
+            <field name="signal">signal_approve</field>
+            <field name="group_id" ref="hr_performance_bonus.group_hr_bonus"/>
+        </record>
+        
+        <record id="approve2cancel" model="workflow.transition">
+            <field name="act_from" ref="act_approve"/>
+            <field name="act_to" ref="act_cancel"/>
+            <field name="signal">signal_cancel</field>
+            <field name="group_id" ref="hr_performance_bonus.group_hr_bonus"/>
+        </record>
+        
+    </data>
+</openerp>

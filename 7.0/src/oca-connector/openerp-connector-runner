@@ -1,0 +1,84 @@
+#!/usr/bin/env python2.7
+"""
+Odoo Connector jobs runner
+==========================
+
+What's this?
+------------
+This is an alternative to connector workers, with the goal
+of resolving issues due to the polling nature of workers:
+* jobs do not start immediately even if there is a free connector worker
+* connector workers may starve while other workers have too many jobs enqueued
+
+It is fully compatible with the connector mechanism and only
+replaces workers.
+
+How to use
+----------
+* set the following environment variables:
+  - `ODOO_CONNECTOR_CHANNELS=root:4` (or any other channels configuration)
+* launch the script, example:
+  ```
+  $ export ODOO_CONNECTOR_CHANNELS=root:4
+  $ python connector/openerp-connector-runner -d production
+  ```
+
+.. important:: The Python path must contain the path to the Odoo server when
+               openerp-connector-worker is launched. You may need to export
+               `PYTHONPATH=/path/to/server`.
+"""
+
+import sys
+sys.path[0:0] = [
+  '/home/mtm/code/openerp/buildout04/eggs/Genshi-0.7-py2.7-linux-x86_64.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/PyChart-1.39-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/anybox.recipe.openerp-1.8.1-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/Babel-0.9.6-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/docutils-0.12-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/feedparser-5.1.1-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/gdata-2.0.16-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/Jinja2-2.7.3-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/lxml-2.3.3-py2.7-linux-x86_64.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/Mako-1.0.0-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/mock-1.0.1-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/psutil-2.1.3-py2.7-linux-x86_64.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/psycopg2-2.4.4-py2.7-linux-x86_64.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/pydot-1.0.28-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/python_dateutil-1.5-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/python_ldap-2.4.9-py2.7-linux-x86_64.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/python_openid-2.2.5-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/pytz-2012b-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/PyWebDAV-0.9.4.1-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/PyYAML-3.10-py2.7-linux-x86_64.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/reportlab-2.7-py2.7-linux-x86_64.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/simplejson-3.6.5-py2.7-linux-x86_64.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/unittest2-0.8.0-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/vatnumber-1.0-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/vobject-0.8.1c-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/Werkzeug-0.8.3-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/xlwt-0.7.3-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/Pillow-1.7.1-py2.7-linux-x86_64.egg',
+  '/home/mtm/code/openerp/buildout04/clearerp/src',
+  '/home/mtm/code/openerp/buildout04/eggs/six-1.9.0-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/argparse-1.3.0-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/setuptools-2.2-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/pyparsing-1.5.6-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/MarkupSafe-0.23-py2.7-linux-x86_64.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/zc.buildout-2.2.1-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/eggs/zc.recipe.egg-2.0.1-py2.7.egg',
+  '/home/mtm/code/openerp/buildout04/sandbox/opt/openoffice4/program',
+  ]
+
+import openerp
+from openerp.cli import server as servercli
+from openerp.tools import config
+
+
+if __name__ == "__main__":
+    args = sys.argv[1:]
+    servercli.check_root_user()
+    config.parse_config(args)
+    openerp.netsvc.init_logger()
+    servercli.report_configuration()
+    from openerp.addons.connector import jobrunner
+    jobrunner.run()

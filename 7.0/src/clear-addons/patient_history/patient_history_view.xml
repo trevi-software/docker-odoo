@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <!-- Top menu item -->
+        <menuitem name="Medical"
+            id="menu_medical_root"
+            groups="patient_history.group_hr_nurse"
+            sequence="100"/>
+        <menuitem id="menu_medical_main" parent="menu_medical_root" name="Patients" sequence="0"/>
+        <menuitem id="menu_medical_config" parent="menu_medical_root" name="Configuration" sequence="1000"/>
+        
+        <!-- Patient History -->
+
+        <record id="view_patient_history_filter" model="ir.ui.view">
+            <field name="name">Patient History</field>
+            <field name="model">hr.patient.history</field>
+            <field name="arch" type="xml">
+                <search string="Patient History">
+                    <field name="name" string="Employees"/>
+                    <field name="department_id" />
+                    <field name="employee_no" />
+                    <filter icon="terp-go-today" string="Today" name="today" domain="[('date','&gt;=',current_date),('date','&lt;=',current_date)]" />
+                    <filter string="Active" icon="terp-go-year" name="active" domain="[('active','=',True)]" help="Filters only on active records (active field is True)"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Department" icon="terp-personal+" domain="[]" context="{'group_by':'department_id'}"/>
+                        <filter string="Age" icon="terp-personal+" domain="[]" context="{'group_by':'age'}"/>
+                    </group>
+                </search>
+             </field>
+        </record>
+         
+        <record id="view_patient_history_tree" model="ir.ui.view">
+            <field name="name">hr.patient.history.tree</field>
+            <field name="model">hr.patient.history</field>
+            <field name="arch" type="xml">
+                <tree string="Patient Histories">
+                    <field name="name" invisible="1"/>
+                    <field name="employee_id"/>
+                    <field name="f_employee_no"/>
+                    <field name="employee_no" invisible="1"/>
+                    <field name="date"/>
+                    <field name="age"/>
+                    <field name="gender"/>
+                    <field name="rx_type_id"/>
+                    <field name="department_id"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_patient_history_form" model="ir.ui.view">
+            <field name="name">hr.patient.history.form</field>
+            <field name="model">hr.patient.history</field>
+            <field name="arch" type="xml">
+                <form string="Patient Histories" version="7.0">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="employee_id" on_change="onchange_employee(employee_id)"/>
+                                <field name="gender"/>
+                                <field name="age"/>
+                                <field name="date"/>
+                            </group>
+                            <group>
+                                <field name="name"/>
+                                <field name="f_employee_no"/>
+                                <field name="department_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Current">
+                                <group>
+                                    <field name="cc"/>
+                                    <field name="vs"/>
+                                    <field name="dx"/>
+                                    <label for="rx_type_id" string="Rx Type" class="oe_inline"/> :
+                                    <field name="rx_type_id" nolabel="1" class="oe_inline"/>
+                                    <field name="rx"/>
+                                </group>
+                            </page>
+                            <page string="History">
+                                <group string="Patient History">
+                                    <field name="patient_history_ids" nolabel="1">
+                                        <tree string="History">
+                                            <field name="date"/>
+                                            <field name="rx_type_id"/>
+                                            <field name="cc"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="open_view_patient_history" model="ir.actions.act_window">
+            <field name="name">Patient History</field>
+            <field name="res_model">hr.patient.history</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{"search_default_today":1}</field>
+            <field name="search_view_id" ref="view_patient_history_filter" />
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a new patient history.
+              </p><p>
+                With just a quick glance you
+                can easily find all the information you need for each patient.
+                Clicking on a record will give the data for that date and all past visits.
+              </p>
+            </field>
+        </record>
+        <menuitem id="menu_view_patient_history"
+            action="open_view_patient_history"
+            name="Patient History"
+            parent="menu_medical_main"
+            groups="patient_history.group_hr_nurse"/>
+        
+        <!-- Rx Type -->
+        <record id="view_rx_tree" model="ir.ui.view">
+            <field name="name">hr.patient.history.rx.tree</field>
+            <field name="model">hr.patient.history.rx</field>
+            <field name="arch" type="xml">
+                <tree string="Rx Type" version="7.0">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_rx_form" model="ir.ui.view">
+            <field name="name">hr.patient.history.rx.form</field>
+            <field name="model">hr.patient.history.rx</field>
+            <field name="arch" type="xml">
+                <form string="Rx Type" version="7.0">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                        <group string="Description">
+                            <field name="desc"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="open_view_rx" model="ir.actions.act_window">
+            <field name="name">Rx Type</field>
+            <field name="res_model">hr.patient.history.rx</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_view_rx"
+            action="open_view_rx"
+            name="Rx Type"
+            parent="menu_medical_config"
+            groups="patient_history.group_hr_nurse"/>
+        
+    </data>
+</openerp>

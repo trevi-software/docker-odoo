@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <record id="hr_payroll_period.open_payroll_period_view" model="ir.actions.act_window">
+            <field name="context">{'search_default_group_company':1}</field>
+        </record>
+        
+        <record id="hr_payroll_period.action_pay_period_end" model="ir.actions.act_window">
+            <field name="context">{'search_default_group_company':1}</field>
+        </record>
+        
+    </data>
+</openerp>

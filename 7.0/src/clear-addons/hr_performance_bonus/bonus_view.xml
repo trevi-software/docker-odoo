@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!-- Configuraion Menu Sub-menu -->
+        
+        <menuitem id="menu_configuration_bonus"
+                  name="Bonus"
+                  parent="hr.menu_hr_configuration"
+                  sequence="10"/>
+        
+        <!-- Bonus Sheet -->
+
+        <record id="view_bonus_sheet_filter" model="ir.ui.view">
+            <field name="name">Bonus Records Search</field>
+            <field name="model">hr.bonus.sheet</field>
+            <field name="arch" type="xml">
+                <search string="Bonus Records">
+                    <field name="date_start" string="Start Date"/>
+                    <field name="date_end" string="End Date"/>
+                    <field name="department_id" />
+                    <group expand="0" string="Group By...">
+                        <filter name="date" string="Start Date" icon="terp-personal+" domain="[]" context="{'group_by':'date_start'}"/>
+                        <filter name="department" string="Department" icon="terp-personal+" domain="[]" context="{'group_by':'department_id'}"/>
+                    </group>
+                </search>
+             </field>
+        </record>
+        
+        <record id="view_bonus_sheet_tree" model="ir.ui.view">
+            <field name="name">hr.bonus.sheet.tree</field>
+            <field name="model">hr.bonus.sheet</field>
+            <field name="arch" type="xml">
+                <tree string="Bonus Sheets">
+                    <field name="department_id"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                    <field name="lines_total"/>
+                    <field name="lines_avg"/>
+                    <field name="bonus_amount"/>
+                    <field name="recorder_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_bonus_sheet_form" model="ir.ui.view">
+            <field name="name">hr.bonus.sheet.form</field>
+            <field name="model">hr.bonus.sheet</field>
+            <field name="arch" type="xml">
+                <form string="Bonus Sheet" version="7.0">
+                    <sheet>
+                        <header>
+                            <button string="Approve" name="signal_approve" type="workflow" states="draft" class="oe_highlight" groups="hr_performance_bonus.group_hr_bonus"/>
+                            <button string="Cancel" name="signal_cancel" type="workflow" states="approve" groups="hr_performance_bonus.group_hr_bonus"/>
+                            <button string="Reset to New" name="set_to_draft" type="object" states="cancel" groups="hr_performance_bonus.group_hr_bonus"/>
+                            <field name="state" widget="statusbar"/>
+                        </header>
+                        <group>
+                            <group>
+                                <field name="department_id"/>
+                                <label for="date_start" string="Period"/>
+                                <div>
+                                    <field name="date_start" class="oe_inline"/><label string="-" class="oe_inline"/>
+                                    <field name="date_end" class="oe_inline"/> 
+                                </div>
+                                <field name="assistant_bonus_multiplier"/>
+                                <field name="supervisor_bonus_multiplier"/>
+                                <field name="manager_bonus_multiplier"/>
+                            </group>
+                            <group>
+                                <field name="incentive_type"/>
+                                <field name="recorder_id"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <h3><label for="lines_total" class="oe_inline"/><field name="lines_total" class="oe_inline"/></h3>
+                            </group>
+                            <group>
+                                <h3><label for="lines_avg" class="oe_inline"/><field name="lines_avg" class="oe_inline"/></h3>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Supervisors">
+                                <field name="supervisor_ids" nolabel="1"/>
+                            </group>
+                            <group string="Managers">
+                                <field name="manager_ids" nolabel="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <button name="%(action_evaluation_wizard)d" type="action" string="Add Records"/>
+                                <button name="action_delete_lines" type="object" string="Remove All Records"
+                                        confirm="This will delete all records in this department for this date. Are you sure you want to continue?"/>
+                            </group>
+                            <group></group>
+                        </group>
+                        <group string="Evaluation" attrs="{'invisible': [('incentive_type', '!=', 'fixed')]}">
+                            <field name="criteria_collection_id" attrs="{'required': [('incentive_type', '==', 'fixed')]}"/>
+                            <field name="bonus_amount" attrs="{'required': [('incentive_type', '==', 'daily')]}"/>
+                            <field name="eval_fixed_id" readonly="1"/>
+                        </group>
+                        <group string="Evaluation" attrs="{'invisible': [('incentive_type', '!=', 'daily')]}">
+                            <field name="eval_daily_ids" nolabel="1" editable="bottom">
+                                <tree string="Daily Bonus Evaluation Lines">
+                                    <field name="sheet_id" invisible="1"/>
+                                    <field name="date"/>
+                                    <field name="points"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group string="Demerits">
+                            <field name="demerit_ids" nolabel="1" context="{'default_bonus_sheet_id': id, 'bonus_sheet_id': id}">
+                                <tree string="Demerits Bonus Sub-form" editable="bottom">
+                                    <field name="bonus_sheet_id" invisible="1" on_change="onchange_sheet(bonus_sheet_id)"/>
+                                    <field name="employee_id"/>
+                                    <field name="percentage"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="open_bonus_sheet" model="ir.actions.act_window">
+            <field name="name">Bonus Records</field>
+            <field name="res_model">hr.bonus.sheet</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{"search_default_date":1, "search_default_department":1}</field>
+            <field name="search_view_id" ref="view_bonus_sheet_filter" />
+        </record>
+        <menuitem action="open_bonus_sheet"
+                  id="menu_bonus_sheet"
+                  parent="hr_payroll.menu_hr_root_payroll"
+                  groups="base.group_hr_user,hr_performance_bonus.group_hr_bonus,hr_security.group_payroll_manager"
+                  sequence="5"/>
+
+        <!-- Fixed Evaluation -->
+        
+        <record id="view_fixed_evaluation_form" model="ir.ui.view">
+            <field name="name">hr.bonus.evaluation.fixed.form</field>
+            <field name="model">hr.bonus.evaluation.fixed</field>
+            <field name="arch" type="xml">
+                <form string="Bonus Evaluation Form" version="7.0">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="total"/>
+                            </group>
+                            <group>
+                                <field name="avg"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Evaluation Criteria">
+                                <field name="line_ids" nolabel="1">
+                                    <tree string="Evalution Criteria Sub-form">
+                                        <field name="criteria_id"/>
+                                        <field name="points"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <group></group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <!-- Bonus Criteria -->
+        
+        <record id="view_bonus_criteria_tree" model="ir.ui.view">
+            <field name="name">hr.bonus.criteria.tree</field>
+            <field name="model">hr.bonus.criteria</field>
+            <field name="arch" type="xml">
+                <tree string="Bonus Criteria List">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_bonus_criteria_form" model="ir.ui.view">
+            <field name="name">hr.bonus.criteria.form</field>
+            <field name="model">hr.bonus.criteria</field>
+            <field name="arch" type="xml">
+                <form string="Bonus Criteria Form" version="7.0">
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="open_bonus_criteria" model="ir.actions.act_window">
+            <field name="name">Bonus Criteria</field>
+            <field name="res_model">hr.bonus.criteria</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <menuitem action="open_bonus_criteria"
+                  id="menu_open_view_holiday_status"
+                  name="Bonus Criteria"
+                  parent="menu_configuration_bonus"
+                  sequence="5"/>
+        
+        <!-- Bonus Criteria Collection -->
+        
+        <record id="view_bonus_criteria_collection_tree" model="ir.ui.view">
+            <field name="name">hr.bonus.criteria.collection.tree</field>
+            <field name="model">hr.bonus.criteria.collection</field>
+            <field name="arch" type="xml">
+                <tree string="Bonus Criteria Collection List">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_bonus_criteria_collection_form" model="ir.ui.view">
+            <field name="name">hr.bonus.criteria.collection.form</field>
+            <field name="model">hr.bonus.criteria.collection</field>
+            <field name="arch" type="xml">
+                <form string="Bonus Criteria Collection Form" version="7.0">
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group string="List of Criteria">
+                        <field name="criteria_ids" nolabel="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="open_bonus_criteria_collection" model="ir.actions.act_window">
+            <field name="name">Bonus Criteria Collection</field>
+            <field name="res_model">hr.bonus.criteria.collection</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <menuitem action="open_bonus_criteria_collection"
+                  id="menu_bonus_criteria_collection"
+                  parent="menu_configuration_bonus"
+                  groups="base.group_hr_manager"
+                  sequence="10"/>
+        
+    </data>
+</openerp>

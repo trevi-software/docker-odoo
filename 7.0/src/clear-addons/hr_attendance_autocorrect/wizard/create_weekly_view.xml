@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <record id="view_weekly_prefill_wizard" model="ir.ui.view">
+            <field name="name">hr.attendance.autocorrect.wizard.form</field>
+            <field name="model">hr.attendance.autocorrect</field>
+            <field name="arch" type="xml">
+            <form string="Create Both Weekly and Attendance Records" version="7.0">
+                <header>
+<!--
+                    <button name="get_new_hires" string="Get New Hires" type="object" class="oe_highlight"/>
+                    <button name="correct_new_hires" string="Fix New Hires" type="object" class="oe_highlight"/>
+-->
+                    <button name="get_restday_ot_employees" string="Get RST OT" type="object" class="oe_highlight"/>
+                    <button name="correct_restday_ot" string="Fix RST OT" type="object" class="oe_highlight"/>
+                    <button name="get_wrong_absent_employees" string="Get AWOL" type="object" class="oe_highlight"/>
+                    <button name="correct_wrong_absent" string="Fix AWOL" type="object" class="oe_highlight"/>
+                </header>
+                <group>
+                    <group>
+                        <label for="week_start" string="Period"/>
+                        <div>
+                            <field name="date_start" nolabel="1" class="oe_inline"/>
+                            -
+                            <field name="date_end" nolabel="1" class="oe_inline"/>
+                        </div>
+                        <field name="new_sched_tpl_id"/>
+                    </group>
+                </group>
+<!--
+                <group string="New Hires">
+                    <field name="new_employee_ids" nolabel="1"/>
+                </group>
+-->
+                <group string="Departments">
+                    <field name="department_ids" nolabel="1"/>
+                </group>
+                <group string="Employees with RST OT">
+                    <field name="rstot_employee_ids" nolabel="1"/>
+                </group>
+                <group string="Employees with AWOL">
+                    <field name="awol_employee_ids" nolabel="1"/>
+                </group>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_weekly_autocorrect_wizard" model="ir.actions.act_window">
+            <field name="name">Auto-correct</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.attendance.autocorrect</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="menu_weekly_autocorrect_wizard"
+            action="action_weekly_autocorrect_wizard"
+            parent="hr_attendance.menu_hr_attendance"
+            groups="base.group_hr_attendance,hr_attendance_batch_entry.group_hr_timekeeper"
+            sequence="35"/>
+    
+    </data>
+</openerp>

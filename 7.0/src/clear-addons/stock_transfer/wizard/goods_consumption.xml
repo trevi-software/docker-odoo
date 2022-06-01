@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!-- Stock Consumption Wizard -->
+        
+        <record id="view_stock_consumption_form" model="ir.ui.view">
+            <field name="name">stock.consumption.form</field>
+            <field name="model">stock.consumption</field>
+            <field name="arch" type="xml">
+                <form string="Stock Consumption Wizard" version="7.0">
+                	<header>
+                		<button name="create_consumption" type="object" class="oe_highlight" string="Next"/>
+                	</header>
+                    <group>
+                        <group>
+                            <field name="reference"/>
+                        </group>
+                        <group></group>
+                        <newline/>
+                        <group>
+                            <field name="src_warehouse_id" widget="selection" on_change="onchange_src_warehouse(src_warehouse_id)"/>
+                        </group>
+                        <group>
+                       		<field name="dst_selection"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_stock_consumption" model="ir.actions.act_window">
+            <field name="name">Consume Stock</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.consumption</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_stock_consumption_form"/>
+            <field name="target">new</field>
+        </record>
+        <menuitem action="action_stock_consumption"
+            id="menu_stock_consumption"
+            parent="menu_stock_warehouse_goods_issue"
+            groups="stock.group_stock_user"
+            sequence="1"/>
+
+    </data>
+</openerp>

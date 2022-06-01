@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 Michael Telahun Makonnen
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+
+    <record model="ir.ui.view" id="hr_department_form_view">
+        <field name="name">hr.department.form (in hr_department_active)</field>
+        <field name="model">hr.department</field>
+        <field name="inherit_id" ref="hr.view_department_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="after">
+	        <field name="active"/>
+	    </xpath>
+	</field>
+    </record>
+
+    <record model="ir.ui.view" id="hr_department_tree_view">
+        <field name="name">hr.department.tree (in hr_department_active)</field>
+        <field name="model">hr.department</field>
+        <field name="inherit_id" ref="hr.view_department_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='manager_id']" position="after">
+	        <field name="active"/>
+	    </xpath>
+        </field>
+    </record>
+
+
+</data>
+</openerp>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		
+		<record id="view_global_lock_list" model="ir.ui.view">
+			<field name="name">lock.global.tree</field>
+			<field name="model">lock.global</field>
+			<field name="arch" type="xml">
+				<tree string="Global Locks">
+					<field name="model_name"/>
+					<field name="owner_id"/>
+					<field name="count"/>
+					<field name="module"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id="view_global_lock_form" model="ir.ui.view">
+			<field name="name">lock.global.form</field>
+			<field name="model">lock.global</field>
+			<field name="arch" type="xml">
+				<form string="Global Locks" version="7.0">
+					<sheet>
+						<group>
+							<group>
+								<field name="model_name"/>
+								<field name="owner_id"/>
+								<field name="count"/>
+								<field name="module"/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+        <record id="open_global_lock" model="ir.actions.act_window">
+            <field name="name">Global Locks</field>
+            <field name="res_model">lock.global</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_global_lock"
+            action="open_global_lock"
+            name="Global Locks"
+            parent="base.next_id_4"
+            groups="base.group_no_one"/>
+		
+	</data>
+</openerp>

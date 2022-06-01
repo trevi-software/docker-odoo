@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        
+        <!-- Post Payroll Period Adjustment Salary Rules and Inputs -->
+        
+        <record id="hr_register_adjustment" model="hr.contribution.register">
+            <field name="name">Register for Post Payroll Period Adjustment</field>
+        </record>
+
+        <record id="salary_rule_adjust_earnings" model="hr.salary.rule">
+            <field name="code">ADJEARN</field>
+            <field name="name">Earning Adjustment From Previous Payroll Period</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.ADJEARN.amount</field>
+            <field name="register_id" ref="hr_register_adjustment"/>
+            <field name="sequence" eval="310"/>
+        </record>
+
+        <record id="salary_rule_adjust_deductions" model="hr.salary.rule">
+            <field name="code">ADJDED</field>
+            <field name="name">Deduction Adjustment From Previous Payroll Period</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.ADJDED.amount</field>
+            <field name="register_id" ref="hr_register_adjustment"/>
+            <field name="sequence" eval="2500"/>
+        </record>
+
+        <record id="salary_rule_input_adjust_earnings" model="hr.rule.input">
+            <field name="code">ADJEARN</field>
+            <field name="name">Earning Adjustment</field>
+            <field name="input_id" ref="salary_rule_adjust_earnings"/>
+        </record>
+
+        <record id="salary_rule_input_adjust_deductions" model="hr.rule.input">
+            <field name="code">ADJDED</field>
+            <field name="name">Deduction Adjustment</field>
+            <field name="input_id" ref="salary_rule_adjust_earnings"/>
+        </record>
+        
+    </data>
+</openerp>

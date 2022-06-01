@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <record id="view_equipment_return_form" model="ir.ui.view">
+            <field name="name">hr.equipment.return.form</field>
+            <field name="model">hr.equipment.return</field>
+            <field name="arch" type="xml">
+                <form string="Equipment Issued" version="7.0">
+                    <header>
+                        <button name="record" type="object" string="Return" class="oe_highlight"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="employee_id" on_change="onchange_employee(employee_id)"/>
+                            <field name="return_date"/>
+                            <field name="line_id"/>
+                            <field name="status"/>
+                        </group>
+                        <group>
+                            <field name="return_user_id"/>
+                        </group>
+                    </group>
+                    <group string="Notes">
+                        <field name="note" nolabel="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <act_window name="Equipment Return"
+            res_model="hr.equipment.return"
+            src_model="hr.employee"
+            view_mode="form"
+            view_id="view_equipment_return_form"
+            target="new"
+            id="equipment_return_act_window"/>
+        
+    </data>
+</openerp>

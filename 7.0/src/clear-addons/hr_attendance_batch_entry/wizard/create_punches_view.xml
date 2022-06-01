@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <record id="view_punches_wizard" model="ir.ui.view">
+            <field name="name">hr.attendance.weekly.punch.wizard.form</field>
+            <field name="model">hr.attendance.weekly.punch.wizard</field>
+            <field name="arch" type="xml">
+            <form string="Create Attendance Records from Weekly" version="7.0">
+                <header>
+                    <button name="create_punches" string="Create Attendance" type="object" class="oe_highlight"/>
+                </header>
+                <group>
+                    <group>
+                        <label for="week_start" string="Period"/>
+                        <div>
+                            <field name="week_start" on_change="onchange_week_start(week_start)" nolabel="1" class="oe_inline"/>
+                            -
+                            <field name="week_end" on_change="onchange_week_end(week_end)" nolabel="1" class="oe_inline"/>
+                        </div>
+                        <field name="do_recreate"/>
+                    </group>
+                </group>
+                <group string="Departments">
+                    <field name="department_ids" nolabel="1"/>
+                </group>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_punches_wizard" model="ir.actions.act_window">
+            <field name="name">Create Weekly Punches</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.attendance.weekly.punch.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="menu_punches_wizard"
+            action="action_punches_wizard"
+            parent="hr_attendance.menu_hr_attendance"
+            groups="base.group_hr_attendance,hr_attendance_batch_entry.group_hr_timekeeper"
+            sequence="36"/>
+    
+    </data>
+</openerp>

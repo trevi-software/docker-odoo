@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!-- Leave Accumulated and Used Report -->
+        
+        <record id="report_holidays_summary" model="ir.actions.report.xml">
+            <field name="name">Leave Summary Report</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">hr.department</field>
+            <field name="report_name">hr_holidays_summary</field>
+            <field name="report_type">aeroo</field>
+            <field name="in_format">oo-ods</field>
+            <field name="parser_loc">hr_report_holidays/report/holidays_summary.py</field>
+            <field name="report_rml">hr_report_holidays/report/holidays_summary.ods</field>
+            <field name="parser_state">loc</field>
+            <field name="tml_source">file</field>
+        </record>
+        
+    </data>
+</openerp>

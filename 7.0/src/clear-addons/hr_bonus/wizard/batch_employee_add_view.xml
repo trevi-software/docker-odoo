@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_bonus_batch_employee_add_wizard" model="ir.ui.view">
+            <field name="name">Batch Bonus Employee Add Wizard</field>
+            <field name="model">hr.bonus.batch.employee.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Batch Employee Add" version="7.0">
+                    <header>
+                        <button icon="gtk-execute" string="Generate" name="create_bonus_lines" type="object" class="oe_highlight"  />
+                    </header>
+                    <group>
+                        <group>
+                            <field name="bonus_id"/>
+                            <field name="type"/>
+                            <field name="amount"/>
+                        </group>
+                    </group>
+                    <group string="Employees">
+                        <field name="employee_ids" nolabel="1"/>
+                    </group>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_bonus_batch_employee_add_wizard" model="ir.actions.act_window">
+            <field name="name">Bonus batch employee add wizard</field>
+            <field name="res_model">hr.bonus.batch.employee.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_bonus_batch_employee_add_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <record id="view_hr_holidays_normalize_wizard" model="ir.ui.view">
+            <field name="name">Leave Times Normalization Wizard</field>
+            <field name="model">hr.holidays.wizard.normalize</field>
+            <field name="arch" type="xml">
+                <form string="Leave Normalize Wizard" version="7.0">
+                    <header>
+                        <button name="normalize" type="object" string="Normalize" class="oe_highlight"/>
+                    </header>
+                    <group>
+                        <group>
+                            <div>
+                                <label for="date_start" string="Period"/>
+                                <field name="date_start" nolabel="1" class="oe_inline"/>
+                                -
+                                <field name="date_end" nolabel="1" class="oe_inline"/>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="start_time"/>
+                            <field name="end_time"/>
+                        </group>
+                    </group>
+                    <group string="Leaves">
+                        <button name="button_get_leaves" type="object" string="Add"/>
+                        <newline/>
+                        <field name="leave_ids" nolabel="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_hr_holidays_normalize_wizard" model="ir.actions.act_window">
+            <field name="name">Normalize Leaves</field>
+            <field name="res_model">hr.holidays.wizard.normalize</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_hr_holidays_normalize_wizard"/>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="menu_hr_holidays_normalize_wizard"
+            action="action_hr_holidays_normalize_wizard"
+            parent="hr_holidays.menu_open_ask_holidays"
+            sequence="20"
+            groups="base.group_hr_user"/>
+    
+    </data>
+</openerp>

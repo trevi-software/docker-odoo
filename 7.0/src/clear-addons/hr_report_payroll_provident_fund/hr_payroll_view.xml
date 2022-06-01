@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="view_pf_tree" model="ir.ui.view">
+            <field name="name">hr.payroll.pf.tree</field>
+            <field name="model">hr.payroll.pf</field>
+            <field name="arch" type="xml">
+                <tree string="Provident Fund List">
+                    <field name="employee_id"/>
+                    <field name="effective_date"/>
+                    <field name="bank_name"/>
+                    <field name="account_name"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_pf_form" model="ir.ui.view">
+            <field name="name">hr.payroll.pf.form</field>
+            <field name="model">hr.payroll.pf</field>
+            <field name="arch" type="xml">
+                <form version="7.0" string="Provident Fund Form">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="employee_id"/>
+                                <field name="effective_date"/>
+                                <field name="bank_name"/>
+                                <field name="account_name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <!-- Employee Form -->
+        
+        <record id="view_employee_form" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit.pf</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_payroll_direct_deposit.view_employee_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//page[@string='Payroll Information']" position="inside">
+                        <newline/>
+                        <group string="Provident Fund Account">
+                            <field name="pf_account_ids" nolabel="1">
+                                <tree string="Provident Fund Account Subform" editable="bottom">
+                                    <field name="effective_date"/>
+                                    <field name="bank_name"/>
+                                    <field name="account_name"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

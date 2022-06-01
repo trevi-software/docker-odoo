@@ -1,0 +1,117 @@
+<?xml version="1.0" ?>
+<openerp>
+<data>
+    
+    <record model="workflow" id="wkf_cert">
+        <field name="name">hr.wkf.certification</field>
+        <field name="osv">hr.certification</field>
+        <field name="on_create">True</field>
+    </record>
+
+    <record model="workflow.activity" id="act_draft">
+        <field name="wkf_id" ref="wkf_cert" />
+        <field name="name">draft</field>
+        <field name="kind">function</field>
+        <field name="action">write({'state': 'draft'})</field>
+        <field name="flow_start">True</field>
+    </record>
+
+    <record model="workflow.activity" id="act_open">
+        <field name="wkf_id" ref="wkf_cert" />
+        <field name="name">open</field>
+        <field name="kind">function</field>
+        <field name="action">state_open()</field>
+    </record>
+
+    <record model="workflow.activity" id="act_renew">
+        <field name="wkf_id" ref="wkf_cert" />
+        <field name="name">renew</field>
+        <field name="kind">function</field>
+        <field name="action">state_renew()</field>
+    </record>
+
+    <record model="workflow.activity" id="act_expired">
+        <field name="wkf_id" ref="wkf_cert" />
+        <field name="name">expired</field>
+        <field name="kind">function</field>
+        <field name="action">state_expired()</field>
+    </record>
+
+    <record model="workflow.activity" id="act_done">
+        <field name="wkf_id" ref="wkf_cert" />
+        <field name="name">done</field>
+        <field name="kind">function</field>
+        <field name="action">state_done()</field>
+        <field name="flow_stop">True</field>
+    </record>
+
+
+    <!--
+        workflow transition
+    -->
+
+    <record model="workflow.transition" id="cert_draft2open">
+        <field name="act_from" ref="act_draft" />
+        <field name="act_to" ref="act_open" />
+        <field name="signal">signal_open</field>
+        <field name="group_id" ref="base.group_hr_user"/>
+    </record>
+
+    <record model="workflow.transition" id="cert_open2renew">
+        <field name="act_from" ref="act_open" />
+        <field name="act_to" ref="act_renew" />
+        <field name="signal">signal_renew</field>
+        <field name="group_id" ref="hr_certification.group_hr_cert"/>
+    </record>
+
+    <record model="workflow.transition" id="cert_open2expired">
+        <field name="act_from" ref="act_open" />
+        <field name="act_to" ref="act_expired" />
+        <field name="signal">signal_expired</field>
+        <field name="group_id" ref="hr_certification.group_hr_cert"/>
+    </record>
+
+    <record model="workflow.transition" id="cert_renew2expired">
+        <field name="act_from" ref="act_renew" />
+        <field name="act_to" ref="act_expired" />
+        <field name="signal">signal_expired</field>
+        <field name="group_id" ref="hr_certification.group_hr_cert"/>
+    </record>
+
+    <record model="workflow.transition" id="cert_renew2open">
+        <field name="act_from" ref="act_renew" />
+        <field name="act_to" ref="act_open" />
+        <field name="signal">signal_open</field>
+        <field name="group_id" ref="hr_certification.group_hr_cert"/>
+    </record>
+
+    <record model="workflow.transition" id="cert_expired2open">
+        <field name="act_from" ref="act_expired" />
+        <field name="act_to" ref="act_open" />
+        <field name="signal">signal_open</field>
+        <field name="group_id" ref="hr_certification.group_hr_cert"/>
+    </record>
+
+    <record model="workflow.transition" id="cert_open2done">
+        <field name="act_from" ref="act_open" />
+        <field name="act_to" ref="act_done" />
+        <field name="signal">signal_done</field>
+        <field name="group_id" ref="hr_certification.group_hr_cert"/>
+    </record>
+
+    <record model="workflow.transition" id="cert_renew2done">
+        <field name="act_from" ref="act_renew" />
+        <field name="act_to" ref="act_done" />
+        <field name="signal">signal_done</field>
+        <field name="group_id" ref="hr_certification.group_hr_cert"/>
+    </record>
+
+    <record model="workflow.transition" id="expired2done">
+        <field name="act_from" ref="act_expired" />
+        <field name="act_to" ref="act_done" />
+        <field name="signal">signal_done</field>
+        <field name="group_id" ref="hr_certification.group_hr_cert"/>
+    </record>
+
+</data>
+</openerp>

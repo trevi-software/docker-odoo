@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- HR Manager -->
+        
+        <record id="user_duresa" model="res.users">
+            <field name="name">Duresa Elias</field>
+            <field name="login">duresae</field>
+            <field name="password">wriaHojol</field>
+            <field name="new_password">wriaHojol</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
+            <field name="tz">Africa/Addis_Ababa</field>
+        </record>
+        <!-- Activate Technical Features -->
+        <record id="base.group_no_one" model="res.groups">
+            <field name="users" eval="[(4, ref('user_duresa'))]"/>
+        </record>
+        <!-- Activate Attendance -->
+        <record id="base.group_hr_attendance" model="res.groups">
+            <field name="users" eval="[(4, ref('user_duresa'))]"/>
+        </record>
+        <!-- Human Resources Manager -->
+        <record id="base.group_hr_manager" model="res.groups">
+            <field name="users" eval="[(4, ref('user_duresa'))]"/>
+        </record>
+
+        <!-- HRM Assistant -->
+        
+        <record id="user_tilahun" model="res.users">
+            <field name="name">Tilahun Teshom</field>
+            <field name="login">tilahunt</field>
+            <field name="password">wregwefWa</field>
+            <field name="new_password">wregwefWa</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
+            <field name="tz">Africa/Addis_Ababa</field>
+        </record>
+        <!-- Activate Technical Features -->
+        <record id="base.group_no_one" model="res.groups">
+            <field name="users" eval="[(4, ref('user_tilahun'))]"/>
+        </record>
+        <!-- Activate Attendance -->
+        <record id="base.group_hr_attendance" model="res.groups">
+            <field name="users" eval="[(4, ref('user_tilahun'))]"/>
+        </record>
+        <!-- Human Resources Officer -->
+        <record id="base.group_hr_user" model="res.groups">
+            <field name="users" eval="[(4, ref('user_tilahun'))]"/>
+        </record>
+
+        <!-- Payroll Manager -->
+        
+        <record id="user_kedir" model="res.users">
+            <field name="name">Kedir Mohammed</field>
+            <field name="login">kedirm</field>
+            <field name="password">Twurn3Quo</field>
+            <field name="new_password">Twurn3Quo</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
+            <field name="tz">Africa/Addis_Ababa</field>
+        </record>
+        <!-- Activate Technical Features -->
+        <record id="base.group_no_one" model="res.groups">
+            <field name="users" eval="[(4, ref('user_kedir'))]"/>
+        </record>
+        <!-- Activate Attendance -->
+        <record id="base.group_hr_attendance" model="res.groups">
+            <field name="users" eval="[(4, ref('user_kedir'))]"/>
+        </record>
+        <!-- Payroll Manager -->
+        <record id="hr_security.group_payroll_manager" model="res.groups">
+            <field name="users" eval="[(4, ref('user_kedir'))]"/>
+        </record>
+        
+        <!-- General Managers -->
+        
+        <record id="user_arie" model="res.users">
+            <field name="name">Arie Braam</field>
+            <field name="login">arieb</field>
+            <field name="password">LadufWonol</field>
+            <field name="new_password">LadufWonol</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
+            <field name="tz">Africa/Addis_Ababa</field>
+        </record>
+        <!-- Activate Technical Features -->
+        <record id="base.group_no_one" model="res.groups">
+            <field name="users" eval="[(4, ref('user_arie'))]"/>
+        </record>
+        <!-- Activate Attendance -->
+        <record id="base.group_hr_attendance" model="res.groups">
+            <field name="users" eval="[(4, ref('user_arie'))]"/>
+        </record>
+        <!-- Payroll Manager -->
+        <record id="hr_security.group_payroll_manager" model="res.groups">
+            <field name="users" eval="[(4, ref('user_arie'))]"/>
+        </record>
+        <!-- HR Director -->
+        <record id="hr_security.group_hr_director" model="res.groups">
+            <field name="users" eval="[(4, ref('user_arie'))]"/>
+        </record>
+        
+        <record id="user_ben" model="res.users">
+            <field name="name">Ben Braam</field>
+            <field name="login">benb</field>
+            <field name="password">jafWiddew2</field>
+            <field name="new_password">jafWiddew2</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
+            <field name="tz">Africa/Addis_Ababa</field>
+        </record>
+        <!-- Activate Technical Features -->
+        <record id="base.group_no_one" model="res.groups">
+            <field name="users" eval="[(4, ref('user_ben'))]"/>
+        </record>
+        <!-- Activate Attendance -->
+        <record id="base.group_hr_attendance" model="res.groups">
+            <field name="users" eval="[(4, ref('user_ben'))]"/>
+        </record>
+        <!-- Payroll Manager -->
+        <record id="hr_security.group_payroll_manager" model="res.groups">
+            <field name="users" eval="[(4, ref('user_ben'))]"/>
+        </record>
+        <!-- HR Director -->
+        <record id="hr_security.group_hr_director" model="res.groups">
+            <field name="users" eval="[(4, ref('user_ben'))]"/>
+        </record>
+
+    </data>
+</openerp>

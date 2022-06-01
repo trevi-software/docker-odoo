@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="hr_salary_rule_bonus_percent" model="hr.salary.rule">
+            <field name="code">BNS_PCT</field>
+            <field name="name">Employee Bonus</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = worked_days.BNS_PCT.number_of_days > 0</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.wage * worked_days.BNS_PCT.number_of_days * utils.PPF.amount</field>
+            <field name="register_id" ref="l10n_et_hr_payroll.hr_register_bonus"/>
+            <field name="sequence" eval="245"/>
+            <field name="note"></field>
+        </record>
+
+        <record id="hr_salary_rule_bonus_fix" model="hr.salary.rule">
+            <field name="code">BNS_FIX</field>
+            <field name="name">Employee Bonus</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = worked_days.BNS_FIX.number_of_days > 0</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = worked_days.BNS_FIX.number_of_days * utils.PPF.amount</field>
+            <field name="register_id" ref="l10n_et_hr_payroll.hr_register_bonus"/>
+            <field name="sequence" eval="245"/>
+            <field name="note"></field>
+        </record>
+        
+    </data>
+</openerp>

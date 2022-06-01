@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data noupdate="0">
+        
+        <!-- Payroll -->
+        
+        <record id="hr_security.group_payroll_amendment" model="res.groups">
+            <field name="name">Payroll Amendment</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+            <field name="comment">the user will do payroll post-closing amendment</field>
+        </record>
+        
+    </data>    
+</openerp>

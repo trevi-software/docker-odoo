@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <!-- Main Menu Parent -->
+        <menuitem id="menu_benefits_root"
+            name="Benefits Management"
+            parent="hr.menu_hr_root"
+            groups="base.group_user"
+            sequence="30"/>
+        
+        <!-- Configuration Menu Parent -->
+        <menuitem id="menu_benefits_configuration"
+            name="Benefits"
+            parent="hr.menu_hr_configuration"
+            groups="base.group_user"
+            sequence="5"/>
+        
+        <!-- Claims Menu Parent -->
+        <menuitem id="menu_claims_root"
+            name="Claims &amp; Payments"
+            parent="menu_benefits_root"
+            groups="base.group_user"
+            sequence="10"/>
+        
+        <record id="view_benefits_tree" model="ir.ui.view">
+            <field name="name">hr.benefit.tree</field>
+            <field name="model">hr.benefit</field>
+            <field name="arch" type="xml">
+                <tree string="Benefits">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="has_advantage"/>
+                    <field name="has_premium"/>
+                    <field name="min_employed_days"/>
+                    <field name="link2payroll"/>
+                    <field name="multi_policy"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_benefits_form" model="ir.ui.view">
+            <field name="name">hr.benefit.form</field>
+            <field name="model">hr.benefit</field>
+            <field name="arch" type="xml">
+                <form string="Benefit" version="7.0">
+                    <sheet>
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <label for="active" class="oe_inline"/> <field name="active" class="oe_inline"/>
+                        <newline/>
+                        <group>
+                            <group>
+                                <field name="code"/>
+                                <field name="min_employed_days"/>
+                                <field name="link2payroll"/>
+                                <field name="multi_policy"/>
+                            </group>
+                            <group>
+                                <field name="has_advantage"/>
+                                <field name="has_premium"/>
+                            </group>
+                            <group>
+                                <group string="Advantages" attrs="{'invisible': [('has_advantage', '!=', True)]}">
+                                    <field name="advantage_ids" nolabel="1">
+                                        <tree string="Advantages">
+                                            <field name="effective_date"/>
+                                            <field name="type"/>
+                                            <field name="min_employed_days"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
+                            <group>
+                                <group string="Premiums" attrs="{'invisible': [('has_premium', '!=', True)]}">
+                                    <field name="premium_ids" nolabel="1">
+                                        <tree string="Premium">
+                                            <field name="effective_date"/>
+                                            <field name="type"/>
+                                            <field name="amount"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="open_benefits_view" model="ir.actions.act_window">
+            <field name="name">Benefits</field>
+            <field name="res_model">hr.benefit</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_benefits"
+            action="open_benefits_view"
+            parent="menu_benefits_configuration"
+            groups="base.group_user"
+            sequence="5"/>
+        
+        <!-- Premiums -->
+        
+        <record id="view_benefit_policy_premium_tree" model="ir.ui.view">
+            <field name="name">hr.benefit.premium.tree</field>
+            <field name="model">hr.benefit.premium</field>
+            <field name="arch" type="xml">
+                <tree string="Benefit Premium Policies">
+                    <field name="benefit_id"/>
+                    <field name="effective_date"/>
+                    <field name="type"/>
+                    <field name="amount"/>
+                    <field name="no_of_installments"/>
+                    <field name="total_amount"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_benefit_policy_premium_form" model="ir.ui.view">
+            <field name="name">hr.benefit.premium.form</field>
+            <field name="model">hr.benefit.premium</field>
+            <field name="arch" type="xml">
+                <form string="Benefit Premium" version="7.0">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="effective_date"/>
+                                <field name="type"/>
+                                <field name="amount"/>
+                                <field name="total_amount"/>
+                                <field name="no_of_installments"/>
+                            </group>
+                            <group>
+                                <field name="benefit_id"/>
+                                <field name="active"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="open_benefits_policy_premium_view" model="ir.actions.act_window">
+            <field name="name">Premiums</field>
+            <field name="res_model">hr.benefit.premium</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_benefits_policy_premium"
+            action="open_benefits_policy_premium_view"
+            parent="menu_benefits_configuration"
+            groups="base.group_user"
+            sequence="6"/>
+        
+        <!-- Policy Advantages -->
+        
+        <record id="view_benefit_policy_advantage_tree" model="ir.ui.view">
+            <field name="name">hr.benefit.advantage.tree</field>
+            <field name="model">hr.benefit.advantage</field>
+            <field name="arch" type="xml">
+                <tree string="Benefit Advantages">
+                    <field name="benefit_id"/>
+                    <field name="effective_date"/>
+                    <field name="type"/>
+                    <field name="min_employed_days"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_benefit_policy_advantage_form" model="ir.ui.view">
+            <field name="name">hr.benefit.advantage.form</field>
+            <field name="model">hr.benefit.advantage</field>
+            <field name="arch" type="xml">
+                <form string="Benefit Advantage" version="7.0">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="effective_date"/>
+                                <field name="min_employed_days"/>
+                                <field name="type"/>
+                            </group>
+                            <group>
+                                <field name="benefit_id"/>
+                                <field name="active"/>
+                            </group>
+                        </group>
+                        <group string="Elegibility">
+                            <group>
+                                <field name="category_ids"/>
+                                <field name="job_ids"/>
+                            </group>
+                            <group>
+                                <field name="invert_categories"/>
+                                <field name="invert_jobs"/>
+                            </group>
+                        </group>
+                        <group string="Allowance" attrs="{'invisible': [('type', '!=', 'allowance')]}">
+                            <group>
+                                <group>
+                                    <field name="allowance_amount" attrs="{'required': [('type', '=', 'allowance')]}"/>
+                                </group>
+                            </group>
+                        </group>
+                        <group string="Loan" attrs="{'invisible': [('type', '!=', 'loan')]}">
+                            <group>
+                                <group>
+                                    <field name="loan_amount" attrs="{'required': [('type', '=', 'loan')]}"/>
+                                </group>
+                            </group>
+                        </group>
+                        <group string="Re-imbursement" attrs="{'invisible': [('type', '!=', 'reimburse')]}">
+                            <group>
+                                <field name="reim_nolimit"/>
+                            </group>
+                            <group string="Limit" attrs="{'invisible': [('reim_nolimit', '!=', False)]}">
+                                <field name="reim_limit_amount"/>
+                                <field name="reim_limit_period" attrs="{'required': [('type', '=', 'reimburse')]}"/>
+                                <field name="reim_period_month_day" attrs="{'invisible': [('reim_limit_period', '!=', 'monthly')]}"/>
+                                <label for="reim_period_annual_month" string="First Day of Cycle" attrs="{'invisible': [('reim_limit_period', '!=', 'annual')]}"/> 
+                                <field name="reim_period_annual_month" nolabel="1" class="oe_inline" attrs="{'invisible': [('reim_limit_period', '!=', 'annual')]}"/> 
+                                <field name="reim_period_annual_day" nolabel="1" class="oe_inline" attrs="{'invisible': [('reim_limit_period', '!=', 'annual')]}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="open_benefits_policy_advantage_view" model="ir.actions.act_window">
+            <field name="name">Advantages</field>
+            <field name="res_model">hr.benefit.advantage</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_benefits_policy_advantage"
+            action="open_benefits_policy_advantage_view"
+            parent="menu_benefits_configuration"
+            groups="base.group_user"
+            sequence="8"/>
+
+        <!-- Policies -->
+        
+        <record id="view_benefit_policy_filter" model="ir.ui.view">
+            <field name="name">hr.benefit.policy.filter</field>
+            <field name="model">hr.benefit.policy</field>
+            <field name="arch" type="xml">
+                <search string="Search Benefit Policies">
+                    <field name="name" string="Policies"/>
+                    <field name="employee_id"/>
+                    <field name="benefit_id"/>
+                    <separator/>
+                    <filter icon="terp-go-year" name="is_active" string="Active Policies" domain="[('state','in', ['draft', 'open'])]" help="Filters policies that are not terminated."/>
+                    <filter string="My Policies" icon="terp-personal" name="my_policies" domain="[('employee_id.user_id','=', uid)]"/>
+                    <group expand="0" string="Group By...">
+                        <filter name="group_benefit_id" string="Benefit" icon="terp-stock_symbol-selection" domain="[]" context="{'group_by':'benefit_id'}"/>
+                        <filter name="group_employee_id" string="Employee" icon="terp-personal" domain="[]" context="{'group_by':'employee_id'}"/>
+                        <filter name="group_department_id" string="Department" icon="terp-personal" domain="[]" context="{'group_by':'department_id'}"/>
+                        <filter name="group_start_date" string="Start Date" icon="terp-personal" domain="[]" context="{'group_by':'start_date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        <record id="view_benefits_policy_tree" model="ir.ui.view">
+            <field name="name">hr.benefit.policy.tree</field>
+            <field name="model">hr.benefit.policy</field>
+            <field name="arch" type="xml">
+                <tree string="Benefit Policies">
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="department_id"/>
+                    <field name="benefit_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="active"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_benefits_policy_form" model="ir.ui.view">
+            <field name="name">hr.benefit.policy.form</field>
+            <field name="model">hr.benefit.policy</field>
+            <field name="arch" type="xml">
+                <form string="Benefit Policy" version="7.0">
+                    <header>
+                        <button name='signal_open' type="workflow" states="draft" string="Start Policy" class="oe_highlight" />
+                        <button name='end_policy' type="object" states="open" string="End Policy" class="oe_highlight" />
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <label for="name" class="oe_edit_only"/>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <group>
+                        <group string="Details">
+                            <field name="employee_id"/>
+                            <label for="start_date" string="Duration"/>
+                            <div>
+                                <field name="start_date" on_change="onchange_start(start_date, benefit_id, premium_installments)" class="oe_inline"/> - <field name="end_date" class="oe_inline"/>
+                            </div>
+                            <field name="advantage_override"/>
+                            <field name="premium_override"/>
+                        </group>
+                        <group string="Benefit">
+                            <field name="department_id"/>
+                            <field name="benefit_id" on_change="onchange_benefit(benefit_id, start_date)"/>
+                            <field name="active"/>
+                            <field name="benefit_code" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="General">
+                            <group name="left">
+                                <field name="advantage_amount" attrs="{'readonly': [('advantage_override', '=', False)], 'required': [('advantage_override', '=', True)]}"/>
+                                <field name="premium_amount" attrs="{'readonly': [('premium_override', '=', False)], 'required': [('premium_override', '=', True)]}"/>
+                                <field name="premium_total" attrs="{'readonly': [('premium_override', '=', False)], 'required': [('premium_override', '=', True)]}" on_change="onchange_premium_total(start_date, premium_amount, premium_total)"/>
+                                <field name="premium_installments" readonly="1"/>
+                            </group>
+                        </page>
+                        <page string="Premiums">
+                            <group string="Premium Payments">
+                                <field name="premium_payment_ids" nolabel="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>        
+
+        <record id="open_benefits_policy_view" model="ir.actions.act_window">
+            <field name="name">Policies</field>
+            <field name="res_model">hr.benefit.policy</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_is_active':1}</field>
+            <field name="search_view_id" ref="view_benefit_policy_filter"/>
+        </record>
+        <menuitem id="menu_benefits_policy"
+            action="open_benefits_policy_view"
+            parent="menu_benefits_root"
+            groups="base.group_user"
+            sequence="5"/>
+
+        <record id="open_my_benefit_policies" model="ir.actions.act_window">
+            <field name="name">My Policies</field>
+            <field name="res_model">hr.benefit.policy</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_my_policies':1, 'search_default_is_active':1}</field>
+            <field name="search_view_id" ref="view_benefit_policy_filter"/>
+        </record>
+        <menuitem id="menu_my_benefit_policies"
+            action="open_my_benefit_policies"
+            parent="menu_benefits_root"
+            groups="base.group_user"
+            sequence="6"/>
+        
+        <!-- Premium Payments -->
+        
+        <record id="view_premium_payments_filter" model="ir.ui.view">
+            <field name="name">hr.benefit.premium.payment.filter</field>
+            <field name="model">hr.benefit.premium.payment</field>
+            <field name="arch" type="xml">
+                <search string="Search All Payments">
+                    <field name="date"/>
+                    <field name="policy_id"/>
+                    <separator/>
+                    <filter string="My Payments" icon="terp-personal" name="my_payments" domain="[('employee_id.user_id','=', uid)]"/>
+                    <separator/>
+                    <field name="employee_id"/>
+                    <field name="state"/>
+                    <group expand="0" string="Group By...">
+                        <filter name="group_date" string="Date" icon="terp-personal" domain="[]" context="{'group_by':'date'}"/>
+                        <filter name="group_policy" string="Policy" icon="terp-stock_symbol-selection" domain="[]" context="{'group_by':'policy_id'}"/>
+                        <filter name="group_employee" string="Employee" icon="terp-personal" domain="[]" context="{'group_by':'employee_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        <record id="view_premium_payments_tree" model="ir.ui.view">
+            <field name="name">hr.benefit.premium.payment.tree</field>
+            <field name="model">hr.benefit.premium.payment</field>
+            <field name="arch" type="xml">
+                <tree string="Premium Payments" version="7.0">
+                    <field name="policy_id"/>
+                    <field name="employee_id"/>
+                    <field name="date"/>
+                    <field name="amount"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_premium_payments_form" model="ir.ui.view">
+            <field name="name">hr.benefit.premium.payment.from</field>
+            <field name="model">hr.benefit.premium.payment</field>
+            <field name="arch" type="xml">
+                <form string="Premium Payment" version="7.0">
+                    <header>
+                        <button name="signal_pending" type="workflow" states="draft" string="Pending" class="oe_highlight" />
+                        <button name="signal_done" type="workflow" states="pending" string="Decline" class="oe_highlight" />
+                        <button name="signal_cancel" type="workflow" states="draft,pending" string="Cancel" class="oe_highlight" />
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="employee_id" on_change="onchange_employee(employee_id)"/>
+                            <field name="policy_id"/>
+                            <field name="date"/>
+                            <field name="amount"/>
+                        </group>
+                        <group>
+                            <field name="payslip_id"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="open_premium_payments_view" model="ir.actions.act_window">
+            <field name="name">Premium Payments</field>
+            <field name="res_model">hr.benefit.premium.payment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_premium_payments_filter"/>
+        </record>
+        <menuitem id="menu_premium_payments"
+            action="open_premium_payments_view"
+            parent="menu_claims_root"
+            groups="base.group_user"
+            sequence="10"/>
+        
+        <!-- All Claims -->
+        
+        <record id="view_claims_filter" model="ir.ui.view">
+            <field name="name">hr.benefit.claim.filter</field>
+            <field name="model">hr.benefit.claim</field>
+            <field name="arch" type="xml">
+                <search string="Search All Claims">
+                    <field name="date"/>
+                    <field name="benefit_policy_id"/>
+                    <field name="amount_requested"/>
+                    <field name="amount_approved"/>
+                    <separator/>
+                    <filter string="My Claims" icon="terp-personal" name="my_claims" domain="[('benefit_policy_id.employee_id.user_id','=', uid)]"/>
+                    <separator/>
+                    <field name="employee_id"/>
+                    <field name="state"/>
+                    <group expand="0" string="Group By...">
+                        <filter name="group_date" string="Date" icon="terp-personal" domain="[]" context="{'group_by':'date'}"/>
+                        <filter name="group_policy" string="Policy" icon="terp-stock_symbol-selection" domain="[]" context="{'group_by':'benefit_policy_id'}"/>
+                        <filter name="group_employee" string="Employee" icon="terp-personal" domain="[]" context="{'group_by':'employee_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        <record id="view_all_claims_tree" model="ir.ui.view">
+            <field name="name">hr.benefit.claim.tree</field>
+            <field name="model">hr.benefit.claim</field>
+            <field name="arch" type="xml">
+                <tree string="All Claims">
+                    <field name="date"/>
+                    <field name="employee_id"/>
+                    <field name="benefit_policy_id"/>
+                    <field name="amount_requested"/>
+                    <field name="amount_approved"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_all_claims_form" model="ir.ui.view">
+            <field name="name">hr.benefit.claim.form</field>
+            <field name="model">hr.benefit.claim</field>
+            <field name="priority" eval="10"/>
+            <field name="arch" type="xml">
+                <form string="Claim" version="7.0">
+                    <header>
+                        <button name="signal_approve" type="workflow" states="draft" string="Approve" class="oe_highlight" />
+                        <button name="signal_decline" type="workflow" states="draft,approve" string="Decline" class="oe_highlight" />
+                        <button string="Reset to New" name="set_to_draft" states="decline" type="object" groups="base.group_hr_manager"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,approve" />
+                    </header>
+                    <group>
+                        <group>
+                            <field name="employee_id" on_change="onchange_employee(employee_id)"/>
+                            <field name="benefit_policy_id"/>
+                            <field name="date"/>
+                            <field name="amount_requested"/>
+                            <label for="amount_approved"/>
+                            <h2>
+                                <field name="amount_approved"/>
+                            </h2>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="open_all_claims_view" model="ir.actions.act_window">
+            <field name="name">All Claims</field>
+            <field name="res_model">hr.benefit.claim</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_claims_filter"/>
+        </record>
+        <menuitem id="menu_all_claims"
+            action="open_all_claims_view"
+            parent="menu_claims_root"
+            groups="base.group_user"
+            sequence="5"/>
+        
+        <!-- Benefit Policies Button on Employee Form -->
+
+        <record id="act_hr_employee_2_hr_benefit_policy" model="ir.actions.act_window">
+            <field name="res_model">hr.benefit.policy</field>
+            <field name="view_type">form</field>
+            <field name="name">Benefits</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_employee_id': [active_id], 'default_employee_id': active_id, 'search_default_group_employee_id': 0}</field>
+        </record>
+        <record id="act_hr_employee_2_hr_benefit_claims" model="ir.actions.act_window">
+            <field name="res_model">hr.benefit.claim</field>
+            <field name="view_type">form</field>
+            <field name="name">Claims on Benefits</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_employee_id': [active_id], 'default_employee_id': active_id}</field>
+        </record>
+        <record id="hr_employee_view_form" model="ir.ui.view">
+            <field name="name">hr.employee.view.inherit.benefits</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='button_box']" position="inside">
+                        <button name="%(act_hr_employee_2_hr_benefit_policy)d" string="Benefits" type="action" groups="base.group_hr_user"/>
+                        <button name="%(act_hr_employee_2_hr_benefit_claims)d" string="Claims" type="action" groups="base.group_hr_user"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        
+        <!-- Salary Rule -->
+        <record id="view_salary_rule_form" model="ir.ui.view">
+            <field name="name">hr.salary.rule.form.inherit</field>
+            <field name="model">hr.salary.rule</field>
+            <field name="inherit_id" ref="hr_payroll.hr_salary_rule_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='appears_on_payslip']" position="after">
+                        <field name="has_premium_payment"/>
+                        <field name="benefit_id"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <!-- Payslip -->
+        <record id="view_hr_payslip_form" model="ir.ui.view">
+            <field name="name">hr.payslip.form</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="/form/sheet/notebook/page[@string='Other Information']/group" position="after">
+                        <group string="Benefit Premium Payments">
+                            <field name="premium_payment_ids" nolabel="1" readonly="1">
+                                <tree string="Premium Payments">
+                                    <field name="date"/>
+                                    <field name="policy_id"/>
+                                    <field name="amount"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

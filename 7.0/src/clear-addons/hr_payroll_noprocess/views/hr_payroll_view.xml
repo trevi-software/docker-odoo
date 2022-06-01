@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_payroll_period_form" model="ir.ui.view">
+            <field name="name">hr.payroll.period.form</field>
+            <field name="model">hr.payroll.period</field>
+            <field name="inherit_id" ref="hr_payroll_period.view_payroll_period_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='reports']" position="before">
+                    <div name="no_process">
+                        <h3>
+                        <label for="noprocess_ids" string="Do Not Process List"/>
+                        </h3>
+                        <field name="noprocess_ids" nolabel="1" colspan="2">
+                            <tree string="No Process List sub-tree">
+                                <field name="employee_id"/>
+                                <field name="reason"/>
+                            </tree>
+                        </field>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

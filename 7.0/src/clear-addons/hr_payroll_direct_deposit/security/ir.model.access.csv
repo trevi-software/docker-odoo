@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_payroll_directdeposit_user,access_hr_payroll_directdeposit,model_hr_payroll_directdeposit,base.group_user,1,0,0,0
+access_hr_payroll_directdeposit_hr,access_hr_payroll_directdeposit,model_hr_payroll_directdeposit,base.group_hr_user,1,1,1,1
+access_hr_payroll_directdeposit_payrm,access_hr_payroll_directdeposit,model_hr_payroll_directdeposit,hr_security.group_payroll_manager,1,1,1,1

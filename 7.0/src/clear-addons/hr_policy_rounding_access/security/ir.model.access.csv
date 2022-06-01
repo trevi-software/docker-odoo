@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_policy_rounding_user,access_hr_policy_rounding,hr_policy_rounding.model_hr_policy_rounding,hr_attendance_batch_entry.group_hr_timekeeper,1,0,0,0
+access_hr_policy_line_rounding_user,access_hr_policy_line_rounding,hr_policy_rounding.model_hr_policy_line_rounding,hr_attendance_batch_entry.group_hr_timekeeper,1,0,0,0

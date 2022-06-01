@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <report 
+            auto="False"
+            header="False" 
+            id="idcard_report" 
+            model="hr.employee" 
+            name="hr.employee.idcard" 
+            rml="hr_braam_idcard/report/braam_employee_id_card.rml"
+            menu = "True" 
+            string="ID Card" />
+        
+    </data>
+</openerp>

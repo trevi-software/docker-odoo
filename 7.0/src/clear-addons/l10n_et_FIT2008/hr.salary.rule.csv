@@ -1,0 +1,13 @@
+id,code,name,condition_select,condition_range,condition_range_min,condition_range_max,amount_select,amount_percentage,amount_fix,amount_python_compute,amount_percentage_base,parent_rule_id,category_id,sequence
+fitw_10,2003FIT00,Exempt,range,TXBLMOINCOM,0,150,fix,0,0,,,Federal Income Tax Withholding,Federal Income Tax Withholding,1000
+fitw_11,2003FIT10,10.00%,range,TXBLMOINCOM,150,650,percentage,10,0,,(TXBLMOINCOM - 150) * FIT_PPF,Federal Income Tax Withholding,Federal Income Tax Withholding,1010
+fitw_12,2003FIT15A,15.00%,range,TXBLMOINCOM,650,1400,percentage,15,0,,(TXBLMOINCOM - 650) * FIT_PPF,Federal Income Tax Withholding,Federal Income Tax Withholding,1015
+fitw_13,2003FIT15B,15%-Fixed,range,TXBLMOINCOM,650,1400,code,0,50,result = 50.00 * FIT_PPF,,Federal Income Tax Withholding,Federal Income Tax Withholding,1016
+fitw_14,2003FIT20A,20.00%,range,TXBLMOINCOM,1400,2350,percentage,20,0,,(TXBLMOINCOM - 1400) * FIT_PPF,Federal Income Tax Withholding,Federal Income Tax Withholding,1020
+fitw_15,2003FIT20B,20%-Fixed,range,TXBLMOINCOM,1400,2350,code,0,162.5,result = 162.50 * FIT_PPF,,Federal Income Tax Withholding,Federal Income Tax Withholding,1021
+fitw_16,2003FIT25A,25.00%,range,TXBLMOINCOM,2350,3550,percentage,25,0,,(TXBLMOINCOM - 2350) * FIT_PPF,Federal Income Tax Withholding,Federal Income Tax Withholding,1025
+fitw_17,2003FIT25B,25%-Fixed,range,TXBLMOINCOM,2350,3550,code,0,352.5,result = 352.50 * FIT_PPF,,Federal Income Tax Withholding,Federal Income Tax Withholding,1026
+fitw_18,2003FIT30A,30.00%,range,TXBLMOINCOM,3550,5000,percentage,30,0,,(TXBLMOINCOM - 3550) * FIT_PPF,Federal Income Tax Withholding,Federal Income Tax Withholding,1030
+fitw_19,2003FIT30B,30%-Fixed,range,TXBLMOINCOM,3550,5000,code,0,652.5,result = 652.50 * FIT_PPF,,Federal Income Tax Withholding,Federal Income Tax Withholding,1031
+fitw_20,2003FIT35A,35.00%,range,TXBLMOINCOM,5000,1000000000,percentage,35,0,,(TXBLMOINCOM - 5000) * FIT_PPF,Federal Income Tax Withholding,Federal Income Tax Withholding,1035
+fitw_21,2003FIT35B,35%-Fixed,range,TXBLMOINCOM,5000,1000000000,code,0,1087.5,result = 1087.50 * FIT_PPF,,Federal Income Tax Withholding,Federal Income Tax Withholding,1036

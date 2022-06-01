@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <record id="view_pension_list" model="ir.ui.view">
+            <field name="name">hr.pension.list.form</field>
+            <field name="model">hr.pension.list</field>
+            <field name="arch" type="xml">
+                <form string="Departments" version="7.0">
+                    <header>
+                        <button name="print_report" type="object" string="Print" icon="gtk-print" class="oe_highlight"/>
+                    </header>
+                    <group string="Departments">
+                        <field name="department_ids" nolabel="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="open_pension_list" model="ir.actions.act_window">
+            <field name="name">List of employees</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.pension.list</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+        <menuitem
+            name="Pension"
+            id="menu_pension"
+            parent="hr.menu_hr_reporting"
+            sequence="50" groups="base.group_hr_user"/>
+            
+        <menuitem
+            name="List of Employees" 
+            id="menu_pension_list" 
+            action="open_pension_list" 
+            parent="menu_pension" sequence="5" groups="base.group_hr_user"/>
+        
+    </data>
+</openerp>

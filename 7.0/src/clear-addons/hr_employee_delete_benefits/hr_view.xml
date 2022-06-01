@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="log_delete_employee_form" model="ir.ui.view">
+            <field name="name">log.delete.employee.form.inherit.benefits</field>
+            <field name="model">log.delete.employee</field>
+            <field name="inherit_id" ref="hr_employee_delete.log_delete_employee_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//group[@name='removed_col1']" position="inside">
+                    <field name="benefit_policies"/>
+            	</xpath>
+            </field>
+        </record>
+    
+    </data>
+</openerp>

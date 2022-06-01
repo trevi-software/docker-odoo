@@ -1,0 +1,2061 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data noupdate="1">
+        
+        <!-- Activate Technical Features for Admin -->
+        <record id="base.user_root" model="res.users">
+            <field name="groups_id" eval="[(4, ref('base.group_no_one'))]"/>
+        </record>
+
+        <!-- Activate Attendance for Admin -->
+        <record id="base.user_root" model="res.users">
+            <field name="groups_id" eval="[(4, ref('base.group_hr_attendance'))]"/>
+        </record>
+        
+        <!-- Main Company -->
+        <record id="base.main_company" model="res.company">
+            <field name="name">Braam Flowers Plc</field>
+            <field name="rml_footer">Email 1: braam@ethionet.et  Email 2: braam.roses@hotmail.com</field>
+            <field name="currency_id" ref="base.ETB"/>
+        </record>
+        
+        <record id="base.main_partner" model="res.partner">
+            <field name="name">Braam Flowers Plc</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="l10n_et_toponym.state_et_8"/>
+            <field name="city">Ziway</field>
+            <field name="phone"></field>
+            <field name="fax"></field>
+            <field name="email">braam.roses@hotmail.com</field>
+            <field name="website"></field>
+        </record>
+        
+        <!-- Salary Rules Customization -->        
+
+        <record id="hr_payroll.hr_rule_net" model="hr.salary.rule">
+            <field name="amount_python_compute">result = round(categories.BASIC + categories.OT + categories.ALW - categories.FITCALC - categories.DED, 0)</field>
+        </record>
+
+        <record id="hr_payroll_extension.hr_payroll_rule_penfee" model="hr.salary.rule">
+            <field name="amount_python_compute">result = contract.wage * 0.06</field>
+        </record>
+
+        <record id="hr_payroll_extension.hr_payroll_rule_penfer" model="hr.salary.rule">
+            <field name="amount_python_compute">result = contract.wage * 0.08</field>
+        </record>
+        
+        <record id="hr_register_bicycle" model="hr.contribution.register">
+            <field name="name">Register for Bicycle Repayment</field>
+        </record>
+
+        <record id="hr_payroll_extension.hr_trans_variable_allowance_exempt" model="hr.salary.rule">
+            <field name="amount_python_compute">result = min(rules.TRVA.amount_fix * (26 - worked_days.AWOL.number_of_days), categories.BASIC*0.15)</field>
+        </record>
+
+        <record id="hr_payroll_extension.hr_salary_rule_trans_variable_allowance" model="hr.salary.rule">
+            <field name="quantity">26 - worked_days.AWOL.number_of_days</field>
+            <field eval="3" name="amount_fix"/>
+        </record>
+
+        <record id="hr_labour_union.hr_payroll_rule_labour_union" model="hr.salary.rule">
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">contract.wage</field>
+            <field name="amount_percentage" eval="1"/>
+        </record>
+
+        <record id="hr_payroll_rule_bicycle" model="hr.salary.rule">
+            <field name="code">BIKE</field>
+            <field name="name">Bicycle Repayment</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = inputs.BIKE.amount</field>
+            <field name="register_id" ref="hr_register_bicycle"/>
+            <field name="sequence" eval="2310"/>
+        </record>
+
+        <record id="hr_rule_input_bike" model="hr.rule.input">
+            <field name="code">BIKE</field>
+            <field name="name">Bicycle</field>
+            <field name="input_id" ref="hr_payroll_rule_bicycle"/>
+        </record>
+
+        <!-- Extra money for Scouts -->
+        
+        <record id="hr_salary_rule_scout" model="hr.salary.rule">
+            <field name="code">SCO</field>
+            <field name="amount_select">fix</field>
+            <field name="amount_fix">100.00</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="name">Scouting Premium</field>
+            <field name="sequence" eval="210"/>
+            <field name="note">
+                Premium payment for scouts.
+            </field>
+        </record>
+
+        <!-- Coldroom employees -->
+        <!-- Daily OT calculated at Night OT rates -->
+        <record id="hr_salary_rule_coldroom_daily_ot" model="hr.salary.rule">
+            <field name="code">OTD</field>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = worked_days.WORKOTD.number_of_hours > 0</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = 1.50 * contract.wage_hourly</field>
+            <field name="quantity">worked_days.WORKOTD.number_of_hours</field>
+            <field name="category_id" ref="hr_payroll_extension.hr_categ_ot"/>
+            <field name="name">Day OverTime</field>
+            <field name="register_id" ref="hr_payroll_extension.hr_register_ot"/>
+            <field name="sequence" eval="30"/>
+            <field name="note">For Braam coldroom employees daily OT is calculated at Night OT rates.</field>
+        </record>
+        
+        <!-- For each day they work they get one hour's regular daily OT pay -->
+        <record id="hr_salary_rule_coldroom_bonus" model="hr.salary.rule">
+            <field name="code">CRB</field>
+            <field name="name">Coldroom Premium</field>
+            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = worked_days.WORK100.number_of_days > 0</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = 1.25 * contract.wage_hourly</field>
+            <field name="quantity">26 - worked_days.AWOL.number_of_days - worked_days.LVANNUAL.number_of_days - worked_days.LVBEREAVEMENT.number_of_days - worked_days.LVCIVIC.number_of_days - worked_days.LVMATERNITY.number_of_days - worked_days.LVMMEDICAL.number_of_days - worked_days.LVSICK.number_of_days - worked_days.LVSICK50.number_of_days - worked_days.LVSICK00.number_of_days - worked_days.LVPTO.number_of_days - worked_days.LVWEDDING.number_of_days</field>
+            <field name="register_id" ref="hr_payroll_extension.hr_register_ot"/>
+            <field name="sequence" eval="45"/>
+            <field name="note">For each day they work they get one hour extra regular daily OT pay.</field>
+        </record>
+
+        <!-- Salary Structure -->
+        
+        <!-- Salary structure for retirees (do not deduct pension) -->
+        <record id="structure_003" model="hr.payroll.structure">
+            <field name="code">SC</field>
+            <field name="name">Standard No Pension</field>
+            <field eval="[(6, 0, [ref('hr_payroll.hr_rule_basic'), ref('hr_payroll_extension.hr_salary_rule_adjust_attendance'), ref('hr_payroll_extension.hr_salary_rule_basic_psl50_sal'), ref('hr_payroll_extension.hr_salary_rule_basic_psl00_sal'), ref('hr_payroll_extension.hr_salary_rule_daily_ot'), ref('hr_payroll_extension.hr_salary_rule_night_ot'), ref('hr_payroll_extension.hr_salary_rule_restday_ot'), ref('hr_payroll_extension.hr_salary_rule_holiday_ot'), ref('hr_bunching_incentive.hr_payroll_rule_bunch_bonus'), ref('hr_payroll_extension.hr_salary_rule_trans_variable_allowance'), ref('hr_performance_incentive.hr_salary_rule_performance'), ref('hr_payroll_extension.hr_salary_rule_bonus'), ref('hr_payroll_extension.hr_salary_rule_arrears'), ref('hr_payroll_extension.hr_salary_rule_ule'), ref('hr_payroll_extension.hr_trans_variable_allowance_exempt'), ref('hr_payroll_extension.hr_payroll_rule_taxable_income'), ref('hr_payroll.hr_rule_taxable'), ref('hr_payroll_extension.hr_payroll_rule_fit'), ref('hr_labour_union.hr_payroll_rule_labour_union'), ref('hr_payroll_rule_bicycle'), ref('hr_payroll_extension.hr_payroll_rule_idcard'), ref('hr_payroll_extension.hr_payroll_rule_advance'), ref('hr_payroll_extension.hr_payroll_rule_penalty'), ref('hr_payroll_extension.hr_payroll_rule_od'), ref('hr_payroll.hr_rule_net'), ref('hr_payroll_extension.hr_payroll_rule_dedtotal')])]" name="rule_ids"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id"></field>
+        </record>
+
+         <record id="structure_001" model="hr.payroll.structure">
+            <field name="code">ST</field>
+            <field name="name">Standard with Pension</field>
+            <field eval="[(6, 0, [ref('hr_payroll_extension.hr_payroll_rule_penfee'), ref('hr_payroll_extension.hr_payroll_rule_penfer')])]" name="rule_ids"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="structure_003"/>
+        </record>
+
+        <!-- Structure for coldroom employees. Their OT and bonus is different. -->
+        <record id="structure_004" model="hr.payroll.structure">
+            <field name="code">CR</field>
+            <field name="name">Coldroom</field>
+            <field eval="[(6, 0, [ref('hr_payroll.hr_rule_basic'), ref('hr_payroll_extension.hr_salary_rule_adjust_attendance'), ref('hr_payroll_extension.hr_salary_rule_basic_psl50_sal'), ref('hr_payroll_extension.hr_salary_rule_basic_psl00_sal'), ref('hr_salary_rule_coldroom_daily_ot'), ref('hr_payroll_extension.hr_salary_rule_restday_ot'), ref('hr_payroll_extension.hr_salary_rule_holiday_ot'), ref('hr_salary_rule_coldroom_bonus'), ref('hr_payroll_extension.hr_salary_rule_trans_variable_allowance'), ref('hr_performance_incentive.hr_salary_rule_performance'), ref('hr_payroll_extension.hr_salary_rule_bonus'), ref('hr_payroll_extension.hr_salary_rule_arrears'), ref('hr_payroll_extension.hr_salary_rule_ule'), ref('hr_payroll_extension.hr_trans_variable_allowance_exempt'), ref('hr_payroll_extension.hr_payroll_rule_taxable_income'), ref('hr_payroll.hr_rule_taxable'), ref('hr_payroll_extension.hr_payroll_rule_fit'), ref('hr_payroll_extension.hr_payroll_rule_penfee'), ref('hr_payroll_extension.hr_payroll_rule_penfer'), ref('hr_labour_union.hr_payroll_rule_labour_union'), ref('hr_payroll_rule_bicycle'), ref('hr_payroll_extension.hr_payroll_rule_idcard'), ref('hr_payroll_extension.hr_payroll_rule_advance'), ref('hr_payroll_extension.hr_payroll_rule_penalty'), ref('hr_payroll_extension.hr_payroll_rule_od'), ref('hr_payroll.hr_rule_net'), ref('hr_payroll_extension.hr_payroll_rule_dedtotal')])]" name="rule_ids"/>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+        
+        <!-- Salary structure for scouts has bonus -->
+        <record id="structure_002" model="hr.payroll.structure">
+            <field name="code">SC</field>
+            <field name="name">Standard Scout</field>
+            <field eval="[(6, 0, [ref('hr_salary_rule_scout')])]" name="rule_ids"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" ref="structure_001"/>
+        </record>
+        
+        <!-- Payroll Period Schedule -->
+        <record id="pps_monthly_gc" model="hr.payroll.period.schedule">
+            <field name="name">Monthly G.C.</field>
+            <field name="tz">Africa/Addis_Ababa</field>
+            <field name="mo_firstday">28</field>
+            <field name="mo_paydate">31</field>
+            <field name="initial_period_date">2013-06-28</field>
+        </record>
+        <record id="pps_manual" model="hr.payroll.period.schedule">
+            <field name="name">Initial Synchronization Schedule</field>
+            <field name="tz">Africa/Addis_Ababa</field>
+            <field name="type">manual</field>
+        </record>
+
+        <!-- Departments -->
+        <record id="dep_office" model="hr.department">
+            <field name="name">Administration</field>
+            <field name="ethiopic_name">አስተዳደ</field>
+        </record>
+        <record id="dep_hr" model="hr.department">
+            <field name="name">Human Resources</field>
+            <field name="ethiopic_name">የሠው ሃይል አስተዳደ</field>
+        </record>
+        <record id="dep_store" model="hr.department">
+            <field name="name">Store</field>
+            <field name="ethiopic_name">ንብረት ክፍ</field>
+        </record>
+        <record id="dep_maint" model="hr.department">
+            <field name="name">Maintenance</field>
+            <field name="ethiopic_name">ጥገና</field>
+        </record>
+        <record id="dep_security" model="hr.department">
+            <field name="name">Security</field>
+            <field name="ethiopic_name">ጥበቃ</field>
+        </record>
+        <record id="dep_scouting" model="hr.department">
+            <field name="name">Scouting</field>
+            <field name="ethiopic_name">ስካውት</field>
+        </record>
+        <record id="dep_line10" model="hr.department">
+            <field name="name">Line 10</field>
+            <field name="ethiopic_name">ግሪን ሃውስ 10</field>
+        </record>
+        <record id="dep_l10_plant" model="hr.department">
+            <field name="name">Planting</field>
+            <field name="ethiopic_name">የምርት አንክብካቤ</field>
+            <field name="parent_id" ref="dep_line10"/>
+        </record>
+        <record id="dep_l10_grade" model="hr.department">
+            <field name="name">Grading</field>
+            <field name="parent_id" ref="dep_line10"/>
+            <field name="ethiopic_name">ፓክ ሃውስ</field>
+        </record>
+        <record id="dep_l10_irrig" model="hr.department">
+            <field name="name">Irrigation</field>
+            <field name="ethiopic_name">መስኖ</field>
+            <field name="parent_id" ref="dep_line10"/>
+        </record>
+        <record id="dep_l10_cleaning" model="hr.department">
+            <field name="name">Cleaning</field>
+            <field name="ethiopic_name">ፅዳት</field>
+        </record>
+        <record id="dep_l10_push" model="hr.department">
+            <field name="name">Push Cart</field>
+            <field name="ethiopic_name">ፑሽ ካርት</field>
+            <field name="parent_id" ref="dep_line10"/>
+        </record>
+        <record id="dep_l10_protect" model="hr.department">
+            <field name="name">Protection</field>
+            <field name="ethiopic_name">ኬሚካል ርጭት</field>
+            <field name="parent_id" ref="dep_line10"/>
+        </record>
+        <record id="dep_l10_cold" model="hr.department">
+            <field name="name">Cold Store</field>
+            <field name="ethiopic_name">ፍሪጅ ቤት</field>
+            <field name="parent_id" ref="dep_line10"/>
+        </record>
+        <record id="dep_line31" model="hr.department">
+            <field name="name">Line 31</field>
+            <field name="ethiopic_name">ግሪን ሃውስ 31</field>
+        </record>
+        <record id="dep_l31_plant" model="hr.department">
+            <field name="name">Planting</field>
+            <field name="ethiopic_name">የምርት አንክብካቤ</field>
+            <field name="parent_id" ref="dep_line31"/>
+        </record>
+        <record id="dep_l31_grade" model="hr.department">
+            <field name="name">Grading</field>
+            <field name="ethiopic_name">ፓክ ሃውስ</field>
+            <field name="parent_id" ref="dep_line31"/>
+        </record>
+        <record id="dep_l31_irrig" model="hr.department">
+            <field name="name">Irrigation</field>
+            <field name="parent_id" ref="dep_line31"/>
+            <field name="ethiopic_name">መስኖ</field>
+        </record>
+        <record id="dep_l31_push" model="hr.department">
+            <field name="name">Push Cart</field>
+            <field name="ethiopic_name">ፑሽ ካርት</field>
+            <field name="parent_id" ref="dep_line31"/>
+        </record>
+        <record id="dep_l31_protect" model="hr.department">
+            <field name="name">Protection</field>
+            <field name="ethiopic_name">ኬሚካል ርጭት</field>
+            <field name="parent_id" ref="dep_line31"/>
+        </record>
+        <record id="dep_l31_cold" model="hr.department">
+            <field name="name">Cold Store</field>
+            <field name="ethiopic_name">ፍሪጅ ቤት</field>
+            <field name="parent_id" ref="dep_line31"/>
+        </record>
+        
+        <record id="job_gm" model="hr.job">
+            <field name="name">General Manager</field>
+            <field name="department_id" ref="dep_office"/>
+            <field name="max_employees" eval="1"/>
+            <field name="department_manager" eval="True"/>
+        </record>
+      
+        <record id="job_dgm" model="hr.job">
+            <field name="name">Deputy General Manager</field>
+            <field name="department_id" ref="dep_office"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_gm"/>
+        </record>
+      
+        <record id="job_hrm" model="hr.job">
+            <field name="name">Human Resources Manager</field>
+            <field name="department_id" ref="dep_hr"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_dgm"/>
+            <field name="department_manager" eval="True"/>
+        </record>
+      
+        <record id="job_assistant_hrm" model="hr.job">
+            <field name="name">Assistant HRM</field>
+            <field name="department_id" ref="dep_hr"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_hrm"/>
+        </record>
+      
+        <record id="job_timekeeper" model="hr.job">
+            <field name="name">Time Keeper</field>
+            <field name="department_id" ref="dep_hr"/>
+            <field name="max_employees" eval="3"/>
+            <field name="parent_id" ref="job_hrm"/>
+        </record>
+      
+        <record id="job_finance_admin" model="hr.job">
+            <field name="name">Finance and Administration Manager</field>
+            <field name="department_id" ref="dep_office"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_dgm"/>
+        </record>
+      
+        <record id="job_jr_acct" model="hr.job">
+            <field name="name">Junior Accountant</field>
+            <field name="department_id" ref="dep_office"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_finance_admin"/>
+        </record>
+      
+        <record id="job_secretary" model="hr.job">
+            <field name="name">Secretary</field>
+            <field name="department_id" ref="dep_office"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_finance_admin"/>
+        </record>
+      
+        <record id="job_production_manager" model="hr.job">
+            <field name="name">Production Manager</field>
+            <field name="department_id" ref="dep_office"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_dgm"/>
+        </record>
+      
+        <record id="job_business_agent" model="hr.job">
+            <field name="name">Business Agent</field>
+            <field name="department_id" ref="dep_office"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_dgm"/>
+        </record>
+      
+        <record id="job_manager_planting10" model="hr.job">
+            <field name="name">Line 10 Planting Manager</field>
+            <field name="department_id" ref="dep_l10_plant"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_dgm"/>
+            <field name="department_manager" eval="True"/>
+        </record>
+      
+        <record id="job_supervisor_planting10" model="hr.job">
+            <field name="name">Line 10 Planting Supervisor</field>
+            <field name="department_id" ref="dep_l10_plant"/>
+            <field name="max_employees" eval="3"/>
+            <field name="parent_id" ref="job_manager_planting10"/>
+        </record>
+      
+        <record id="job_grpleader_planting10" model="hr.job">
+            <field name="name">Line 10 Planting Group Leader</field>
+            <field name="department_id" ref="dep_l10_plant"/>
+            <field name="max_employees" eval="3"/>
+            <field name="parent_id" ref="job_manager_planting10"/>
+        </record>
+      
+        <record id="job_worker_planting10" model="hr.job">
+            <field name="name">Line 10 Planting Worker</field>
+            <field name="department_id" ref="dep_l10_plant"/>
+            <field name="max_employees" eval="110"/>
+            <field name="parent_id" ref="job_manager_planting10"/>
+        </record>
+      
+        <record id="job_supervisor_grading10" model="hr.job">
+            <field name="name">Line 10 Grading Supervisor</field>
+            <field name="department_id" ref="dep_l10_grade"/>
+            <field name="max_employees" eval="2"/>
+            <field name="parent_id" ref="job_dgm"/>
+            <field name="department_manager" eval="True"/>
+        </record>
+      
+        <record id="job_grpleader_grading10" model="hr.job">
+            <field name="name">Line 10 Grading Group Leader</field>
+            <field name="department_id" ref="dep_l10_grade"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_supervisor_grading10"/>
+        </record>
+      
+        <record id="job_quality_grading10" model="hr.job">
+            <field name="name">Line 10 Grading Quality Assurance</field>
+            <field name="department_id" ref="dep_l10_grade"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_supervisor_grading10"/>
+        </record>
+      
+        <record id="job_worker_grading10" model="hr.job">
+            <field name="name">Line 10 Grading Worker</field>
+            <field name="department_id" ref="dep_l10_grade"/>
+            <field name="max_employees" eval="38"/>
+            <field name="parent_id" ref="job_supervisor_grading10"/>
+        </record>
+      
+        <record id="job_cleaner10" model="hr.job">
+            <field name="name">Line 10 Cleaning Worker (Grading)</field>
+            <field name="department_id" ref="dep_l10_grade"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_supervisor_grading10"/>
+        </record>
+      
+        <record id="job_supervisor_cleaning10" model="hr.job">
+            <field name="name">Line 10 Cleaning Supervisor</field>
+            <field name="department_id" ref="dep_l10_cleaning"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_dgm"/>
+            <field name="department_manager" eval="True"/>
+        </record>
+      
+        <record id="job_grpleader_cleaning10" model="hr.job">
+            <field name="name">Line 10 Cleaning Group Leader</field>
+            <field name="department_id" ref="dep_l10_cleaning"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_supervisor_cleaning10"/>
+        </record>
+      
+        <record id="job_worker_cleaning10" model="hr.job">
+            <field name="name">Line 10 Cleaning Worker</field>
+            <field name="department_id" ref="dep_l10_cleaning"/>
+            <field name="max_employees" eval="10"/>
+            <field name="parent_id" ref="job_supervisor_cleaning10"/>
+        </record>
+      
+        <record id="job_supervisor_irrigation10" model="hr.job">
+            <field name="name">Line 10 Irrigation Supervisor</field>
+            <field name="department_id" ref="dep_l10_irrig"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_dgm"/>
+            <field name="department_manager" eval="True"/>
+        </record>
+      
+        <record id="job_worker_irrigation10" model="hr.job">
+            <field name="name">Line 10 Irrigation Worker</field>
+            <field name="department_id" ref="dep_l10_irrig"/>
+            <field name="max_employees" eval="20"/>
+            <field name="parent_id" ref="job_supervisor_irrigation10"/>
+        </record>
+      
+        <record id="job_supervisor_protection10" model="hr.job">
+            <field name="name">Line 10 Protection Supervisor</field>
+            <field name="department_id" ref="dep_l10_protect"/>
+            <field name="max_employees" eval="2"/>
+            <field name="parent_id" ref="job_dgm"/>
+            <field name="department_manager" eval="True"/>
+        </record>
+      
+        <record id="job_worker_protection10" model="hr.job">
+            <field name="name">Line 10 Protection Worker</field>
+            <field name="department_id" ref="dep_l10_protect"/>
+            <field name="max_employees" eval="10"/>
+            <field name="parent_id" ref="job_supervisor_protection10"/>
+        </record>
+      
+        <record id="job_supervisor_pushcart10" model="hr.job">
+            <field name="name">Line 10 Push Cart Supervisor</field>
+            <field name="department_id" ref="dep_l10_push"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_dgm"/>
+            <field name="department_manager" eval="True"/>
+        </record>
+      
+        <record id="job_grpleader_pushcart10" model="hr.job">
+            <field name="name">Line 10 Push Cart Group Leader</field>
+            <field name="department_id" ref="dep_l10_push"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_supervisor_pushcart10"/>
+        </record>
+      
+        <record id="job_worker_pushcart10" model="hr.job">
+            <field name="name">Line 10 Push Cart Worker</field>
+            <field name="department_id" ref="dep_l10_push"/>
+            <field name="max_employees" eval="9"/>
+            <field name="parent_id" ref="job_supervisor_pushcart10"/>
+        </record>
+      
+        <record id="job_supervisor_coldstore10" model="hr.job">
+            <field name="name">Line 10 Cold Store Supervisor</field>
+            <field name="department_id" ref="dep_l10_cold"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_dgm"/>
+            <field name="department_manager" eval="True"/>
+        </record>
+      
+        <record id="job_worker_coldstore10" model="hr.job">
+            <field name="name">Line 10 Cold Store Worker</field>
+            <field name="department_id" ref="dep_l10_cold"/>
+            <field name="max_employees" eval="13"/>
+            <field name="parent_id" ref="job_supervisor_coldstore10"/>
+        </record>
+      
+        <record id="job_manager_planting31" model="hr.job">
+            <field name="name">Line 31 Planting Manager</field>
+            <field name="department_id" ref="dep_l31_plant"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_dgm"/>
+            <field name="department_manager" eval="True"/>
+        </record>
+      
+        <record id="job_supervisor_planting31" model="hr.job">
+            <field name="name">Line 31 Planting Supervisor</field>
+            <field name="department_id" ref="dep_l31_plant"/>
+            <field name="max_employees" eval="4"/>
+            <field name="parent_id" ref="job_manager_planting31"/>
+        </record>
+      
+        <record id="job_grpleader_planting31" model="hr.job">
+            <field name="name">Line 31 Planting Group Leader</field>
+            <field name="department_id" ref="dep_l31_plant"/>
+            <field name="max_employees" eval="4"/>
+            <field name="parent_id" ref="job_manager_planting31"/>
+        </record>
+      
+        <record id="job_worker_planting31" model="hr.job">
+            <field name="name">Line 31 Planting Worker</field>
+            <field name="department_id" ref="dep_l31_plant"/>
+            <field name="max_employees" eval="172"/>
+            <field name="parent_id" ref="job_manager_planting31"/>
+        </record>
+      
+        <record id="job_supervisor_grading31" model="hr.job">
+            <field name="name">Line 31 Grading Supervisor</field>
+            <field name="department_id" ref="dep_l31_grade"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_dgm"/>
+            <field name="department_manager" eval="True"/>
+        </record>
+      
+        <record id="job_grpleader_grading31" model="hr.job">
+            <field name="name">Line 31 Grading Group Leader</field>
+            <field name="department_id" ref="dep_l31_grade"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_supervisor_grading31"/>
+        </record>
+      
+        <record id="job_quality_grading31" model="hr.job">
+            <field name="name">Line 31 Grading Quality Assurance</field>
+            <field name="department_id" ref="dep_l31_grade"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_supervisor_grading31"/>
+        </record>
+      
+        <record id="job_worker_grading31" model="hr.job">
+            <field name="name">Line 31 Grading Worker</field>
+            <field name="department_id" ref="dep_l31_grade"/>
+            <field name="max_employees" eval="54"/>
+            <field name="parent_id" ref="job_supervisor_grading31"/>
+        </record>
+      
+        <record id="job_cleaner31" model="hr.job">
+            <field name="name">Line 31 Cleaning Worker (Grading)</field>
+            <field name="department_id" ref="dep_l31_grade"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_supervisor_grading31"/>
+        </record>
+      
+        <record id="job_manager_irrigation31" model="hr.job">
+            <field name="name">Line 31 Irrigation Manager</field>
+            <field name="department_id" ref="dep_l31_irrig"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_dgm"/>
+            <field name="department_manager" eval="True"/>
+        </record>
+      
+        <record id="job_supervisor_irrigation31" model="hr.job">
+            <field name="name">Line 31 Irrigation Supervisor</field>
+            <field name="department_id" ref="dep_l31_irrig"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_manager_irrigation31"/>
+        </record>
+      
+        <record id="job_grpleader_irrigation31" model="hr.job">
+            <field name="name">Line 31 Irrigation Group Leader</field>
+            <field name="department_id" ref="dep_l31_irrig"/>
+            <field name="max_employees" eval="2"/>
+            <field name="parent_id" ref="job_manager_irrigation31"/>
+        </record>
+      
+        <record id="job_worker_irrigation31" model="hr.job">
+            <field name="name">Line 31 Irrigation Worker</field>
+            <field name="department_id" ref="dep_l31_irrig"/>
+            <field name="max_employees" eval="25"/>
+            <field name="parent_id" ref="job_manager_irrigation31"/>
+        </record>
+      
+        <record id="job_supervisor_pushcart31" model="hr.job">
+            <field name="name">Line 31 Push Cart Supervisor</field>
+            <field name="department_id" ref="dep_l31_push"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_dgm"/>
+            <field name="department_manager" eval="True"/>
+        </record>
+      
+        <record id="job_grpleader_pushcart31" model="hr.job">
+            <field name="name">Line 31 Push Cart Group Leader</field>
+            <field name="department_id" ref="dep_l31_push"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_supervisor_pushcart31"/>
+        </record>
+      
+        <record id="job_worker_pushcart31" model="hr.job">
+            <field name="name">Line 31 Push Cart Worker</field>
+            <field name="department_id" ref="dep_l31_push"/>
+            <field name="max_employees" eval="16"/>
+            <field name="parent_id" ref="job_supervisor_pushcart31"/>
+        </record>
+      
+        <record id="job_supervisor_protection31" model="hr.job">
+            <field name="name">Line 31 Protection Supervisor</field>
+            <field name="department_id" ref="dep_l31_protect"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_dgm"/>
+            <field name="department_manager" eval="True"/>
+        </record>
+      
+        <record id="job_worker_protection31" model="hr.job">
+            <field name="name">Line 31 Protection Worker</field>
+            <field name="department_id" ref="dep_l31_protect"/>
+            <field name="max_employees" eval="16"/>
+            <field name="parent_id" ref="job_supervisor_protection31"/>
+        </record>
+      
+        <record id="job_grpleader_coldstore31" model="hr.job">
+            <field name="name">Line 31 Cold Store Group Leader</field>
+            <field name="department_id" ref="dep_l31_cold"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_dgm"/>
+        </record>
+      
+        <record id="job_worker_coldstore31" model="hr.job">
+            <field name="name">Line 31 Cold Store Worker</field>
+            <field name="department_id" ref="dep_l31_cold"/>
+            <field name="max_employees" eval="16"/>
+            <field name="parent_id" ref="job_grpleader_coldstore31"/>
+        </record>
+      
+        <record id="job_nurse" model="hr.job">
+            <field name="name">Nurse and Safety Officer</field>
+            <field name="department_id" ref="dep_office"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_dgm"/>
+        </record>
+      
+        <record id="job_assistant_nurse" model="hr.job">
+            <field name="name">Assistant Nurse</field>
+            <field name="department_id" ref="dep_office"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_nurse"/>
+        </record>
+      
+        <record id="job_supervisor_scouting" model="hr.job">
+            <field name="name">Scouting Supervisor</field>
+            <field name="department_id" ref="dep_scouting"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_dgm"/>
+            <field name="department_manager" eval="True"/>
+        </record>
+      
+        <record id="job_grpleader_scouting" model="hr.job">
+            <field name="name">Scouting Group Leader</field>
+            <field name="department_id" ref="dep_scouting"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_supervisor_scouting"/>
+        </record>
+      
+        <record id="job_worker_scouting" model="hr.job">
+            <field name="name">Scouting Worker</field>
+            <field name="department_id" ref="dep_scouting"/>
+            <field name="max_employees" eval="10"/>
+            <field name="parent_id" ref="job_supervisor_scouting"/>
+        </record>
+      
+        <record id="job_purchaser" model="hr.job">
+            <field name="name">Purchaser</field>
+            <field name="department_id" ref="dep_office"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_dgm"/>
+        </record>
+      
+        <record id="job_storekeeper" model="hr.job">
+            <field name="name">Store Keeper</field>
+            <field name="department_id" ref="dep_office"/>
+            <field name="max_employees" eval="2"/>
+            <field name="parent_id" ref="job_dgm"/>
+        </record>
+      
+        <record id="job_assistant_storekeeper" model="hr.job">
+            <field name="name">Assistant Store Keeper</field>
+            <field name="department_id" ref="dep_office"/>
+            <field name="max_employees" eval="2"/>
+            <field name="parent_id" ref="job_storekeeper"/>
+        </record>
+      
+        <record id="job_supervisor_maintenance" model="hr.job">
+            <field name="name">Maintenance Supervisor</field>
+            <field name="department_id" ref="dep_maint"/>
+            <field name="max_employees" eval="2"/>
+            <field name="parent_id" ref="job_dgm"/>
+            <field name="department_manager" eval="True"/>
+        </record>
+      
+        <record id="job_grpleader_maintenance" model="hr.job">
+            <field name="name">Maintenance Group Leader</field>
+            <field name="department_id" ref="dep_maint"/>
+            <field name="max_employees" eval="1"/>
+            <field name="parent_id" ref="job_supervisor_maintenance"/>
+        </record>
+      
+        <record id="job_worker_maintenance" model="hr.job">
+            <field name="name">Maintenance Worker</field>
+            <field name="department_id" ref="dep_maint"/>
+            <field name="max_employees" eval="9"/>
+            <field name="parent_id" ref="job_supervisor_maintenance"/>
+        </record>
+      
+        <record id="job_supervisor_security" model="hr.job">
+            <field name="name">Security Supervisor</field>
+            <field name="department_id" ref="dep_security"/>
+            <field name="max_employees" eval="2"/>
+            <field name="parent_id" ref="job_dgm"/>
+            <field name="department_manager" eval="True"/>
+        </record>
+      
+        <record id="job_grpleader_security" model="hr.job">
+            <field name="name">Security Group Leader</field>
+            <field name="department_id" ref="dep_security"/>
+            <field name="max_employees" eval="2"/>
+            <field name="parent_id" ref="job_supervisor_security"/>
+        </record>
+      
+        <record id="job_worker_security" model="hr.job">
+            <field name="name">Security Guard</field>
+            <field name="department_id" ref="dep_security"/>
+            <field name="max_employees" eval="35"/>
+            <field name="parent_id" ref="job_supervisor_security"/>
+        </record>
+      
+        <!-- Working Schedule Templates and Work Times -->
+        
+        <record id="sched_template_1" model="hr.schedule.template">
+            <field name="name">Std 6 Days/Week Rest Monday</field>
+        </record>
+        <record id="sched_template_2" model="hr.schedule.template">
+            <field name="name">Std 6 Days/Week Rest Tuesday</field>
+        </record>
+        <record id="sched_template_3" model="hr.schedule.template">
+            <field name="name">Std 6 Days/Week Rest Wednesday</field>
+        </record>
+        <record id="sched_template_4" model="hr.schedule.template">
+            <field name="name">Std 6 Days/Week Rest Thursday</field>
+        </record>
+        <record id="sched_template_5" model="hr.schedule.template">
+            <field name="name">Std 6 Days/Week Rest Friday</field>
+        </record>
+        <record id="sched_template_6" model="hr.schedule.template">
+            <field name="name">Std 6 Days/Week Rest Saturday</field>
+        </record>
+        <record id="sched_template_7" model="hr.schedule.template">
+            <field name="name">Std 6 Days/Week Rest Sunday</field>
+        </record>
+
+        <record model="hr.schedule.template.worktime" id="worktime1_tueam">
+            <field name="name">AM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_tuepm">
+            <field name="name">PM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_wedam">
+            <field name="name">AM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_wedpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_thuam">
+            <field name="name">AM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_thupm">
+            <field name="name">PM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_friam">
+            <field name="name">AM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_fripm">
+            <field name="name">PM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_satam">
+            <field name="name">AM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_satpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_sunam">
+            <field name="name">AM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime1_sunpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_1"/>
+        </record>
+
+        <record model="hr.schedule.template.worktime" id="worktime2_monam">
+            <field name="name">AM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_monpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_wedam">
+            <field name="name">AM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_wedpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_thuam">
+            <field name="name">AM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_thupm">
+            <field name="name">PM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_friam">
+            <field name="name">AM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_fripm">
+            <field name="name">PM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_satam">
+            <field name="name">AM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_satpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_sunam">
+            <field name="name">AM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime2_sunpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_2"/>
+        </record>
+
+        <record model="hr.schedule.template.worktime" id="worktime3_monam">
+            <field name="name">AM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_monpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_tueam">
+            <field name="name">AM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_tuepm">
+            <field name="name">PM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_thuam">
+            <field name="name">AM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_thupm">
+            <field name="name">PM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_friam">
+            <field name="name">AM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_fripm">
+            <field name="name">PM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_satam">
+            <field name="name">AM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_satpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_sunam">
+            <field name="name">AM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime3_sunpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_3"/>
+        </record>
+
+        <record model="hr.schedule.template.worktime" id="worktime4_monam">
+            <field name="name">AM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_monpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_tueam">
+            <field name="name">AM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_tuepm">
+            <field name="name">PM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_wedam">
+            <field name="name">AM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_wedpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_friam">
+            <field name="name">AM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_fripm">
+            <field name="name">PM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_satam">
+            <field name="name">AM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_satpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_sunam">
+            <field name="name">AM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime4_sunpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_4"/>
+        </record>
+
+        <record model="hr.schedule.template.worktime" id="worktime5_monam">
+            <field name="name">AM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_monpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_tueam">
+            <field name="name">AM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_tuepm">
+            <field name="name">PM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_wedam">
+            <field name="name">AM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_wedpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_thuam">
+            <field name="name">AM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_thupm">
+            <field name="name">PM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_satam">
+            <field name="name">AM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_satpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_sunam">
+            <field name="name">AM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime5_sunpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_5"/>
+        </record>
+        
+        <record model="hr.schedule.template.worktime" id="worktime6_monam">
+            <field name="name">AM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_monpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_tueam">
+            <field name="name">AM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_tuepm">
+            <field name="name">PM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_wedam">
+            <field name="name">AM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_wedpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_thuam">
+            <field name="name">AM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_thupm">
+            <field name="name">PM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_friam">
+            <field name="name">AM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_fripm">
+            <field name="name">PM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_sunam">
+            <field name="name">AM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime6_sunpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_6"/>
+        </record>
+
+        <record model="hr.schedule.template.worktime" id="worktime7_monam">
+            <field name="name">AM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_monpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_tueam">
+            <field name="name">AM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_tuepm">
+            <field name="name">PM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_wedam">
+            <field name="name">AM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_wedpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_thuam">
+            <field name="name">AM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_thupm">
+            <field name="name">PM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_friam">
+            <field name="name">AM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_fripm">
+            <field name="name">PM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_satam">
+            <field name="name">AM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">7:00</field>
+            <field name="hour_to">12:00</field>
+            <field name="template_id" ref="sched_template_7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="worktime7_satpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">13:00</field>
+            <field name="hour_to">16:00</field>
+            <field name="template_id" ref="sched_template_7"/>
+        </record>
+      
+        <!-- Working Schedule Templates and Work Times Night Shift -->
+        
+        <record id="sched_template_night1" model="hr.schedule.template">
+            <field name="name">Night 6 Days/Week Rest Monday</field>
+        </record>
+        <record id="sched_template_night2" model="hr.schedule.template">
+            <field name="name">Night 6 Days/Week Rest Tuesday</field>
+        </record>
+        <record id="sched_template_night3" model="hr.schedule.template">
+            <field name="name">Night 6 Days/Week Rest Wednesday</field>
+        </record>
+        <record id="sched_template_night4" model="hr.schedule.template">
+            <field name="name">Night 6 Days/Week Rest Thursday</field>
+        </record>
+        <record id="sched_template_night5" model="hr.schedule.template">
+            <field name="name">NIght 6 Days/Week Rest Friday</field>
+        </record>
+        <record id="sched_template_night6" model="hr.schedule.template">
+            <field name="name">Night 6 Days/Week Rest Saturday</field>
+        </record>
+        <record id="sched_template_night7" model="hr.schedule.template">
+            <field name="name">Night 6 Days/Week Rest Sunday</field>
+        </record>
+
+        <record model="hr.schedule.template.worktime" id="wtn1_tueam">
+            <field name="name">AM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn1_tuepm">
+            <field name="name">PM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn1_wedam">
+            <field name="name">AM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn1_wedpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn1_thuam">
+            <field name="name">AM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn1_thupm">
+            <field name="name">PM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn1_friam">
+            <field name="name">AM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn1_fripm">
+            <field name="name">PM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn1_satam">
+            <field name="name">AM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn1_satpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn1_sunam">
+            <field name="name">AM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night1"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn1_sunpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night1"/>
+        </record>
+
+        <record model="hr.schedule.template.worktime" id="wtn2_monam">
+            <field name="name">AM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn2_monpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn2_wedam">
+            <field name="name">AM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn2_wedpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn2_thuam">
+            <field name="name">AM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn2_thupm">
+            <field name="name">PM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn2_friam">
+            <field name="name">AM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn2_fripm">
+            <field name="name">PM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn2_satam">
+            <field name="name">AM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn2_satpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn2_sunam">
+            <field name="name">AM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night2"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn2_sunpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night2"/>
+        </record>
+
+        <record model="hr.schedule.template.worktime" id="wtn3_monam">
+            <field name="name">AM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn3_monpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn3_tueam">
+            <field name="name">AM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn3_tuepm">
+            <field name="name">PM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn3_thuam">
+            <field name="name">AM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn3_thupm">
+            <field name="name">PM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn3_friam">
+            <field name="name">AM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn3_fripm">
+            <field name="name">PM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn3_satam">
+            <field name="name">AM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn3_satpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn3_sunam">
+            <field name="name">AM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night3"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn3_sunpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night3"/>
+        </record>
+
+        <record model="hr.schedule.template.worktime" id="wtn4_monam">
+            <field name="name">AM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn4_monpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn4_tueam">
+            <field name="name">AM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn4_tuepm">
+            <field name="name">PM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn4_wedam">
+            <field name="name">AM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn4_wedpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn4_friam">
+            <field name="name">AM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn4_fripm">
+            <field name="name">PM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn4_satam">
+            <field name="name">AM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn4_satpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn4_sunam">
+            <field name="name">AM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night4"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn4_sunpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night4"/>
+        </record>
+
+        <record model="hr.schedule.template.worktime" id="wtn5_monam">
+            <field name="name">AM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn5_monpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn5_tueam">
+            <field name="name">AM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn5_tuepm">
+            <field name="name">PM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn5_wedam">
+            <field name="name">AM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn5_wedpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn5_thuam">
+            <field name="name">AM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn5_thupm">
+            <field name="name">PM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn5_satam">
+            <field name="name">AM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn5_satpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn5_sunam">
+            <field name="name">AM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night5"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn5_sunpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night5"/>
+        </record>
+        
+        <record model="hr.schedule.template.worktime" id="wtn6_monam">
+            <field name="name">AM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn6_monpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn6_tueam">
+            <field name="name">AM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn6_tuepm">
+            <field name="name">PM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn6_wedam">
+            <field name="name">AM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn6_wedpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn6_thuam">
+            <field name="name">AM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn6_thupm">
+            <field name="name">PM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn6_friam">
+            <field name="name">AM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn6_fripm">
+            <field name="name">PM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn6_sunam">
+            <field name="name">AM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night6"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn6_sunpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">6</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night6"/>
+        </record>
+
+        <record model="hr.schedule.template.worktime" id="wtn7_monam">
+            <field name="name">AM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn7_monpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">0</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn7_tueam">
+            <field name="name">AM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn7_tuepm">
+            <field name="name">PM</field>
+            <field name="dayofweek">1</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn7_wedam">
+            <field name="name">AM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn7_wedpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">2</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn7_thuam">
+            <field name="name">AM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn7_thupm">
+            <field name="name">PM</field>
+            <field name="dayofweek">3</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn7_friam">
+            <field name="name">AM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn7_fripm">
+            <field name="name">PM</field>
+            <field name="dayofweek">4</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn7_satam">
+            <field name="name">AM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">21:00</field>
+            <field name="hour_to">01:00</field>
+            <field name="template_id" ref="sched_template_night7"/>
+        </record>
+        <record model="hr.schedule.template.worktime" id="wtn7_satpm">
+            <field name="name">PM</field>
+            <field name="dayofweek">5</field>
+            <field name="hour_from">02:00</field>
+            <field name="hour_to">06:00</field>
+            <field name="template_id" ref="sched_template_night7"/>
+        </record>
+        
+        <!-- OT Policy -->
+        
+        <record id="ot_line_daily" model="hr.policy.line.ot">
+            <field name="name">Daily OT</field>
+            <field name="code">WORKOTD</field>
+            <field name="type">daily</field>
+            <field name="active_after" eval="8*60"/>
+            <field name="active_after_units">min</field>
+            <field name="rate" eval="1.25"/>
+        </record>
+        
+        <record id="ot_line_nightly" model="hr.policy.line.ot">
+            <field name="name">Nightly OT</field>
+            <field name="code">WORKOTN</field>
+            <field name="type">daily</field>
+            <field name="active_after" eval="8*60"/>
+            <field name="active_after_units">min</field>
+            <field name="active_start_time">22:00</field>
+            <field name="active_end_time">06:00</field>
+            <field name="tz">Africa/Addis_Ababa</field>
+            <field name="rate" eval="1.50"/>
+        </record>
+        
+        <record id="ot_line_restday" model="hr.policy.line.ot">
+            <field name="name">Rest Day OT</field>
+            <field name="code">WORKOTR</field>
+            <field name="type">restday</field>
+            <field name="rate" eval="2.0"/>
+        </record>
+        
+        <record id="ot_line_holiday" model="hr.policy.line.ot">
+            <field name="name">Holiday OT</field>
+            <field name="code">WORKOTH</field>
+            <field name="type">holiday</field>
+            <field name="active_after" eval="0"/>
+            <field name="active_after_units">min</field>
+            <field name="rate" eval="2.50"/>
+        </record>
+        
+        <record id="ot_policy" model="hr.policy.ot">
+            <field name="name">Labour Proclamation 377/2003</field>
+            <field name="date">2004-02-26</field>
+            <field name="line_ids" eval="[(6, 0, [ref('ot_line_daily'), ref('ot_line_nightly'), ref('ot_line_restday'), ref('ot_line_holiday')])]"/>
+        </record>
+        
+        <record id="annual_leave_accrual" model="hr.accrual">
+            <field name="name">Annual Leave</field>
+            <field name="holiday_status_id" ref="holiday_status_annual"/>
+        </record>
+        
+        <record id="accr_line_annual_leave" model="hr.policy.line.accrual">
+            <field name="name">Annual Leave</field>
+            <field name="code">ANNUAL</field>
+            <field name="accrual_id" ref="annual_leave_accrual"/>
+            <field name="type">calendar</field>
+            <field name="balance_on_payslip" eval="True"/>
+            <field name="calculation_frequency">monthly</field>
+            <field name="frequency_on_hire_date" eval="True"/>
+            <field name="accrual_rate" eval="21.0"/>
+            <field name="accrual_rate_premium" eval="1.0"/>
+            <field name="accrual_rate_premium_milestone" eval="12"/>
+            <field name="accrual_rate_max" eval="0"/>
+        </record>
+        
+        <record id="accrual_policy" model="hr.policy.accrual">
+            <field name="name">Standard Leave Accruals</field>
+            <field name="date">2013-01-01</field>
+            <field name="line_ids" eval="[(6, 0, [ref('accr_line_annual_leave')])]"/>
+        </record>
+        
+        <record id="standard_policy_group" model="hr.policy.group">
+            <field name="name">Standard Policy Group</field>
+            <field name="ot_policy_ids" eval="[(6, 0, [ref('ot_policy')])]"/>
+            <field name="accr_policy_ids" eval="[(6, 0, [ref('accrual_policy')])]"/>
+        </record>
+        
+    </data>
+</openerp>

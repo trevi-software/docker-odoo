@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <!-- Transportation Allowance -->
+        
+        <record id="adv_transport100" model="hr.benefit.advantage">
+            <field name="effective_date">2014-01-01</field>
+            <field name="type">allowance</field>
+            <field name="allowance_amount" eval="0.00"/>
+        </record>
+        <record id="ben_transport_allow100" model="hr.benefit">
+            <field name="name">Transportation Allowance</field>
+            <field name="code">ALLTRANSP</field>
+            <field name="has_advantage" eval="True"/>
+            <field name="link2payroll" eval="True"/>
+            <field name="advantage_ids" eval="[(6, 0, [ref('adv_transport100')])]"/>
+        </record>
+        
+        <!-- Housing Allowance -->
+
+        <record id="adv_house140" model="hr.benefit.advantage">
+            <field name="effective_date">2014-01-01</field>
+            <field name="type">allowance</field>
+            <field name="allowance_amount" eval="0.00"/>
+        </record>
+        <record id="ben_house_allow140" model="hr.benefit">
+            <field name="name">Housing Allowance</field>
+            <field name="code">ALLHOUS</field>
+            <field name="has_advantage" eval="True"/>
+            <field name="link2payroll" eval="True"/>
+            <field name="advantage_ids" eval="[(6, 0, [ref('adv_house140')])]"/>
+        </record>
+        
+        <!-- Position Allowance -->
+
+        <record id="adv_position" model="hr.benefit.advantage">
+            <field name="effective_date">2014-01-01</field>
+            <field name="type">allowance</field>
+            <field name="allowance_amount" eval="0.00"/>
+        </record>
+        <record id="ben_position_allow" model="hr.benefit">
+            <field name="name">Position Allowance</field>
+            <field name="code">ALLPOS</field>
+            <field name="has_advantage" eval="True"/>
+            <field name="link2payroll" eval="True"/>
+            <field name="advantage_ids" eval="[(6, 0, [ref('adv_position')])]"/>
+        </record>
+        
+        <!-- Provident Fund -->
+        <record id="prm_pf" model="hr.benefit.premium">
+            <field name="effective_date">2014-01-01</field>
+            <field name="type">monthly</field>
+            <field name="amount" eval="0.00"/>
+        </record>
+        <record id="ben_pf" model="hr.benefit">
+            <field name="name">Provident Fund</field>
+            <field name="code">PROVF</field>
+            <field name="has_premium" eval="True"/>
+            <field name="link2payroll" eval="True"/>
+            <field name="premium_ids" eval="[(6, 0, [ref('prm_pf')])]"/>
+        </record>
+        
+        <!-- Labour Union -->
+        <record id="prm_lu" model="hr.benefit.premium">
+            <field name="effective_date">2014-01-01</field>
+            <field name="type">monthly</field>
+            <field name="amount" eval="0.00"/>
+        </record>
+        <record id="ben_lu" model="hr.benefit">
+            <field name="name">Labour Union Membership</field>
+            <field name="code">LBRU</field>
+            <field name="has_premium" eval="True"/>
+            <field name="link2payroll" eval="True"/>
+            <field name="premium_ids" eval="[(6, 0, [ref('prm_lu')])]"/>
+        </record>
+        
+        <!-- Cost Sharing -->
+        <record id="prm_costshare" model="hr.benefit.premium">
+            <field name="effective_date">2014-01-01</field>
+            <field name="type">monthly</field>
+            <field name="amount" eval="0.00"/>
+        </record>
+        <record id="ben_costshare" model="hr.benefit">
+            <field name="name">Cost Sharing</field>
+            <field name="code">COSTSHARE</field>
+            <field name="has_premium" eval="True"/>
+            <field name="link2payroll" eval="True"/>
+            <field name="premium_ids" eval="[(6, 0, [ref('prm_costshare')])]"/>
+        </record>
+        
+        <!-- Court Deductions -->
+        <record id="prm_cd" model="hr.benefit.premium">
+            <field name="effective_date">2014-01-01</field>
+            <field name="type">monthly</field>
+            <field name="amount" eval="0.00"/>
+        </record>
+        <record id="ben_cd" model="hr.benefit">
+            <field name="name">Court-Mandated Wage Garnishment</field>
+            <field name="code">GARN</field>
+            <field name="has_premium" eval="True"/>
+            <field name="link2payroll" eval="True"/>
+            <field name="premium_ids" eval="[(6, 0, [ref('prm_cd')])]"/>
+        </record>
+        
+        <!-- Salary Advance -->
+        <record id="prm_advance" model="hr.benefit.premium">
+            <field name="effective_date">2014-01-01</field>
+            <field name="type">monthly</field>
+            <field name="amount" eval="0.00"/>
+        </record>
+        <record id="ben_advance" model="hr.benefit">
+            <field name="name">Salary Advance</field>
+            <field name="code">SADV</field>
+            <field name="has_premium" eval="True"/>
+            <field name="link2payroll" eval="True"/>
+            <field name="premium_ids" eval="[(6, 0, [ref('prm_advance')])]"/>
+        </record>
+        
+        <!-- Loan -->
+        <record id="prm_loan" model="hr.benefit.premium">
+            <field name="effective_date">2014-01-01</field>
+            <field name="type">monthly</field>
+            <field name="amount" eval="0.00"/>
+        </record>
+        <record id="ben_loan" model="hr.benefit">
+            <field name="name">Loan</field>
+            <field name="code">LOAN</field>
+            <field name="has_premium" eval="True"/>
+            <field name="link2payroll" eval="True"/>
+            <field name="premium_ids" eval="[(6, 0, [ref('prm_loan')])]"/>
+        </record>
+        
+    </data>
+</openerp>

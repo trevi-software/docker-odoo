@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_termination_update_wizard" model="ir.ui.view">
+            <field name="name">Employee Batch Deactivation Wizard</field>
+            <field name="model">hr.employee.termination.update.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Batch Employee Deactivation Wizard" version="7.0">
+                    <header>
+                        <button icon="gtk-execute" string="De-activate" name="change_state" type="object" class="oe_highlight"  />
+                    </header>
+                    <group string="Separation Records" >
+                        <field name="termination_ids" nolabel="1"/>
+                    </group>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_termination_update_wizard" model="ir.actions.act_window">
+            <field name="name">Batch Update Termination</field>
+            <field name="res_model">hr.employee.termination.update.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_termination_update_wizard"/>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="menu_termination_update_wizard"
+            action="action_termination_update_wizard"
+            parent="hr.menu_hr_main"
+            groups="base.group_hr_manager"
+            sequence="151"/>
+
+    </data>
+</openerp>

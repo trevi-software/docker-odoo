@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="contract_change_wizard" model="ir.ui.view">
+            <field name="name">log.change.contract.wizard.form</field>
+            <field name="model">log.change.contract.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Contract Change Wizard" version="7.0">
+                    <header>
+                        <button name="do_change" type="object" class="oe_highlight" string="Apply"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="contract_id" on_change="onchange_contract_id(contract_id)"/>
+                            <field name="new_wage"/>
+                            <field name="new_start_date"/>
+                        </group>
+                        <group>
+                            <newline/>
+                            <field name="wage"/>
+                            <field name="start_date"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <act_window name="Change Contract Values"
+            res_model="log.change.contract.wizard"
+            src_model="hr.contract"
+            view_mode="form"
+            view_id="contract_change_wizard"
+            target="new"
+            id="contract_change_act_window"/>
+
+    </data>
+</openerp>

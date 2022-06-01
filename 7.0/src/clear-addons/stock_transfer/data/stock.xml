@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="1">
+
+		<!-- Virtual counterpart locations for consumption of goods -->
+		
+		<record id="stock_location_dept_root" model="stock.location">
+			<field name="name">Stock Consumption</field>
+			<field name="location_id" ref="stock.stock_location_locations_virtual"/>
+			<field name="usage">view</field>
+		</record>
+
+        <!-- Transit Location for Inter-Store Transfers -->
+        
+        <record id="stock_location_transit" model="stock.location">
+            <field name="name">Stock in Internal Transit</field>
+            <field name="location_id" ref="stock.stock_location_locations_virtual"/>
+            <field name="usage">transit</field>
+        </record>
+
+    </data>
+</openerp>

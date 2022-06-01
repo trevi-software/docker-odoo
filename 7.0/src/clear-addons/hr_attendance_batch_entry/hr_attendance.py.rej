@@ -1,0 +1,25 @@
+--- src/clear-addons/hr_attendance_batch_entry/hr_attendance.py
++++ src/clear-addons/hr_attendance_batch_entry/hr_attendance.py
+@@ -376,19 +376,17 @@
+             [
+              ('employee_id', '=', employee_id),
+              ('date_start', '<=', dWeekEnd.strftime(OE_DFORMAT)),
+-             ('date_start', '>=', dWeekStart.strftime(OE_DFORMAT)),
+             ], context=context
+         )
+         c_ids2 = c_obj.search(
+             cr, uid,
+             [
+              ('employee_id', '=', employee_id),
+-             ('date_end', '!=', False),
+-             ('date_end', '>=', dWeekStart.strftime(OE_DFORMAT)),
+-             ('date_end', '<=', dWeekEnd.strftime(OE_DFORMAT)),
++             '|', ('date_end', '=', False),
++                  ('date_end', '>=', dWeekStart.strftime(OE_DFORMAT)),
+             ], context=context
+         )
+-        c_ids += [_id for _id in c_ids2 if _id not in c_ids]
++        c_ids = c_ids2
+         if len(c_ids) > 0:
+             dept_ids = []
+             for c in c_obj.browse(cr, uid, c_ids, context=context):

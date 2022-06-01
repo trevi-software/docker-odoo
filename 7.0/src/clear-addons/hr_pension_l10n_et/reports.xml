@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!-- List of employees -->
+        
+        <record id="report_pension_list" model="ir.actions.report.xml">
+            <field name="name">List of Employees</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">hr.department</field>
+            <field name="report_name">hr_pension_employee_list</field>
+            <field name="report_type">aeroo</field>
+            <field name="in_format">oo-ods</field>
+            <field name="parser_loc">hr_pension_l10n_et/report/employee_list.py</field>
+            <field name="report_rml">hr_pension_l10n_et/report/employee_list.ods</field>
+            <field name="parser_state">loc</field>
+            <field name="tml_source">file</field>
+        </record>
+        
+    </data>
+</openerp>

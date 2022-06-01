@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_hr_config_inherit" model="ir.ui.view">
+            <field name="name">hr settings for performance onus</field>
+            <field name="model">hr.config.settings</field>
+            <field name="inherit_id" ref="hr.view_human_resources_configuration"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='contract_grp']" position="after">
+                    <group name="perfbonus_grp">
+                        <label for="id" string="Performance Bonus"/>
+	                    <div>
+		                    <div>
+		                        <field name="default_fixed_bonus_amount" class="oe_inline"/>
+		                        <label for="default_fixed_bonus_amount"/>
+		                    </div>
+		                    <div>
+		                        <field name="default_daily_bonus_amount" class="oe_inline"/>
+		                        <label for="default_daily_bonus_amount"/>
+		                    </div>
+		                    <div>
+		                        <field name="default_fixed_amt_bonus_amount" class="oe_inline"/>
+		                        <label for="default_fixed_amt_bonus_amount"/>
+		                    </div>
+		                    <div>
+		                        <field name="default_assistant_multiplier" class="oe_inline"/>
+		                        <label for="default_assistant_multiplier"/>
+		                    </div>
+		                    <div>
+		                        <field name="default_supervisor_multiplier" class="oe_inline"/>
+		                        <label for="default_supervisor_multiplier"/>
+		                    </div>
+		                    <div>
+		                        <field name="default_manager_multiplier" class="oe_inline"/>
+		                        <label for="default_manager_multiplier"/>
+		                    </div>
+	                    </div>
+	                </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

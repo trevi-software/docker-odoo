@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_attendance_correction_by_employees" model="ir.ui.view">
+            <field name="name">Attendance adjustment by employees</field>
+            <field name="model">hr.attendance.weekly.correction.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Attendance Adjustments by Employees" version="7.0">
+                    <header>
+                        <button icon="gtk-execute" string="Adjust" name="create_adjustments" type="object" class="oe_highlight"  />
+                    </header>
+                    <group>
+                        <label colspan="4" nolabel="1" string="This wizard will generate attendance adjustments for selected employees." />
+                    </group>
+                    <group>
+                        <group>
+                            <field name="recreate_sched"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <div>
+                                <label for="start" string="Interval"/>
+                                <field name="start" nolabel="1" class="oe_inline"/>
+                                -
+                                <field name="end" nolabel="1" class="oe_inline"/>
+                            </div>
+                        </group>
+                    </group>
+                    <group colspan="4" >
+                        <separator string="Employees" colspan="4"/>
+                        <newline/>
+                        <field name="employee_ids" nolabel="1"/>
+                    </group>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_attendance_correction_by_employees" model="ir.actions.act_window">
+            <field name="name">Attendance Adjustments</field>
+            <field name="res_model">hr.attendance.weekly.correction.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_attendance_correction_by_employees"/>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="menu_attendance_correction"
+            action="action_attendance_correction_by_employees"
+            parent="hr_attendance.menu_hr_attendance"
+            groups="base.group_hr_attendance,base.group_hr_user"
+            icon="STOCK_PRINT"
+            sequence="45"/>
+
+    </data>
+</openerp>

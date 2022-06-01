@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record model="ir.cron" id="hr_wageadj_policy_cron">
+            <field name="name">Wage Adjustment Policies</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field eval="(DateTime.now() + timedelta(hours= +(27-DateTime.now().hour))).strftime('%Y-%m-%d %H:07:00')" name="nextcall"/>
+            <field eval="False" name="doall"/>
+            <field eval="'hr.policy.wageadj'" name="model"/>
+            <field eval="'try_calculate_adjustments'" name="function"/>
+            <field eval="'()'" name="args"/>
+        </record>
+        
+    </data>
+</openerp>

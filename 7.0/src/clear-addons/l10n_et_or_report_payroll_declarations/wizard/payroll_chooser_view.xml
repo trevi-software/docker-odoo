@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="view_payroll_chooser_wizard" model="ir.ui.view">
+            <field name="name">hr.payroll.chooser.declaration.form</field>
+            <field name="model">hr.payroll.chooser.declaration</field>
+            <field name="arch" type="xml">
+                <form string="Payroll Declarations" version="7.0">
+                    <header>
+                        <button name="print_report" type="object" string="Print Report" class="oe_highlight"/>
+                    </header>
+                    <group>
+                        <group string="Report Type">
+                            <field name="register_id"/>
+                            <field name="declaration_type"/>
+                            <field name="payroll_type"/>
+                        </group>
+                        <group string="Details">
+                            <field name="tax_period"/>
+                            <field name="month"/>
+                            <field name="year"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <act_window name="Payroll Declarations (Oromia State)"
+            res_model="hr.payroll.chooser.declaration"
+            src_model="hr.payroll.register"
+            view_mode="form"
+            view_id="view_payroll_chooser_wizard"
+            target="new"
+            id="payroll_chooser_act_window"/>
+
+        
+    </data>
+</openerp>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+	<data>
+        
+        <record id="hr_payroll_register_form" model="ir.ui.view">
+            <field name="name">hr.payroll.register.form.directdeposit</field>
+            <field name="model">hr.payroll.register</field>
+            <field name="inherit_id" ref="hr_payroll_register.hr_payroll_register_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='exact_change']" position="replace">
+                    <field name="exact_change" string="Cash Net Amount" widget="monetary"/>
+                    <field name="direct_deposit_amount" widget="monetary"/>
+                    <field name="total_net_amount" widget="monetary"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="payroll_period_view" model="ir.ui.view">
+            <field name="name">hr.payroll.period.form.directdeposit</field>
+            <field name="model">hr.payroll.period</field>
+            <field name="inherit_id" ref="hr_payroll_period.view_payroll_period_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='exact_change']" position="replace">
+                    <field name="exact_change" widget="monetary"/>
+                    <field name="direct_deposit_amount" widget="monetary"/>
+                    <field name="total_net_amount" widget="monetary"/>
+                </xpath>
+            </field>
+        </record>
+        
+	</data>
+</openerp>

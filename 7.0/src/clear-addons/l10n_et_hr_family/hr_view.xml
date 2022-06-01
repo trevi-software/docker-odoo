@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <record id="view_hr_employee_form" model="ir.ui.view">
+            <field name="name">hr.employee.form.l10n_et_hr_family</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_family.hr_employee_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='fam_spouse']" position="after">
+                    <label for="fam_spouse_ethiopic_name"/>
+                    <div>
+                        <field name="fam_spouse_ethiopic_name" nolabel="1" placeholder="ሙሉ ስም በአማርኛ" class="oe_inline"/> 
+                        <field name="fam_spouse_use_etdob" nolabel="1" string="DoB" class="oe_inline"/>
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='fam_spouse_dob']" position="replace">
+                    <label for="fam_spouse_etcal_dob_month" string="Ethiopic DoB"/>
+                    <div>
+                        <field name="fam_spouse_etcal_dob_month" style="width: 45%%" on_change="onchange_spouse_etdob(fam_spouse_etcal_dob_year, fam_spouse_etcal_dob_month, fam_spouse_etcal_dob_day)" attrs="{'invisible': [('fam_spouse_use_etdob', '=', False)]}" nolabel="1" class="oe_inline"/>
+                        <field name="fam_spouse_etcal_dob_day" style="width: 20%%" on_change="onchange_spouse_etdob(fam_spouse_etcal_dob_year, fam_spouse_etcal_dob_month, fam_spouse_etcal_dob_day)" attrs="{'invisible': [('fam_spouse_use_etdob', '=', False)]}" nolabel="1" class="oe_inline"/>
+                        <field name="fam_spouse_etcal_dob_year" style="width: 30%%" on_change="onchange_spouse_etdob(fam_spouse_etcal_dob_year, fam_spouse_etcal_dob_month, fam_spouse_etcal_dob_day)" attrs="{'invisible': [('fam_spouse_use_etdob', '=', False)]}" nolabel="1" class="oe_inline"/>
+                    </div>
+                    <field name="fam_spouse_dob"/>
+                </xpath>
+                <xpath expr="//field[@name='fam_father']" position="after">
+                    <label for="fam_father_ethiopic_name"/>
+                    <div>
+                        <field name="fam_father_ethiopic_name" nolabel="1" placeholder="ሙሉ ስም በአማርኛ" class="oe_inline"/> 
+                        <field name="fam_father_use_etdob" nolabel="1" string="DoB" class="oe_inline"/>
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='fam_father_dob']" position="replace">
+                    <label for="fam_father_etcal_dob_month" string="Ethiopic DoB"/>
+                    <div>
+                        <field name="fam_father_etcal_dob_month" style="width: 45%%" on_change="onchange_father_etdob(fam_father_etcal_dob_year, fam_father_etcal_dob_month, fam_father_etcal_dob_day)" attrs="{'invisible': [('fam_father_use_etdob', '=', False)]}" nolabel="1" class="oe_inline"/>
+                        <field name="fam_father_etcal_dob_day" style="width: 20%%" on_change="onchange_father_etdob(fam_father_etcal_dob_year, fam_father_etcal_dob_month, fam_father_etcal_dob_day)" attrs="{'invisible': [('fam_father_use_etdob', '=', False)]}" nolabel="1" class="oe_inline"/>
+                        <field name="fam_father_etcal_dob_year" style="width: 30%%" on_change="onchange_father_etdob(fam_father_etcal_dob_year, fam_father_etcal_dob_month, fam_father_etcal_dob_day)" attrs="{'invisible': [('fam_father_use_etdob', '=', False)]}" nolabel="1" class="oe_inline"/>
+                    </div>
+                    <field name="fam_father_dob"/>
+                </xpath>
+                <xpath expr="//field[@name='fam_mother']" position="after">
+                    <label for="fam_mother_ethiopic_name"/>
+                    <div>
+                        <field name="fam_mother_ethiopic_name" nolabel="1" placeholder="ሙሉ ስም በአማርኛ" class="oe_inline"/> 
+                        <field name="fam_mother_use_etdob" nolabel="1" string="DoB" class="oe_inline"/>
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='fam_mother_dob']" position="replace">
+                    <label for="fam_mother_etcal_dob_month" string="Ethiopic DoB"/>
+                    <div>
+                        <field name="fam_mother_etcal_dob_month" style="width: 45%%" on_change="onchange_mother_etdob(fam_mother_etcal_dob_year, fam_mother_etcal_dob_month, fam_mother_etcal_dob_day)" attrs="{'invisible': [('fam_mother_use_etdob', '=', False)]}" nolabel="1" class="oe_inline"/>
+                        <field name="fam_mother_etcal_dob_day" style="width: 20%%" on_change="onchange_mother_etdob(fam_mother_etcal_dob_year, fam_mother_etcal_dob_month, fam_mother_etcal_dob_day)" attrs="{'invisible': [('fam_mother_use_etdob', '=', False)]}" nolabel="1" class="oe_inline"/>
+                        <field name="fam_mother_etcal_dob_year" style="width: 30%%" on_change="onchange_mother_etdob(fam_mother_etcal_dob_year, fam_mother_etcal_dob_month, fam_mother_etcal_dob_day)" attrs="{'invisible': [('fam_mother_use_etdob', '=', False)]}" nolabel="1" class="oe_inline"/>
+                    </div>
+                    <field name="fam_mother_dob"/>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

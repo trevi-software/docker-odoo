@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!-- Main Menu Parent -->
+        <menuitem id="menu_hr_changelog_root"
+            name="Change Log"
+            parent="hr.menu_hr_root"
+            groups="base.group_hr_user"
+            sequence="1000"/>
+        
+        
+        <record id="log_change_uniqueid_tree" model="ir.ui.view">
+            <field name="name">log.change.employee.uniqueid.tree</field>
+            <field name="model">log.change.employee.uniqueid</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Unique ID Change Log">
+                    <field name="employee_id"/>
+                    <field name="date"/>
+                    <field name="prev_value"/>
+                    <field name="user_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="open_log_change_uniqueid" model="ir.actions.act_window">
+            <field name="name">Employee Unique ID</field>
+            <field name="res_model">log.change.employee.uniqueid</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_log_change_uniqueid"
+            action="open_log_change_uniqueid"
+            parent="menu_hr_changelog_root"
+            sequence="10"/>
+    
+    </data>
+</openerp>

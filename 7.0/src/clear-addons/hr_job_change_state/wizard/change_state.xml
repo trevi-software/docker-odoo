@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_change_job_state_wizard" model="ir.ui.view">
+            <field name="name">Change Job State Wizard</field>
+            <field name="model">hr.job.wizard.state.change</field>
+            <field name="arch" type="xml">
+                <form string="Change Job State" version="7.0">
+                    <header>
+                        <button icon="gtk-execute" string="Change" name="change_state" type="object" class="oe_highlight"  />
+                    </header>
+                    <group>
+                        <group>
+                            <field name="do_recruit" on_change="onchange_recruit(do_recruit)"/>
+                            <field name="do_open" on_change="onchange_open(do_open)"/>
+                        </group>
+                    </group>
+                    <group string="Jobs" >
+                        <field name="job_ids" nolabel="1"/>
+                    </group>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_change_job_state_wizard" model="ir.actions.act_window">
+            <field name="name">Change Recruitment State</field>
+            <field name="res_model">hr.job.wizard.state.change</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_change_job_state_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+        <ir_set>
+            <field eval="'action'" name="key"/>
+            <field eval="'client_action_multi'" name="key2"/>
+            <field eval="['hr.job']" name="models"/>
+            <field name="name">Change Recruitment State</field>
+            <field eval="'ir.actions.act_window,'+str(action_change_job_state_wizard)" name="value"/>
+            <field eval="True" name="isobject"/>
+            <field eval="True" name="replace"/>
+        </ir_set>
+
+    </data>
+</openerp>

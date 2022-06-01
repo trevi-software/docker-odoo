@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+    <data>
+	<!-- Read Clock -->
+	<menuitem action="open_read_wizard_form"
+		id="menu_hr_clock_reader"
+		parent="hr_attendance.menu_hr_attendance"
+		groups="group_hr_clock_reader_user"/>
+	<!-- Registration quality report -->
+	<menuitem action="open_registration_report"
+		id="menu_registration_quality_report"
+		parent="hr.menu_hr_reporting"
+		groups="group_hr_clock_reader_user"/>
+     </data>
+</openerp>
+

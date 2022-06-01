@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="report_soap_issue_sheet" model="ir.actions.report.xml">
+            <field name="name">Soap Issue Sheet</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">hr.department</field>
+            <field name="report_name">soap_issue_sheet_report</field>
+            <field name="report_type">aeroo</field>
+            <field name="in_format">oo-odt</field>
+            <field name="parser_loc">hr_braam_soap_issue/report/issue_sheet_report.py</field>
+            <field name="report_rml">hr_braam_soap_issue/report/issue_sheet.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="tml_source">file</field>
+        </record>
+
+    </data>
+</openerp>

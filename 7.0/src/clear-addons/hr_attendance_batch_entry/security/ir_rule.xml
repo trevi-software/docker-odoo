@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <!-- Allow Time Keepers unrestricted access to all attendance records -->
+        <record id="property_rule_attendace_timekeeper" model="ir.rule">
+            <field name="name">Time Keeper Attendance</field>
+            <field model="ir.model" name="model_id" ref="model_hr_attendance"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4,ref('hr_attendance_batch_entry.group_hr_timekeeper'))]"/>
+        </record>
+    
+        <!-- Modify Schedule access rule to allow Time Keeper access -->
+        <record id="hr_schedule.property_rule_schedule_officer" model="ir.rule">
+            <field name="groups" eval="[(4,ref('base.group_hr_user')),
+                                        (4,ref('hr_attendance_batch_entry.group_hr_timekeeper'))]"/>
+        </record>
+
+    </data>
+</openerp>
+

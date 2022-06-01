@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <record id="open_employee_idmodify_wizard" model="ir.ui.view">
+            <field name="name">hr.employee.idmodify.wizard.form</field>
+            <field name="model">hr.employee.idmodify.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Employee ID Modification Wizard" version="7.0">
+                    <header>
+                        <button name="do_modify" type="object" string="Modify" class="oe_highlight"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="do_copy2unique"/>
+                            <field name="do_legacy"/>
+                            <field name="do_regen"/>
+                        </group>
+                    </group>
+                    <newline/>
+                    <group string="Employees">
+                        <field name="employee_ids" nolabel="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_employee_idmodify_wizard" model="ir.actions.act_window">
+            <field name="name">Change Employee IDs</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee.idmodify.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+        <menuitem id="menu_employee_idmodify_wizard"
+            action="action_employee_idmodify_wizard"
+            parent="hr.menu_hr_configuration"
+            groups="base.group_hr_manager"
+            sequence="1"/>
+    
+    </data>
+</openerp>

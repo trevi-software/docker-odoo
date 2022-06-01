@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_issue_sheet" model="ir.ui.view">
+            <field name="name">hr.department.issue.sheet.form</field>
+            <field name="model">hr.department.issue.sheet</field>
+            <field name="arch" type="xml">
+            <form string="Soap Issue Sheet" version="7.0">
+                <header>
+                    <button name="print_report" string="Print" type="object" icon="gtk-print" class="oe_highlight"/>
+                </header>
+                <group>
+                    <group>
+                        <field name="date"/>
+                    </group>
+                    <group></group>
+                </group>
+                <newline/>
+                <group string="Departments">
+                    <field name="department_ids" nolabel="1"/>
+                </group>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_soap_issue_sheet" model="ir.actions.act_window">
+            <field name="name">Print Soap Issue Format</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.department.issue.sheet</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="menu_soap_issue_sheet"
+            action="action_soap_issue_sheet"
+            parent="hr_attendance.menu_hr_attendance"
+            groups="base.group_hr_user"
+            icon="STOCK_PRINT"
+            sequence="40"/>
+    
+    </data>
+</openerp>

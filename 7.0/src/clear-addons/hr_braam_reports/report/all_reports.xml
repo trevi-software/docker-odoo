@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!-- 45 Day Trial Period Contract -->
+        
+        <record id="report_45day_trial" model="ir.actions.report.xml">
+            <field name="name">45 Day Trial Contract</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">hr.contract</field>
+            <field name="report_name">hr_contract_45day_trial</field>
+            <field name="report_type">aeroo</field>
+            <field name="in_format">oo-odt</field>
+            <field name="parser_loc">hr_braam_reports/report/trial_period_contract.py</field>
+            <field name="report_rml">hr_braam_reports/report/trial_period_contract.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="tml_source">file</field>
+        </record>
+    
+        <ir_set>
+            <field eval="'action'" name="key"/>
+            <field eval="'client_print_multi'" name="key2"/>
+            <field eval="['hr.contract']" name="models"/>
+            <field name="name">45 Day Trial Contract</field>
+            <field eval="'ir.actions.report.xml,'+str(report_45day_trial)" name="value"/>
+            <field eval="True" name="isobject"/>
+            <field eval="True" name="replace"/>
+        </ir_set>
+        
+        <!-- Attendance Summary -->
+        
+        <record id="report_attendance_summary" model="ir.actions.report.xml">
+            <field name="name">Attendance Summary</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">hr.department</field>
+            <field name="report_name">hr_attendance_summary</field>
+            <field name="report_type">aeroo</field>
+            <field name="in_format">oo-odt</field>
+            <field name="parser_loc">hr_braam_reports/report/attendance_summary.py</field>
+            <field name="report_rml">hr_braam_reports/report/attendance_summary.odt</field>
+            <field name="parser_state">loc</field>
+            <field name="tml_source">file</field>
+        </record>
+        
+    </data>
+</openerp>

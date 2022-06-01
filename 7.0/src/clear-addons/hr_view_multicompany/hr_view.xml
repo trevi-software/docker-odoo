@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!--
+            To correctly group by company first, and department second, we
+            have to arrange the filters in the correct order. This means
+            removing the company filter from the hr module's menu and putting
+            it in hr_view_employee_by_department module's view in the correct
+            order.
+        -->
+        
+        <record id="view_employee_filter" model="ir.ui.view">
+            <field name="name">Employees List View by Department</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@string='Company']" position="replace"/>
+            </field>
+        </record>
+
+        <record id="view_employee_filter" model="ir.ui.view">
+            <field name="name">Employees List View by Department</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_view_employee_by_department.view_employee_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@string='Department']" position="replace">
+                    <filter name="group_company" string="Company" icon="terp-go-home" domain="[]" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+                    <filter name="group_department" string="Department" icon="terp-personal+" domain="[]" context="{'group_by':'department_id'}"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="hr.open_view_employee_list_my" model="ir.actions.act_window">
+            <field name="name">Employees</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="context">{'search_default_group_company':1, 'search_default_group_department':1}</field>
+        </record>
+        
+        <!-- Filter: Department -->
+
+        <record id="view_department_filter" model="ir.ui.view">
+            <field name="name">Departments</field>
+            <field name="model">hr.department</field>
+            <field name="inherit_id" ref="hr.view_department_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='manager_id']" position="after">
+                    <group expand="0" string="Group By...">
+                        <filter name="group_company" string="Company" icon="terp-go-home" domain="[]" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+                    </group>
+                </xpath>
+             </field>
+         </record>
+         
+         <record id="hr.open_module_tree_department" model="ir.actions.act_window">
+         	<field name="context">{'search_default_group_company':1}</field>
+         </record>
+         
+         <!-- Filter: Job -->
+         
+         <record id="view_job_filter" model="ir.ui.view">
+         	<field name="name">hr.job.inherit.view_multicompany</field>
+         	<field name="model">hr.job</field>
+         	<field name="inherit_id" ref="hr.view_job_filter"/>
+         	<field name="arch" type="xml">
+                <xpath expr="//filter[@string='Company']" position="replace">
+                    <filter name="group_company" string="Company" icon="terp-go-home" domain="[]" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+                </xpath>
+         	</field>
+         </record>
+         
+         <record id="hr.action_hr_job" model="ir.actions.act_window">
+         	<field name="context">{'search_default_Current':1, 'search_default_group_company':1}</field>
+         </record>
+        
+    </data>
+</openerp>

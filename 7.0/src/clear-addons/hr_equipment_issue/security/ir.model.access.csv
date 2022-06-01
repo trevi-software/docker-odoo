@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_equipment_issue_hruser,hr.equipment.issue,model_hr_equipment_issue,base.group_hr_user,1,0,0,0
+access_hr_equipment_issue_hrm,hr.equipment.issue,model_hr_equipment_issue,base.group_hr_manager,1,1,1,1
+access_hr_equipment_issue_line_hruser,hr.equipment.issue.line,model_hr_equipment_issue_line,base.group_hr_user,1,0,0,0
+access_hr_equipment_issue_line_hrm,hr.equipment.issue.line,model_hr_equipment_issue_line,base.group_hr_manager,1,1,1,1
+access_hr_equipment_type_hruser,hr.equipment.type,model_hr_equipment_type,base.group_hr_user,1,0,0,0
+access_hr_equipment_type_hrm,hr.equipment.type,model_hr_equipment_type,base.group_hr_manager,1,1,1,1

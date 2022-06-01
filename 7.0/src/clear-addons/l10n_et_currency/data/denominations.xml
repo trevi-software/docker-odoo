@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <!-- Bank Notes -->
+        
+        <record id="etb_br1" model="res.currency.denomination">
+            <field name="currency_id" ref="base.ETB"/>
+            <field name="value" eval="1"/>
+            <field name="ratio" eval="1"/>
+        </record>
+        <record id="etb_br5" model="res.currency.denomination">
+            <field name="currency_id" ref="base.ETB"/>
+            <field name="value" eval="5"/>
+            <field name="ratio" eval="5"/>
+        </record>
+        <record id="etb_br10" model="res.currency.denomination">
+            <field name="currency_id" ref="base.ETB"/>
+            <field name="value" eval="10"/>
+            <field name="ratio" eval="10"/>
+        </record>
+        <record id="etb_br50" model="res.currency.denomination">
+            <field name="currency_id" ref="base.ETB"/>
+            <field name="value" eval="50"/>
+            <field name="ratio" eval="50"/>
+        </record>
+        <record id="etb_br100" model="res.currency.denomination">
+            <field name="currency_id" ref="base.ETB"/>
+            <field name="value" eval="100"/>
+            <field name="ratio" eval="100"/>
+        </record>
+        
+        <!-- Coins -->
+        
+        <record id="etb_cent1" model="res.currency.denomination">
+            <field name="currency_id" ref="base.ETB"/>
+            <field name="value" eval="0.01"/>
+            <field name="ratio" eval="0.01"/>
+        </record>
+        <record id="etb_cent5" model="res.currency.denomination">
+            <field name="currency_id" ref="base.ETB"/>
+            <field name="value" eval="0.05"/>
+            <field name="ratio" eval="0.05"/>
+        </record>
+        <record id="etb_cent10" model="res.currency.denomination">
+            <field name="currency_id" ref="base.ETB"/>
+            <field name="value" eval="0.10"/>
+            <field name="ratio" eval="0.10"/>
+        </record>
+        <record id="etb_cent25" model="res.currency.denomination">
+            <field name="currency_id" ref="base.ETB"/>
+            <field name="value" eval="0.25"/>
+            <field name="ratio" eval="0.25"/>
+        </record>
+        <record id="etb_cent50" model="res.currency.denomination">
+            <field name="currency_id" ref="base.ETB"/>
+            <field name="value" eval="0.50"/>
+            <field name="ratio" eval="0.50"/>
+        </record>
+        
+    </data>
+</openerp>

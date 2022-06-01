@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <record id="employee_delete_wizard" model="ir.ui.view">
+            <field name="name">log.delete.employee.wizard.form</field>
+            <field name="model">log.delete.employee.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Employee Removal Wizard" version="7.0">
+                    <header>
+                        <button name="do_change" type="object" class="oe_highlight" string="Apply"/>
+                    </header>
+                    <group name="employee_list" string="Employees to Delete">
+                        <field name="employee_ids" nolabel="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_delete_employee" model="ir.actions.act_window">
+            <field name="name">Delete Employee(s)</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">log.delete.employee.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="menu_delete_employee"
+            action="action_delete_employee"
+            parent="hr.menu_hr_configuration"
+            groups="base.group_hr_manager"
+            sequence="1000"/>
+    
+    </data>
+</openerp>

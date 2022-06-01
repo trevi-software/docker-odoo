@@ -1,0 +1,612 @@
+id,name,country_id/id,customer,employee
+partner1,Almaze Yohanes Hermo,base.et,FALSE,TRUE
+partner2,Mekedes Mekonnen Abebe,base.et,FALSE,TRUE
+partner3,Aster Shiferaw Tesema,base.et,FALSE,TRUE
+partner4,Meseret Weji Bulbula,base.et,FALSE,TRUE
+partner5,Buze Luka Bekele,base.et,FALSE,TRUE
+partner6,Demekech Dana Hirbore,base.et,FALSE,TRUE
+partner7,Meaza Taddese Bela,base.et,FALSE,TRUE
+partner8,Melesech Erango Ansebo,base.et,FALSE,TRUE
+partner9,Kebebush Zeleke Wame,base.et,FALSE,TRUE
+partner10,Bezabesh Bekele Basa,base.et,FALSE,TRUE
+partner11,Tsehay Getachew Zeleke,base.et,FALSE,TRUE
+partner12,Jeware Bonso,base.et,FALSE,TRUE
+partner13,Bertenesh Welabo Gotango,base.et,FALSE,TRUE
+partner14,Ayenalme Tesfaye Gesese,base.et,FALSE,TRUE
+partner15,Chaltu Ayano Dafo,base.et,FALSE,TRUE
+partner16,Meberate Bogale Keba,base.et,FALSE,TRUE
+partner17,Aseter Matiwose Manerecho,base.et,FALSE,TRUE
+partner18,Radiya Weliyi Himbo,base.et,FALSE,TRUE
+partner19,Tadelech  Lintiso Jakamo,base.et,FALSE,TRUE
+partner20,Yemisrache Bekele Qabeto,base.et,FALSE,TRUE
+partner21,Mesert Ayele,base.et,FALSE,TRUE
+partner22,Ayleche Isayas,base.et,FALSE,TRUE
+partner23,Degnshe Berhanu,base.et,FALSE,TRUE
+partner24,Zenbeche Kune,base.et,FALSE,TRUE
+partner25,Deneqnshe Yohanse,base.et,FALSE,TRUE
+partner26,Almaze Daniel,base.et,FALSE,TRUE
+partner27,Tigist Ginego,base.et,FALSE,TRUE
+partner28,Nuritu Mohamed,base.et,FALSE,TRUE
+partner29,Abaynshe Lejebo,base.et,FALSE,TRUE
+partner30,Amarech Sinebo,base.et,FALSE,TRUE
+partner31,Kebenesh Alemu,base.et,FALSE,TRUE
+partner32,Medina Umer,base.et,FALSE,TRUE
+partner33,Teyeba Aman,base.et,FALSE,TRUE
+partner34,Shewanesh Belachew,base.et,FALSE,TRUE
+partner35,Desalech Takele,base.et,FALSE,TRUE
+partner36,Tsegansh Gebre,base.et,FALSE,TRUE
+partner37,Achame Sinebo,base.et,FALSE,TRUE
+partner38,Birhanesh Arfecho,base.et,FALSE,TRUE
+partner39,Zenebech Kasa,base.et,FALSE,TRUE
+partner40,Buzayhu Abera,base.et,FALSE,TRUE
+partner41,Yenensh Sisay,base.et,FALSE,TRUE
+partner42,Bedatu Wakene,base.et,FALSE,TRUE
+partner43,Kokobe Abebe,base.et,FALSE,TRUE
+partner44,Tejitu Abebe,base.et,FALSE,TRUE
+partner45,Denekinsh Markos,base.et,FALSE,TRUE
+partner46,Miminshe Alemu,base.et,FALSE,TRUE
+partner47,Tamenche Bafa,base.et,FALSE,TRUE
+partner48,Asnakech Bekele,base.et,FALSE,TRUE
+partner49,Birkiensh Ena,base.et,FALSE,TRUE
+partner50,Geneme Mahammed,base.et,FALSE,TRUE
+partner51,Alemitu Bekele,base.et,FALSE,TRUE
+partner52,Genetu Megerso,base.et,FALSE,TRUE
+partner53,Hiwot Hushu,base.et,FALSE,TRUE
+partner54,Ayenalem Feyisa,base.et,FALSE,TRUE
+partner55,Furno Girma Ashera,base.et,FALSE,TRUE
+partner56,Tamenech Tameru,base.et,FALSE,TRUE
+partner57,Beza Shewangezaw,base.et,FALSE,TRUE
+partner58,Alimaze Gete,base.et,FALSE,TRUE
+partner59,Tigist Delago,base.et,FALSE,TRUE
+partner60,Gobene Amana,base.et,FALSE,TRUE
+partner61,Tigist Wendemu,base.et,FALSE,TRUE
+partner62,Wedinesh Tale,base.et,FALSE,TRUE
+partner63,Adenech Zeleke,base.et,FALSE,TRUE
+partner64,Bekelech Debela,base.et,FALSE,TRUE
+partner65,Denkenesh Bogale,base.et,FALSE,TRUE
+partner66,Amarech Areba,base.et,FALSE,TRUE
+partner67,Maberat Tasefaye,base.et,FALSE,TRUE
+partner68,Asefelech Solomon,base.et,FALSE,TRUE
+partner69,Aberash Lentiso,base.et,FALSE,TRUE
+partner70,Adanech Lema,base.et,FALSE,TRUE
+partner71,Shega Mohammed,base.et,FALSE,TRUE
+partner72,Alemitu Amedo,base.et,FALSE,TRUE
+partner73,Abebech Mendolo,base.et,FALSE,TRUE
+partner74,Bezunesh Botare,base.et,FALSE,TRUE
+partner75,Aster Mammo,base.et,FALSE,TRUE
+partner76,Bezunesh Sorisa,base.et,FALSE,TRUE
+partner77,Etenesh Kuamo,base.et,FALSE,TRUE
+partner78,Bekelech Hilenu,base.et,FALSE,TRUE
+partner79,Larame Ligiso,base.et,FALSE,TRUE
+partner80,Denkinesh Teshom,base.et,FALSE,TRUE
+partner81,Desalech Diga,base.et,FALSE,TRUE
+partner82,Etalem Tadese,base.et,FALSE,TRUE
+partner83,Meheret Tafese,base.et,FALSE,TRUE
+partner84,Maberat Bogale,base.et,FALSE,TRUE
+partner85,Konjit Hushulu,base.et,FALSE,TRUE
+partner86,Bertukan Gedebo,base.et,FALSE,TRUE
+partner87,Zenebech Haile ,base.et,FALSE,TRUE
+partner88,Amarech Melkam,base.et,FALSE,TRUE
+partner89,Regatu Geleto,base.et,FALSE,TRUE
+partner90,Selame Benta,base.et,FALSE,TRUE
+partner91,Genete Solomon,base.et,FALSE,TRUE
+partner92,Deno Lamore,base.et,FALSE,TRUE
+partner93,Asebach Alaro,base.et,FALSE,TRUE
+partner94,Berhanesh Bekele ,base.et,FALSE,TRUE
+partner95,Melesech Basa,base.et,FALSE,TRUE
+partner96,Alemitu Filipos ,base.et,FALSE,TRUE
+partner97,Welela Beyen,base.et,FALSE,TRUE
+partner98,Abebech  Abemo Ersedo,base.et,FALSE,TRUE
+partner99,Bethelehme Zeleke Gedebo,base.et,FALSE,TRUE
+partner100,Aynalem Hemiro  Daka,base.et,FALSE,TRUE
+partner101,Takelche Tafesse Haile,base.et,FALSE,TRUE
+partner102,Yayish Dagnachew,base.et,FALSE,TRUE
+partner103,Ofole Kiriko,base.et,FALSE,TRUE
+partner104,Ayu Aurgesa,base.et,FALSE,TRUE
+partner105,Genitu Abedla,base.et,FALSE,TRUE
+partner106,Ruqiya Guye,base.et,FALSE,TRUE
+partner107,Ababe Kedir,base.et,FALSE,TRUE
+partner108,Demekech Dejene,base.et,FALSE,TRUE
+partner109,Mesert Madebo,base.et,FALSE,TRUE
+partner110,Masho Kedir,base.et,FALSE,TRUE
+partner111,Genet Kuma,base.et,FALSE,TRUE
+partner112,Alimaze Wolede,base.et,FALSE,TRUE
+partner113,Elifenesh Dikeso,base.et,FALSE,TRUE
+partner114,Meskrem Pawulos,base.et,FALSE,TRUE
+partner115,Zenbech Yonas,base.et,FALSE,TRUE
+partner116,Tigist Basa,base.et,FALSE,TRUE
+partner117,Marta Boditi,base.et,FALSE,TRUE
+partner118,Tarekech Tadiwos,base.et,FALSE,TRUE
+partner119,Demekech Susamo,base.et,FALSE,TRUE
+partner120,Amarech Sorisa,base.et,FALSE,TRUE
+partner121,Mesret Mamo,base.et,FALSE,TRUE
+partner122,Aberash Itore,base.et,FALSE,TRUE
+partner123,Fasika Kasay Neguse ,base.et,FALSE,TRUE
+partner124,Bezunesh Abure Jofy,base.et,FALSE,TRUE
+partner125,Robedu Tebeso Qewati,base.et,FALSE,TRUE
+partner126,Hanna Birhanu Alero,base.et,FALSE,TRUE
+partner127,Bekelech Girma  Demisse,base.et,FALSE,TRUE
+partner128,Alemaz Amede Ali,base.et,FALSE,TRUE
+partner129,Chali Kemela Mohammed,base.et,FALSE,TRUE
+partner130,Kidist Tekelu Debo,base.et,FALSE,TRUE
+partner131,Asenaqche Yosefe Ayel,base.et,FALSE,TRUE
+partner132,Fanaye Osa Genebo,base.et,FALSE,TRUE
+partner133,Mareyama Chernte,base.et,FALSE,TRUE
+partner134,Kidist Lemesa,base.et,FALSE,TRUE
+partner135,Enatnsh Tesfay,base.et,FALSE,TRUE
+partner136,Mesret Lea,base.et,FALSE,TRUE
+partner137,Haymanot Shifraw,base.et,FALSE,TRUE
+partner138,Denekensh Deke,base.et,FALSE,TRUE
+partner139,Meherte Getachew,base.et,FALSE,TRUE
+partner140,Zenebech Tesfaye,base.et,FALSE,TRUE
+partner141,Tadelech Geneta,base.et,FALSE,TRUE
+partner142,Chaltu Kurkura,base.et,FALSE,TRUE
+partner143,Hana Sebehat ,base.et,FALSE,TRUE
+partner144,Britane Thomas,base.et,FALSE,TRUE
+partner145,Abiwot Muluneh,base.et,FALSE,TRUE
+partner146,Yesh Asemare,base.et,FALSE,TRUE
+partner147,Tarikua Dagne,base.et,FALSE,TRUE
+partner148,Tamenech Henok,base.et,FALSE,TRUE
+partner149,Fate Negeo,base.et,FALSE,TRUE
+partner150,Wedenesh Aberham,base.et,FALSE,TRUE
+partner151,Hilen Demese ,base.et,FALSE,TRUE
+partner152,Beshadu Midekisa,base.et,FALSE,TRUE
+partner153,Meskerem Wegeso,base.et,FALSE,TRUE
+partner154,Werke Uke,base.et,FALSE,TRUE
+partner155,Mimi Mengesha,base.et,FALSE,TRUE
+partner156,Gefit Hailu,base.et,FALSE,TRUE
+partner157,Fantu Tsegaye,base.et,FALSE,TRUE
+partner158,Terefu Seyum G/Tsadik,base.et,FALSE,TRUE
+partner159,Rebeka Zeweg,base.et,FALSE,TRUE
+partner160,Zenash Data,base.et,FALSE,TRUE
+partner161,Buzayehu Asegede,base.et,FALSE,TRUE
+partner162,Fate Aliy,base.et,FALSE,TRUE
+partner163,Amarech Qolche,base.et,FALSE,TRUE
+partner164,Adise Daniel,base.et,FALSE,TRUE
+partner165,Fatuma Deme,base.et,FALSE,TRUE
+partner166,Tariku Shale,base.et,FALSE,TRUE
+partner167,Kumelachew Seyume,base.et,FALSE,TRUE
+partner168,Temesgen Dawit,base.et,FALSE,TRUE
+partner169,Shemeket Tamirat,base.et,FALSE,TRUE
+partner170,Mihertu Abera,base.et,FALSE,TRUE
+partner171,Dawit chirko,base.et,FALSE,TRUE
+partner172,Derje Deporia,base.et,FALSE,TRUE
+partner173,Tilahun Bokla,base.et,FALSE,TRUE
+partner174,Sisay Yitayew,base.et,FALSE,TRUE
+partner175,Hussen Haji,base.et,FALSE,TRUE
+partner176,Merhun Mammo,base.et,FALSE,TRUE
+partner177,Aserat Adisu,base.et,FALSE,TRUE
+partner178,Mohammade Fanu,base.et,FALSE,TRUE
+partner179,Tesfaye Gelicha ,base.et,FALSE,TRUE
+partner180,Aberham Samuel,base.et,FALSE,TRUE
+partner181,Mohammade Mieso,base.et,FALSE,TRUE
+partner182,Sisay Acamo,base.et,FALSE,TRUE
+partner183,Temesgen Denisa,base.et,FALSE,TRUE
+partner184,Matusala Shege,base.et,FALSE,TRUE
+partner185,Tulu Tuse,base.et,FALSE,TRUE
+partner186,Hailu Abebe Robi,base.et,FALSE,TRUE
+partner187,Kedir Nura,base.et,FALSE,TRUE
+partner188,Feyisa Dejene Adem,base.et,FALSE,TRUE
+partner189,Dejene Abure,base.et,FALSE,TRUE
+partner190,Kedir Mohammed,base.et,FALSE,TRUE
+partner191,Matusala Matiwos,base.et,FALSE,TRUE
+partner192,Biru Bude,base.et,FALSE,TRUE
+partner193,Yohanes Dereje,base.et,FALSE,TRUE
+partner194,Adisu Temesgen,base.et,FALSE,TRUE
+partner195,Mikias Samuel,base.et,FALSE,TRUE
+partner196,Wado Abu,base.et,FALSE,TRUE
+partner197,Zubeyda Hussen,base.et,FALSE,TRUE
+partner198,Solomon Olda,base.et,FALSE,TRUE
+partner199,Shambel Hirpo,base.et,FALSE,TRUE
+partner200,Ermias Elias,base.et,FALSE,TRUE
+partner201,Jemal Tusa,base.et,FALSE,TRUE
+partner202,Eferem Chere,base.et,FALSE,TRUE
+partner203,Asfaw Albamo,base.et,FALSE,TRUE
+partner204,Alemayhu Gebeyhu,base.et,FALSE,TRUE
+partner205,Lemancho Handebo,base.et,FALSE,TRUE
+partner206,Derse Deha ,base.et,FALSE,TRUE
+partner207,Siraji Muhamed,base.et,FALSE,TRUE
+partner208,Adem Shaku,base.et,FALSE,TRUE
+partner209,Endashaw Getachew,base.et,FALSE,TRUE
+partner210,Merga Kedir,base.et,FALSE,TRUE
+partner211,Tsegaye Robena,base.et,FALSE,TRUE
+partner212,Mohamed Borja,base.et,FALSE,TRUE
+partner213,Abedurhaman Mohammed,base.et,FALSE,TRUE
+partner214,Temesgen Bekele,base.et,FALSE,TRUE
+partner215,Kasim Kedir ,base.et,FALSE,TRUE
+partner216,Aredo Tekuru,base.et,FALSE,TRUE
+partner217,Kamsur Bedaso,base.et,FALSE,TRUE
+partner218,Beriso Haile,base.et,FALSE,TRUE
+partner219,Asela Anjelo,base.et,FALSE,TRUE
+partner220,Tariku Birhanu,base.et,FALSE,TRUE
+partner221,Mirkehene Guja,base.et,FALSE,TRUE
+partner222,Eirmias Selase,base.et,FALSE,TRUE
+partner223,Gudeta Gudero,base.et,FALSE,TRUE
+partner224,Enderias Basa,base.et,FALSE,TRUE
+partner225,Takele Doda,base.et,FALSE,TRUE
+partner226,Abebe Daniel,base.et,FALSE,TRUE
+partner227,Abera Aysa Galaso,base.et,FALSE,TRUE
+partner228,Desalegne Dana ,base.et,FALSE,TRUE
+partner229,Abedela Bedaso,base.et,FALSE,TRUE
+partner230,Takele Midakisa,base.et,FALSE,TRUE
+partner231,Ermias Esatu,base.et,FALSE,TRUE
+partner232,Kedir Hussen Salemon,base.et,FALSE,TRUE
+partner233,Tesfahun Desalgn,base.et,FALSE,TRUE
+partner234,Jemal Gebyew,base.et,FALSE,TRUE
+partner235,Shumi Beriso,base.et,FALSE,TRUE
+partner236,Zerihun Mekuriya,base.et,FALSE,TRUE
+partner237,Sisay Temesgen,base.et,FALSE,TRUE
+partner238,Getachew Negash,base.et,FALSE,TRUE
+partner239,Merehune Menta Anamo,base.et,FALSE,TRUE
+partner240,Yohanse Zelalem Girma,base.et,FALSE,TRUE
+partner241,Fekadu Lukase,base.et,FALSE,TRUE
+partner242,Musetfa Feyesa,base.et,FALSE,TRUE
+partner243,Gemdo Hirpo,base.et,FALSE,TRUE
+partner244,Derje Bati,base.et,FALSE,TRUE
+partner245,Usman Reshed,base.et,FALSE,TRUE
+partner246,Feyessa Chemer,base.et,FALSE,TRUE
+partner247,Bedane Shafie,base.et,FALSE,TRUE
+partner248,Deresema Kebede,base.et,FALSE,TRUE
+partner249,Fasil Sheferaw,base.et,FALSE,TRUE
+partner250,Shemelese Arage,base.et,FALSE,TRUE
+partner251,Alemitu Berberu,base.et,FALSE,TRUE
+partner252,Gorfae Asefaw,base.et,FALSE,TRUE
+partner253,Bedaso Wario,base.et,FALSE,TRUE
+partner254,Degitu Mohemmed,base.et,FALSE,TRUE
+partner255,Leulsgde Asefa,base.et,FALSE,TRUE
+partner256,Mohamed Saied,base.et,FALSE,TRUE
+partner257,Midakesa Gemechu ,base.et,FALSE,TRUE
+partner258,Berhanu Negeo,base.et,FALSE,TRUE
+partner259,Bunini Bedane,base.et,FALSE,TRUE
+partner260,Berhane Negasa,base.et,FALSE,TRUE
+partner261,Abebe Fasho,base.et,FALSE,TRUE
+partner262,Hufayise Dafa,base.et,FALSE,TRUE
+partner263,Kidane Muktar Buche,base.et,FALSE,TRUE
+partner264,Birbirsa Diro,base.et,FALSE,TRUE
+partner265,Adnew Kaweye,base.et,FALSE,TRUE
+partner266,Kemem Dametwe,base.et,FALSE,TRUE
+partner267,Birara Adane,base.et,FALSE,TRUE
+partner268,Ayenalem Tamagne,base.et,FALSE,TRUE
+partner269,Jida Kebebe,base.et,FALSE,TRUE
+partner270,Temesgen Feten,base.et,FALSE,TRUE
+partner271,Kedir Belda,base.et,FALSE,TRUE
+partner272,Demisash Wendemu,base.et,FALSE,TRUE
+partner273,Shufer Tebeso,base.et,FALSE,TRUE
+partner274,Meharu Ayantu ,base.et,FALSE,TRUE
+partner275,Enanu Daniel,base.et,FALSE,TRUE
+partner276,Abaye Gangule,base.et,FALSE,TRUE
+partner277,Babiyo Gure,base.et,FALSE,TRUE
+partner278,Merega Gadisa,base.et,FALSE,TRUE
+partner279,Bekele Balicha,base.et,FALSE,TRUE
+partner280,Teshale Bedada,base.et,FALSE,TRUE
+partner281,Garada Edeo,base.et,FALSE,TRUE
+partner282,Deyasu Firomisa,base.et,FALSE,TRUE
+partner283,Ben Braam,base.et,FALSE,TRUE
+partner284,Arie Braam,base.et,FALSE,TRUE
+partner285,Mekedes H/Giorgis,base.et,FALSE,TRUE
+partner286,Kuribachew Dawit,base.et,FALSE,TRUE
+partner287,Duresa Elias,base.et,FALSE,TRUE
+partner288,Teobesta Getachew,base.et,FALSE,TRUE
+partner289,Kedir Mohammed,base.et,FALSE,TRUE
+partner290,Daliyo Bati,base.et,FALSE,TRUE
+partner291,Tilahune Teshom,base.et,FALSE,TRUE
+partner292,Edan Kidane,base.et,FALSE,TRUE
+partner293,Kedija Awele,base.et,FALSE,TRUE
+partner294,Alemegna Mangistu,base.et,FALSE,TRUE
+partner295,Temesgen Denisa,base.et,FALSE,TRUE
+partner296,Dawit Gemchu,base.et,FALSE,TRUE
+partner297,Surafel Sisay,base.et,FALSE,TRUE
+partner298,Kedir Bokena,base.et,FALSE,TRUE
+partner299,Samson Abate,base.et,FALSE,TRUE
+partner300,Meskerem Abebe,base.et,FALSE,TRUE
+partner301,Almaze Ereso Sewaro,base.et,FALSE,TRUE
+partner302,Mehert Milkiyas,base.et,FALSE,TRUE
+partner303,Tamenech Ankebo,base.et,FALSE,TRUE
+partner304,Teshay Feji Tesemo,base.et,FALSE,TRUE
+partner305,Birtukan Bogal,base.et,FALSE,TRUE
+partner306,Fatuma Bula,base.et,FALSE,TRUE
+partner307,Asmeret Mekebo,base.et,FALSE,TRUE
+partner308,Aslefch Hanqebo,base.et,FALSE,TRUE
+partner309,Fatuma Waqo,base.et,FALSE,TRUE
+partner310,Shila Bule,base.et,FALSE,TRUE
+partner311,Meko Boru,base.et,FALSE,TRUE
+partner312,Mesrte Bekel,base.et,FALSE,TRUE
+partner313,Buze Dadi,base.et,FALSE,TRUE
+partner314,Demitu Gebe,base.et,FALSE,TRUE
+partner315,Ashu Weyama,base.et,FALSE,TRUE
+partner316,Lemlem Denqa,base.et,FALSE,TRUE
+partner317,Almaz Anejlo,base.et,FALSE,TRUE
+partner318,Denqnshe Milkiyas,base.et,FALSE,TRUE
+partner319,Werqinsh Mena,base.et,FALSE,TRUE
+partner320,Amarche Tesfaye,base.et,FALSE,TRUE
+partner321,Werkensh Zelalme,base.et,FALSE,TRUE
+partner322,Asenakche Zewde,base.et,FALSE,TRUE
+partner323,Zemzem Jemal,base.et,FALSE,TRUE
+partner324,Senayte Behailu,base.et,FALSE,TRUE
+partner325,Gente Buta,base.et,FALSE,TRUE
+partner326,Hiko Obesa,base.et,FALSE,TRUE
+partner327,Adanche Kebede,base.et,FALSE,TRUE
+partner328,Mesret Felke,base.et,FALSE,TRUE
+partner329,Felekch Zelke,base.et,FALSE,TRUE
+partner330,Meskrem Kebed,base.et,FALSE,TRUE
+partner331,Wedinesh Silashi,base.et,FALSE,TRUE
+partner332,Yenenesh Dawit,base.et,FALSE,TRUE
+partner333,Shitay Fukre,base.et,FALSE,TRUE
+partner334,Teyiba Useman,base.et,FALSE,TRUE
+partner335,Mulu Gore,base.et,FALSE,TRUE
+partner336,Chaltu Deriba,base.et,FALSE,TRUE
+partner337,Desta Fantaye,base.et,FALSE,TRUE
+partner338,Kebensh Senamo,base.et,FALSE,TRUE
+partner339,Medina Mohamed,base.et,FALSE,TRUE
+partner340,Radiya Sado,base.et,FALSE,TRUE
+partner341,Meskerm Amogne,base.et,FALSE,TRUE
+partner342,Aberash Itore,base.et,FALSE,TRUE
+partner343,Bezunsh Abushe,base.et,FALSE,TRUE
+partner344,Chanko Sigebo,base.et,FALSE,TRUE
+partner345,Alima weyma,base.et,FALSE,TRUE
+partner346,Aregash Mukete,base.et,FALSE,TRUE
+partner347,Mesret Asefaw,base.et,FALSE,TRUE
+partner348,Abaynsh  Deha,base.et,FALSE,TRUE
+partner349,Deneknesh Degfa,base.et,FALSE,TRUE
+partner350,Hufayse Tadiwos,base.et,FALSE,TRUE
+partner351,Zenbech Lukase,base.et,FALSE,TRUE
+partner352,Birtukan Godebo,base.et,FALSE,TRUE
+partner353,Bifetu Gemechu,base.et,FALSE,TRUE
+partner354,Meslche Eleka,base.et,FALSE,TRUE
+partner355,Zeynba Mohamed,base.et,FALSE,TRUE
+partner356,Soresa Hadicha,base.et,FALSE,TRUE
+partner357,Ayelech Ledamo,base.et,FALSE,TRUE
+partner358,Tigist Demese,base.et,FALSE,TRUE
+partner359,Feyine Denbo,base.et,FALSE,TRUE
+partner360,Amarech Wamiso,base.et,FALSE,TRUE
+partner361,Marta Dako Tuka,base.et,FALSE,TRUE
+partner362,Rahele Lalago,base.et,FALSE,TRUE
+partner363,Tesfansh Chufmo,base.et,FALSE,TRUE
+partner364,Wedenesh Tomas,base.et,FALSE,TRUE
+partner365,Asenaqech Otoro,base.et,FALSE,TRUE
+partner366,Almitu Data,base.et,FALSE,TRUE
+partner367,Berahash Shireko,base.et,FALSE,TRUE
+partner368,Tirenego Faneta,base.et,FALSE,TRUE
+partner369,Mulunesh Muse,base.et,FALSE,TRUE
+partner370,Berkenesh Mengestu,base.et,FALSE,TRUE
+partner371,Bosha Tunani,base.et,FALSE,TRUE
+partner372,Genet Desta,base.et,FALSE,TRUE
+partner373,Adanech Sugamo,base.et,FALSE,TRUE
+partner374,Eresume Simamo,base.et,FALSE,TRUE
+partner375,Meslche Worku,base.et,FALSE,TRUE
+partner376,Lebenshe Bunedaso,base.et,FALSE,TRUE
+partner377,Berehan Beta,base.et,FALSE,TRUE
+partner378,Bezunshe Benecha,base.et,FALSE,TRUE
+partner379,Abeba Hliso,base.et,FALSE,TRUE
+partner380,Delebeme Letabo,base.et,FALSE,TRUE
+partner381,Hufayse Wendemu,base.et,FALSE,TRUE
+partner382,Mehret Tesfaye,base.et,FALSE,TRUE
+partner383,Amarech Ajilo,base.et,FALSE,TRUE
+partner384,Amina Gelegelu,base.et,FALSE,TRUE
+partner385,Mulu Tamirat,base.et,FALSE,TRUE
+partner386,Aregash Abebe,base.et,FALSE,TRUE
+partner387,Shumeba Benti,base.et,FALSE,TRUE
+partner388,Nehema Jeba Jegere,base.et,FALSE,TRUE
+partner389,Birtukan Mena ,base.et,FALSE,TRUE
+partner390,Hana Worku Mata,base.et,FALSE,TRUE
+partner391,Tino Midekesa,base.et,FALSE,TRUE
+partner392,Tsehayenesh Wobeshet,base.et,FALSE,TRUE
+partner393,Robedu Edasa,base.et,FALSE,TRUE
+partner394,Amarech Guja,base.et,FALSE,TRUE
+partner395,Kebebush Denek,base.et,FALSE,TRUE
+partner396,Wayeme Haji,base.et,FALSE,TRUE
+partner397,Buze Jisa,base.et,FALSE,TRUE
+partner398,Asenkech Demise,base.et,FALSE,TRUE
+partner399,Ayelech Jambo,base.et,FALSE,TRUE
+partner400,Meseret Shewicho,base.et,FALSE,TRUE
+partner401,Dinkenesh Sama,base.et,FALSE,TRUE
+partner402,Tamenech Tadess,base.et,FALSE,TRUE
+partner403,Rehel Soka,base.et,FALSE,TRUE
+partner404,Mashu Shumbure,base.et,FALSE,TRUE
+partner405,Amane Gelgelu,base.et,FALSE,TRUE
+partner406,Abayenesh Mulatu,base.et,FALSE,TRUE
+partner407,Gichame Ayele,base.et,FALSE,TRUE
+partner408,Hana Gatiso,base.et,FALSE,TRUE
+partner409,Ayelech Langana,base.et,FALSE,TRUE
+partner410,Beshadu Gonfa,base.et,FALSE,TRUE
+partner411,Birtukan Morka,base.et,FALSE,TRUE
+partner412,Edatu Guye,base.et,FALSE,TRUE
+partner413,Shumba Kediro,base.et,FALSE,TRUE
+partner414,Momina Uka,base.et,FALSE,TRUE
+partner415,Amarech Arba,base.et,FALSE,TRUE
+partner416,Selamawit Nuramo,base.et,FALSE,TRUE
+partner417,Bikenesh Digeso,base.et,FALSE,TRUE
+partner418,Tesfanesh Tadese ,base.et,FALSE,TRUE
+partner419,Enatenesh Ersado,base.et,FALSE,TRUE
+partner420,Almitu Bedada,base.et,FALSE,TRUE
+partner421,Asha Hameya,base.et,FALSE,TRUE
+partner422,Tigist Harkiso,base.et,FALSE,TRUE
+partner423,Shora Haji,base.et,FALSE,TRUE
+partner424,Hamesale Adisu,base.et,FALSE,TRUE
+partner425,Miherat Eyasu,base.et,FALSE,TRUE
+partner426,Elesabet Kefle,base.et,FALSE,TRUE
+partner427,Merab Tefera,base.et,FALSE,TRUE
+partner428,Kedija Debe,base.et,FALSE,TRUE
+partner429,Berite Teha,base.et,FALSE,TRUE
+partner430,Meselech Gatiso,base.et,FALSE,TRUE
+partner431,Zinash Argaw,base.et,FALSE,TRUE
+partner432,Bekelech Maza,base.et,FALSE,TRUE
+partner433,Demekech Lalago,base.et,FALSE,TRUE
+partner434,Kibenesh Abosa,base.et,FALSE,TRUE
+partner435,Meseret Beyen ,base.et,FALSE,TRUE
+partner436,Halo Godana,base.et,FALSE,TRUE
+partner437,Ayinalem Tama,base.et,FALSE,TRUE
+partner438,Genet Dawit,base.et,FALSE,TRUE
+partner439,Misira Abdi,base.et,FALSE,TRUE
+partner440,Tadelech Nuramo,base.et,FALSE,TRUE
+partner441,Demekech Deremo,base.et,FALSE,TRUE
+partner442,Maza Madebo,base.et,FALSE,TRUE
+partner443,Meselech Koyisha,base.et,FALSE,TRUE
+partner444,Etalem Tekele,base.et,FALSE,TRUE
+partner445,Marta Bushura,base.et,FALSE,TRUE
+partner446,Chaltu Gemechu,base.et,FALSE,TRUE
+partner447,Berhanesh Banchu,base.et,FALSE,TRUE
+partner448,Destanesh Data,base.et,FALSE,TRUE
+partner449,Aberash Danga,base.et,FALSE,TRUE
+partner450,Aregash Abera,base.et,FALSE,TRUE
+partner451,Kila Kurkure,base.et,FALSE,TRUE
+partner452,Birtukan Torgo,base.et,FALSE,TRUE
+partner453,Genet Yakob,base.et,FALSE,TRUE
+partner454,Konjit Tigiro,base.et,FALSE,TRUE
+partner455,Mesret Mehen ,base.et,FALSE,TRUE
+partner456,Atekelt Demese,base.et,FALSE,TRUE
+partner457,Abeba Wendemu,base.et,FALSE,TRUE
+partner458,Elisabet Zekarias,base.et,FALSE,TRUE
+partner459,Adanech Lara,base.et,FALSE,TRUE
+partner460,Tesfanesh Baza,base.et,FALSE,TRUE
+partner461,Semegne Kagne ,base.et,FALSE,TRUE
+partner462,Meskerem Alemayew,base.et,FALSE,TRUE
+partner463,Konjit Shugute,base.et,FALSE,TRUE
+partner464,Adanech Haji,base.et,FALSE,TRUE
+partner465,Denkenesh Dado,base.et,FALSE,TRUE
+partner466,Aregash Bekele ,base.et,FALSE,TRUE
+partner467,Denekenesh Demese,base.et,FALSE,TRUE
+partner468,Kuri Girma,base.et,FALSE,TRUE
+partner469,Meselech Anjulo,base.et,FALSE,TRUE
+partner470,Mastawot Yohanis,base.et,FALSE,TRUE
+partner471,Denkenesh Dijamo,base.et,FALSE,TRUE
+partner472,Adanech Daka,base.et,FALSE,TRUE
+partner473,Tadelech Alemu,base.et,FALSE,TRUE
+partner474,Genet Seta,base.et,FALSE,TRUE
+partner475,Tadelech Kasa,base.et,FALSE,TRUE
+partner476,Kebebush Huylo,base.et,FALSE,TRUE
+partner477,Abeba Gelata ,base.et,FALSE,TRUE
+partner478,Webit Kebede ,base.et,FALSE,TRUE
+partner479,Lemaye Arfecho,base.et,FALSE,TRUE
+partner480,Teshalech Ermias Jofe,base.et,FALSE,TRUE
+partner481,Chal Feyisa,base.et,FALSE,TRUE
+partner482,Sisay Leta,base.et,FALSE,TRUE
+partner483,Tebeltse Girma,base.et,FALSE,TRUE
+partner484,Helen Mengestu,base.et,FALSE,TRUE
+partner485,Meskerem Bekele,base.et,FALSE,TRUE
+partner486,Yeshi Meteku,base.et,FALSE,TRUE
+partner487,Alem Berhanu,base.et,FALSE,TRUE
+partner488,Adanech Cheleso,base.et,FALSE,TRUE
+partner489,Felkech Girma,base.et,FALSE,TRUE
+partner490,Adanech Eirmiyas,base.et,FALSE,TRUE
+partner491,Tesfanesh Dea,base.et,FALSE,TRUE
+partner492,Hana Getent,base.et,FALSE,TRUE
+partner493,Besa Ukete,base.et,FALSE,TRUE
+partner494,Tagaye Bihongne,base.et,FALSE,TRUE
+partner495,Manalebesh Abebe,base.et,FALSE,TRUE
+partner496,Zemenesh Petros,base.et,FALSE,TRUE
+partner497,Rahel Chekole,base.et,FALSE,TRUE
+partner498,Selamawit Matiwos,base.et,FALSE,TRUE
+partner499,Alemitu Dogiso,base.et,FALSE,TRUE
+partner500,Bezunesh Abemo,base.et,FALSE,TRUE
+partner501,Felagote Arga,base.et,FALSE,TRUE
+partner502,Besa Jamebo,base.et,FALSE,TRUE
+partner503,Metewabe Tesfay,base.et,FALSE,TRUE
+partner504,Megertu Ferja,base.et,FALSE,TRUE
+partner505,Hawa Mohamede,base.et,FALSE,TRUE
+partner506,Sayelet Kedir,base.et,FALSE,TRUE
+partner507,Tewabech Haneqebo,base.et,FALSE,TRUE
+partner508,Sadeya Beriso,base.et,FALSE,TRUE
+partner509,Lomi Ambesa,base.et,FALSE,TRUE
+partner510,Werkensh Genore,base.et,FALSE,TRUE
+partner511,Makida Gemechu,base.et,FALSE,TRUE
+partner512,Medina Kedir,base.et,FALSE,TRUE
+partner513,Zenebech Nuna,base.et,FALSE,TRUE
+partner514,Zenebech Demese,base.et,FALSE,TRUE
+partner515,Tizita Temesegen,base.et,FALSE,TRUE
+partner516,Asenakech Lukas,base.et,FALSE,TRUE
+partner517,Mareyame Birhane,base.et,FALSE,TRUE
+partner518,Amaru Tamiru,base.et,FALSE,TRUE
+partner519,lili Mammo,base.et,FALSE,TRUE
+partner520,Gente Kedir,base.et,FALSE,TRUE
+partner521,Sintayew Zeleke,base.et,FALSE,TRUE
+partner522,Meskerem G/medin,base.et,FALSE,TRUE
+partner523,Amane Juda,base.et,FALSE,TRUE
+partner524,Firhewot Desalgne,base.et,FALSE,TRUE
+partner525,Tigist Walde,base.et,FALSE,TRUE
+partner526,Dese Eliso,base.et,FALSE,TRUE
+partner527,Marta Derore,base.et,FALSE,TRUE
+partner528,Tigist Bekele,base.et,FALSE,TRUE
+partner529,Fate Kasim,base.et,FALSE,TRUE
+partner530,Desalch Esatu,base.et,FALSE,TRUE
+partner531,Demqche Denesa Seyte,base.et,FALSE,TRUE
+partner532,Midagedu Welyi,base.et,FALSE,TRUE
+partner533,Belayenesh Birhane,base.et,FALSE,TRUE
+partner534,Tseganesh Lebiso ,base.et,FALSE,TRUE
+partner535,Mesfin Salu,base.et,FALSE,TRUE
+partner536,Getu Werqu,base.et,FALSE,TRUE
+partner537,Gudeta Gemchu,base.et,FALSE,TRUE
+partner538,Aman Bude,base.et,FALSE,TRUE
+partner539,Mohamed Abedela,base.et,FALSE,TRUE
+partner540,Peteros Maleko,base.et,FALSE,TRUE
+partner541,Samuel Sadebo,base.et,FALSE,TRUE
+partner542,Berehanu Melese,base.et,FALSE,TRUE
+partner543,Takele Tesfaye,base.et,FALSE,TRUE
+partner544,Habebe Ereso,base.et,FALSE,TRUE
+partner545,Tariku Tateke,base.et,FALSE,TRUE
+partner546,Ashenafe Geleto,base.et,FALSE,TRUE
+partner547,Tadele Abute Foche,base.et,FALSE,TRUE
+partner548,Agede Enaro,base.et,FALSE,TRUE
+partner549,Niguse Siyum,base.et,FALSE,TRUE
+partner550,Iberahem Hailu,base.et,FALSE,TRUE
+partner551,Adesu Anja,base.et,FALSE,TRUE
+partner552,Meiso Kedir ,base.et,FALSE,TRUE
+partner553,Dawit Elias,base.et,FALSE,TRUE
+partner554,Amanuel Abera,base.et,FALSE,TRUE
+partner555,Tehir Nura,base.et,FALSE,TRUE
+partner556,Lema Gehtane,base.et,FALSE,TRUE
+partner557,Desta Bulbula ,base.et,FALSE,TRUE
+partner558,Tufa Negeso,base.et,FALSE,TRUE
+partner559,Aychilum Tsigie,base.et,FALSE,TRUE
+partner560,Tarkegne Sebemo,base.et,FALSE,TRUE
+partner561,Gemechu Waritu,base.et,FALSE,TRUE
+partner562,Fikre W/semayat,base.et,FALSE,TRUE
+partner563,Solemon Aberha,base.et,FALSE,TRUE
+partner564,Kenenisa Ayito,base.et,FALSE,TRUE
+partner565,Feyisa Tufa,base.et,FALSE,TRUE
+partner566,Mulatu Muse,base.et,FALSE,TRUE
+partner567,Adisu Tesma,base.et,FALSE,TRUE
+partner568,Bekele Abit,base.et,FALSE,TRUE
+partner569,Ferenjo Gudedo,base.et,FALSE,TRUE
+partner570,Gerema Wade,base.et,FALSE,TRUE
+partner571,Lami Kebede,base.et,FALSE,TRUE
+partner572,Mengestu Kumala,base.et,FALSE,TRUE
+partner573,Hameda Bule,base.et,FALSE,TRUE
+partner574,Gemechu Bedaso,base.et,FALSE,TRUE
+partner575,Chernet Mabiso,base.et,FALSE,TRUE
+partner576,Budash Gelgelu,base.et,FALSE,TRUE
+partner577,Tadiwos Terech,base.et,FALSE,TRUE
+partner578,Mehamud Hule,base.et,FALSE,TRUE
+partner579,Abera Mena,base.et,FALSE,TRUE
+partner580,Germewe Muki,base.et,FALSE,TRUE
+partner581,Kedir Uli,base.et,FALSE,TRUE
+partner582,Mulugeta Tufa,base.et,FALSE,TRUE
+partner583,Jula Obesa,base.et,FALSE,TRUE
+partner584,Aserat Bencha,base.et,FALSE,TRUE
+partner585,Semon Degesa,base.et,FALSE,TRUE
+partner586,Bereket Abebe,base.et,FALSE,TRUE
+partner587,Tekelu W/Michael ,base.et,FALSE,TRUE
+partner588,Melese Welede Lemecha,base.et,FALSE,TRUE
+partner589,Aserat Alemu Chemesa,base.et,FALSE,TRUE
+partner590,Merkene Ermias,base.et,FALSE,TRUE
+partner591,Mesfen Halancho,base.et,FALSE,TRUE
+partner592,Feleke Munin,base.et,FALSE,TRUE
+partner593,Habibi Tinesho,base.et,FALSE,TRUE
+partner594,Iyob Berhanu,base.et,FALSE,TRUE
+partner595,Degefa Habete G/Mesekel,base.et,FALSE,TRUE
+partner596,Abaynhe Menecho Anjelo,base.et,FALSE,TRUE
+partner597,Data Dana Herboro,base.et,FALSE,TRUE
+partner598,Habtamu Mensha Tura,base.et,FALSE,TRUE
+partner599,Desalgne Bekele Aneshebo,base.et,FALSE,TRUE
+partner600,Kemal Beriso ,base.et,FALSE,TRUE
+partner601,Melaku Fasile,base.et,FALSE,TRUE
+partner602,Tesfaye Abayene,base.et,FALSE,TRUE
+partner603,Abiy Kedir,base.et,FALSE,TRUE
+partner604,Girma Tesfaye,base.et,FALSE,TRUE
+partner605,Zemedekun Ademasu,base.et,FALSE,TRUE
+partner606,Asefa Eshete,base.et,FALSE,TRUE
+partner607,Getachew Mulugeta,base.et,FALSE,TRUE
+partner608,Furi Bifetu,base.et,FALSE,TRUE
+partner609,Ashagere Game,base.et,FALSE,TRUE
+partner610,Marqos Bununi,base.et,FALSE,TRUE
+partner611,Abu Roba,base.et,FALSE,TRUE

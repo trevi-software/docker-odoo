@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <record id="employee_unique_id_change_wizard" model="ir.ui.view">
+            <field name="name">log.change.employee.uniqueid.wizard.form</field>
+            <field name="model">log.change.employee.uniqueid.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Employee Unique ID Change Wizard" version="7.0">
+                    <header>
+                        <button name="do_change" type="object" class="oe_highlight" string="Apply"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="employee_id" on_change="onchange_employee_id(employee_id)"/>
+                            <field name="new_value"/>
+                        </group>
+                        <group>
+                            <field name="prev_value"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <act_window name="Change Unique ID"
+            res_model="log.change.employee.uniqueid.wizard"
+            src_model="hr.employee"
+            view_mode="form"
+            view_id="employee_unique_id_change_wizard"
+            target="new"
+            id="employee_unique_id_change_act_window"/>
+    
+    </data>
+</openerp>

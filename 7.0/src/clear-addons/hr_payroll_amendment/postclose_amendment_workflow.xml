@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Workflow Definition -->
+        <record id="wkf_payroll_pca" model="workflow">
+            <field name="name">hr.payroll.postclose.amendment.basic</field>
+            <field name="osv">hr.payroll.postclose.amendment</field>
+            <field name="on_create">True</field>
+        </record>
+        
+        <!-- Workflow Activities (Stages) -->
+        
+        <record id="pcaact_draft" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_payroll_pca"/>
+            <field name="name">draft</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'draft'})</field>
+            <field name="flow_start">True</field>
+        </record>
+        
+        <record id="pcaact_open" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_payroll_pca"/>
+            <field name="name">open</field>
+            <field name="kind">function</field>
+            <field name="action">state_open()</field>
+        </record>
+        
+        <record id="pcaact_done" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_payroll_pca"/>
+            <field name="name">done</field>
+            <field name="kind">function</field>
+            <field name="action">state_done()</field>
+            <field name="flow_stop">True</field>
+        </record>
+        
+        <!-- Workflow Transitions -->
+        
+        <record id="pca_draft2open" model="workflow.transition">
+            <field name="act_from" ref="pcaact_draft"/>
+            <field name="act_to" ref="pcaact_open"/>
+            <field name="signal">signal_open</field>
+            <field name="group_id" ref="hr_security.group_payroll_amendment"/>
+        </record>
+        
+        <record id="pca_open2done" model="workflow.transition">
+            <field name="act_from" ref="pcaact_open"/>
+            <field name="act_to" ref="pcaact_done"/>
+            <field name="signal">signal_done</field>
+            <field name="group_id" ref="hr_security.group_payroll_amendment"/>
+        </record>
+
+    </data>
+</openerp>

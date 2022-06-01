@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_goods_issue_user,access_stock_goods_issue,model_stock_issue,stock.group_stock_user,1,1,1,1
+access_stock_goods_issue_line_user,access_stock_goods_issue_line,model_stock_issue_line,stock.group_stock_user,1,1,1,1
+access_stock_internal_picking_user,access_stock_internal_picking,model_stock_picking_internal_in,stock.group_stock_user,1,1,1,1
+access_stock_internal_picking_out_user,access_stock_internal_picking,model_stock_picking_internal_out,stock.group_stock_user,1,1,1,1

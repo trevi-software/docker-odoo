@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record model="ir.cron" id="hr_clock_reader_cron">
+            <field name="name">Attendance Clock Reader</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field eval="(DateTime.now() + timedelta(hours= +1)).strftime('%Y-%m-%d %H:23:00')" name="nextcall"/>
+            <field eval="False" name="doall"/>
+            <field eval="'hr_clock_reader.job'" name="model"/>
+            <field eval="'try_read_clocks'" name="function"/>
+            <field eval="'()'" name="args"/>
+        </record>
+        
+    </data>
+</openerp>

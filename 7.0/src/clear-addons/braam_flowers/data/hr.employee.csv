@@ -1,0 +1,612 @@
+id,name,ethiopic_name,gender,department_id/id,is_labour_union,initial_employment_date,use_ethiopic_dob,etcal_dob_day,etcal_dob_month,etcal_dob_year,address_id/id,address_home_id/id
+l10_plant_1,Almaze Yohanes Hermo,አልማዝ ዮሃንስ ሄርሞ,female,braam_flowers.dep_l10_plant,TRUE,2009-05-05,TRUE,8,7,1984,base.main_partner,partner1
+l10_plant_2,Mekedes Mekonnen Abebe,መቅደስ መኮንን አበ,female,braam_flowers.dep_l10_plant,TRUE,2009-06-04,TRUE,21,4,1980,base.main_partner,partner2
+l10_plant_3,Aster Shiferaw Tesema,አስቴር ሽፈራው ተሰማ,female,braam_flowers.dep_l10_plant,TRUE,2009-06-26,TRUE,8,2,1984,base.main_partner,partner3
+l10_plant_4,Meseret Weji Bulbula,መሰረት ወጂ ቡልቡላ,female,braam_flowers.dep_l10_plant,TRUE,2009-06-28,TRUE,8,8,1983,base.main_partner,partner4
+l10_plant_5,Buze Luka Bekele,,female,braam_flowers.dep_l10_plant,TRUE,2009-08-08,TRUE,3,9,1969,base.main_partner,partner5
+l10_plant_6,Demekech Dana Hirbore,,female,braam_flowers.dep_l10_plant,TRUE,2009-08-09,TRUE,2,6,1984,base.main_partner,partner6
+l10_plant_7,Meaza Taddese Bela,,female,braam_flowers.dep_l10_plant,TRUE,2009-09-30,TRUE,10,8,1984,base.main_partner,partner7
+l10_plant_8,Melesech Erango Ansebo,,female,braam_flowers.dep_l10_plant,TRUE,2009-10-02,TRUE,2,5,1984,base.main_partner,partner8
+l10_plant_9,Kebebush Zeleke Wame,,female,braam_flowers.dep_l10_plant,TRUE,2009-10-05,TRUE,18,2,1982,base.main_partner,partner9
+l10_plant_10,Bezabesh Bekele Basa,በዛብሽ በቀለ ባሳ,female,braam_flowers.dep_l10_plant,TRUE,2009-10-07,TRUE,15,1,1984,base.main_partner,partner10
+l10_plant_11,Tsehay Getachew Zeleke,ፀሃይ ጌታቸው ዘለቀ,female,braam_flowers.dep_l10_plant,TRUE,2009-11-15,TRUE,1,6,1979,base.main_partner,partner11
+l10_plant_12,Jeware Bonso,,female,braam_flowers.dep_l10_plant,TRUE,2010-01-25,TRUE,7,6,1983,base.main_partner,partner12
+l10_plant_13,Bertenesh Welabo Gotango,,female,braam_flowers.dep_l10_plant,TRUE,2010-03-31,TRUE,8,7,1984,base.main_partner,partner13
+l10_plant_14,Ayenalme Tesfaye Gesese,,female,braam_flowers.dep_l10_plant,TRUE,2010-04-01,TRUE,17,8,1980,base.main_partner,partner14
+l10_plant_15,Chaltu Ayano Dafo,ጫልቱ አያኖ ዳፎ,female,braam_flowers.dep_l10_plant,TRUE,2010-04-12,TRUE,7,5,1982,base.main_partner,partner15
+l10_plant_16,Meberate Bogale Keba,,female,braam_flowers.dep_l10_plant,TRUE,2010-04-12,TRUE,2,2,1984,base.main_partner,partner16
+l10_plant_17,Aseter Matiwose Manerecho,,female,braam_flowers.dep_l10_plant,TRUE,2010-05-01,TRUE,20,4,1982,base.main_partner,partner17
+l10_plant_18,Radiya Weliyi Himbo,,female,braam_flowers.dep_l10_plant,TRUE,2010-05-06,TRUE,18,4,1984,base.main_partner,partner18
+l10_plant_20,Tadelech  Lintiso Jakamo,,female,braam_flowers.dep_l10_plant,TRUE,2010-06-01,TRUE,28,6,1982,base.main_partner,partner19
+l10_plant_21,Yemisrache Bekele Qabeto,,female,braam_flowers.dep_l10_plant,TRUE,2010-06-21,TRUE,10,8,1984,base.main_partner,partner20
+l10_plant_22,Mesert Ayele,መሰረት አየለ,female,braam_flowers.dep_l10_plant,TRUE,2010-09-01,TRUE,7,2,1986,base.main_partner,partner21
+l10_plant_23,Ayleche Isayas,አየለች ኢሳያስ,female,braam_flowers.dep_l10_plant,TRUE,2010-09-01,TRUE,1,6,1984,base.main_partner,partner22
+l10_plant_25,Degnshe Berhanu,ደግነሽ ብርሃኑ,female,braam_flowers.dep_l10_plant,TRUE,2010-09-14,TRUE,16,12,1980,base.main_partner,partner23
+l10_plant_26,Zenbeche Kune,ዘነበች ኩኔ,female,braam_flowers.dep_l10_plant,TRUE,2010-09-14,TRUE,18,7,1984,base.main_partner,partner24
+l10_plant_27,Deneqnshe Yohanse,ድንቅነሽ ዮሃንስ,female,braam_flowers.dep_l10_plant,TRUE,2010-12-10,TRUE,19,6,1984,base.main_partner,partner25
+l10_plant_28,Almaze Daniel,አልማዝ ዳንኤል,female,braam_flowers.dep_l10_plant,TRUE,2011-01-03,TRUE,20,7,1978,base.main_partner,partner26
+l10_plant_29,Tigist Ginego,,female,braam_flowers.dep_l10_plant,TRUE,2011-01-03,TRUE,4,6,1985,base.main_partner,partner27
+l10_plant_31,Nuritu Mohamed,ኑሪቱ ሙሃመድ,female,braam_flowers.dep_l10_plant,TRUE,2011-04-20,TRUE,9,8,1979,base.main_partner,partner28
+l10_plant_32,Abaynshe Lejebo,አባይነሽ ለጀቦ,female,braam_flowers.dep_l10_plant,TRUE,2011-04-20,TRUE,11,7,1983,base.main_partner,partner29
+l10_plant_33,Amarech Sinebo,,female,braam_flowers.dep_l10_plant,TRUE,2011-05-16,TRUE,20,1,1979,base.main_partner,partner30
+l10_plant_34,Kebenesh Alemu,ክብነሽ አለሙ,female,braam_flowers.dep_l10_plant,TRUE,2011-05-16,TRUE,7,7,1984,base.main_partner,partner31
+l10_plant_35,Medina Umer,መዲና ዑመር,female,braam_flowers.dep_l10_plant,TRUE,2011-06-02,TRUE,24,12,1982,base.main_partner,partner32
+l10_plant_38,Teyeba Aman,,female,braam_flowers.dep_l10_plant,TRUE,2011-09-14,TRUE,5,1,1984,base.main_partner,partner33
+l10_plant_39,Shewanesh Belachew,ሸዋነሽ በላቸው,female,braam_flowers.dep_l10_plant,TRUE,2011-09-14,TRUE,10,2,1982,base.main_partner,partner34
+l10_plant_40,Desalech Takele,ደሳለች ታከለ,female,braam_flowers.dep_l10_plant,TRUE,2011-10-04,TRUE,2,1,1984,base.main_partner,partner35
+l10_plant_41,Tsegansh Gebre,ፀጋነሽ ገብሬ,female,braam_flowers.dep_l10_plant,TRUE,2011-10-04,TRUE,12,9,1985,base.main_partner,partner36
+l10_plant_42,Achame Sinebo,,female,braam_flowers.dep_l10_plant,TRUE,2011-10-04,TRUE,6,6,1985,base.main_partner,partner37
+l10_plant_43,Birhanesh Arfecho,,female,braam_flowers.dep_l10_plant,TRUE,2011-10-04,TRUE,9,8,1985,base.main_partner,partner38
+l10_plant_44,Zenebech Kasa,ዘነበች ካሳ,female,braam_flowers.dep_l10_plant,TRUE,2011-10-04,TRUE,23,12,1980,base.main_partner,partner39
+l10_plant_45,Buzayhu Abera,,female,braam_flowers.dep_l10_plant,TRUE,2011-10-18,TRUE,8,4,1983,base.main_partner,partner40
+l10_plant_46,Yenensh Sisay,የኔነሽ ሲሳይ,female,braam_flowers.dep_l10_plant,TRUE,2011-10-18,TRUE,2,8,1980,base.main_partner,partner41
+l10_plant_47,Bedatu Wakene,,female,braam_flowers.dep_l10_plant,TRUE,2011-10-19,TRUE,3,4,1984,base.main_partner,partner42
+l10_plant_48,Kokobe Abebe,ኮከብ አበበ,female,braam_flowers.dep_l10_plant,TRUE,2011-12-19,TRUE,2,9,1970,base.main_partner,partner43
+l10_plant_49,Tejitu Abebe,,female,braam_flowers.dep_l10_plant,TRUE,2012-01-12,TRUE,10,2,1980,base.main_partner,partner44
+l10_plant_50,Denekinsh Markos,,female,braam_flowers.dep_l10_plant,TRUE,2012-01-18,TRUE,12,11,1984,base.main_partner,partner45
+l10_plant_51,Miminshe Alemu,,female,braam_flowers.dep_l10_plant,TRUE,2012-01-18,TRUE,26,7,1985,base.main_partner,partner46
+l10_plant_52,Tamenche Bafa,ታመነች ባፋ,female,braam_flowers.dep_l10_plant,TRUE,2012-02-08,TRUE,16,3,1983,base.main_partner,partner47
+l10_plant_53,Asnakech Bekele,አስናቀች በቀለ,female,braam_flowers.dep_l10_plant,TRUE,2012-03-01,TRUE,8,6,1983,base.main_partner,partner48
+l10_plant_54,Birkiensh Ena,,female,braam_flowers.dep_l10_plant,TRUE,2012-03-01,TRUE,28,7,1982,base.main_partner,partner49
+l10_plant_55,Geneme Mahammed,,female,braam_flowers.dep_l10_plant,TRUE,2012-04-02,TRUE,1,2,1980,base.main_partner,partner50
+l10_plant_56,Alemitu Bekele,አለሚቱ በቀለ,female,braam_flowers.dep_l10_plant,TRUE,2012-04-20,TRUE,17,1,1980,base.main_partner,partner51
+l10_plant_57,Genetu Megerso,,female,braam_flowers.dep_l10_plant,TRUE,2012-04-20,TRUE,20,8,1982,base.main_partner,partner52
+l10_plant_59,Hiwot Hushu,,female,braam_flowers.dep_l10_plant,TRUE,2012-05-22,TRUE,6,11,1980,base.main_partner,partner53
+l10_plant_60,Ayenalem Feyisa,ዓይናለም ፈይሳ,female,braam_flowers.dep_l10_plant,FALSE,2012-07-16,TRUE,20,10,1978,base.main_partner,partner54
+l10_plant_61,Furno Girma Ashera,,female,braam_flowers.dep_l10_plant,FALSE,2012-07-16,TRUE,8,12,1982,base.main_partner,partner55
+l10_plant_62,Tamenech Tameru,ታመነች ታመሩ,female,braam_flowers.dep_l10_plant,FALSE,2012-07-16,TRUE,29,2,1980,base.main_partner,partner56
+l10_plant_63,Beza Shewangezaw,,female,braam_flowers.dep_l10_plant,FALSE,2012-08-04,TRUE,19,12,1978,base.main_partner,partner57
+l10_plant_65,Alimaze Gete,,female,braam_flowers.dep_l10_plant,FALSE,2012-09-03,TRUE,26,7,1980,base.main_partner,partner58
+l10_plant_66,Tigist Delago,,female,braam_flowers.dep_l10_plant,FALSE,,TRUE,18,2,1985,base.main_partner,partner59
+l10_plant_67,Gobene Amana,,female,braam_flowers.dep_l10_plant,FALSE,2012-09-03,TRUE,21,1,1981,base.main_partner,partner60
+l10_plant_68,Tigist Wendemu,,female,braam_flowers.dep_l10_plant,FALSE,2012-10-01,TRUE,3,4,1985,base.main_partner,partner61
+l10_plant_69,Wedinesh Tale,,female,braam_flowers.dep_l10_plant,FALSE,2012-10-02,TRUE,9,1,1980,base.main_partner,partner62
+l10_plant_70,Adenech Zeleke,አዳነች ዘለቀ,female,braam_flowers.dep_l10_plant,FALSE,2012-10-12,TRUE,11,8,1980,base.main_partner,partner63
+l10_plant_72,Bekelech Debela,በቀለች ደበላ,female,braam_flowers.dep_l10_plant,FALSE,2012-10-15,TRUE,10,7,1960,base.main_partner,partner64
+l10_plant_74,Denkenesh Bogale,ድንቅነሽ ቦጋለ,female,braam_flowers.dep_l10_plant,FALSE,2012-11-01,TRUE,1,9,1980,base.main_partner,partner65
+l10_plant_75,Amarech Areba,,female,braam_flowers.dep_l10_plant,FALSE,2012-11-01,TRUE,23,12,1982,base.main_partner,partner66
+l10_plant_76,Maberat Tasefaye,መብራት ተስፋዬ,female,braam_flowers.dep_l10_plant,FALSE,2012-11-01,TRUE,20,3,1982,base.main_partner,partner67
+l10_plant_77,Asefelech Solomon,,female,braam_flowers.dep_l10_plant,FALSE,2012-11-15,TRUE,10,2,1983,base.main_partner,partner68
+l10_plant_78,Aberash Lentiso,,female,braam_flowers.dep_l10_plant,FALSE,2012-11-09,TRUE,8,11,1985,base.main_partner,partner69
+l10_plant_79,Adanech Lema,አዳነች ለማ,female,braam_flowers.dep_l10_plant,FALSE,2012-12-01,TRUE,20,12,1982,base.main_partner,partner70
+l10_plant_80,Shega Mohammed,ሸጋ ሙሃመድ,female,braam_flowers.dep_l10_plant,FALSE,2012-12-01,TRUE,10,1,1981,base.main_partner,partner71
+l10_plant_81,Alemitu Amedo,,female,braam_flowers.dep_l10_plant,FALSE,2012-12-01,TRUE,21,6,1982,base.main_partner,partner72
+l10_plant_82,Abebech Mendolo,,female,braam_flowers.dep_l10_plant,FALSE,2012-12-01,TRUE,7,8,1980,base.main_partner,partner73
+l10_plant_83,Bezunesh Botare,,female,braam_flowers.dep_l10_plant,FALSE,2012-12-08,TRUE,18,1,1980,base.main_partner,partner74
+l10_plant_84,Aster Mammo,አስቴር ማሞ,female,braam_flowers.dep_l10_plant,FALSE,2012-12-08,TRUE,12,2,1982,base.main_partner,partner75
+l10_plant_85,Bezunesh Sorisa,,female,braam_flowers.dep_l10_plant,FALSE,2012-12-17,TRUE,26,12,1980,base.main_partner,partner76
+l10_plant_86,Etenesh Kuamo,,female,braam_flowers.dep_l10_plant,FALSE,2012-12-17,TRUE,18,11,1980,base.main_partner,partner77
+l10_plant_88,Bekelech Hilenu,,female,braam_flowers.dep_l10_plant,FALSE,2013-01-04,TRUE,1,4,1980,base.main_partner,partner78
+l10_plant_89,Larame Ligiso,,female,braam_flowers.dep_l10_plant,FALSE,2013-01-09,TRUE,7,6,1984,base.main_partner,partner79
+l10_plant_90,Denkinesh Teshom,,female,braam_flowers.dep_l10_plant,FALSE,2013-01-09,TRUE,23,4,1983,base.main_partner,partner80
+l10_plant_91,Desalech Diga,,female,braam_flowers.dep_l10_plant,FALSE,2013-01-09,TRUE,21,9,1985,base.main_partner,partner81
+l10_plant_92,Etalem Tadese,,female,braam_flowers.dep_l10_plant,FALSE,2013-01-14,TRUE,9,1,1983,base.main_partner,partner82
+l10_plant_93,Meheret Tafese,ምህረት ታፈሰ,female,braam_flowers.dep_l10_plant,FALSE,2013-01-16,TRUE,12,4,1984,base.main_partner,partner83
+l10_plant_95,Maberat Bogale,መብራት ቦጋለ,female,braam_flowers.dep_l10_plant,FALSE,2013-01-31,TRUE,20,6,1980,base.main_partner,partner84
+l10_plant_96,Konjit Hushulu,,female,braam_flowers.dep_l10_plant,FALSE,2013-01-31,TRUE,18,1,1982,base.main_partner,partner85
+l10_plant_97,Bertukan Gedebo,,female,braam_flowers.dep_l10_plant,FALSE,2013-02-02,TRUE,25,12,1980,base.main_partner,partner86
+l10_plant_98,Zenebech Haile ,ዘነበች ሃይሌ,female,braam_flowers.dep_l10_plant,FALSE,2013-02-02,TRUE,30,4,1982,base.main_partner,partner87
+l10_plant_99,Amarech Melkam,አማረች መልካም,female,braam_flowers.dep_l10_plant,FALSE,2013-02-04,TRUE,8,9,1980,base.main_partner,partner88
+l10_plant_102,Regatu Geleto,,female,braam_flowers.dep_l10_plant,FALSE,2013-02-04,TRUE,2,3,1983,base.main_partner,partner89
+l10_plant_103,Selame Benta,,female,braam_flowers.dep_l10_plant,FALSE,2013-02-07,TRUE,16,9,1980,base.main_partner,partner90
+l10_plant_104,Genete Solomon,ገነት ሰለሞን,female,braam_flowers.dep_l10_plant,FALSE,2013-02-18,TRUE,18,10,1980,base.main_partner,partner91
+l10_plant_105,Deno Lamore,,female,braam_flowers.dep_l10_plant,FALSE,2013-02-18,TRUE,6,7,1982,base.main_partner,partner92
+l10_plant_106,Asebach Alaro,,female,braam_flowers.dep_l10_plant,FALSE,2013-02-28,TRUE,21,6,1983,base.main_partner,partner93
+l10_plant_107,Berhanesh Bekele ,,female,braam_flowers.dep_l10_plant,FALSE,2013-02-28,TRUE,1,1,1980,base.main_partner,partner94
+l10_plant_108,Melesech Basa,,female,braam_flowers.dep_l10_plant,FALSE,2013-03-05,TRUE,20,1,1982,base.main_partner,partner95
+l10_plant_109,Alemitu Filipos,አለሚቱ ፊሊጶስ,female,braam_flowers.dep_l10_plant,FALSE,2013-03-05,TRUE,10,10,1984,base.main_partner,partner96
+l10_plant_112,Welela Beyen,,female,braam_flowers.dep_l10_plant,FALSE,2013-03-17,TRUE,23,1,1978,base.main_partner,partner97
+l10_plant_113,Abebech Abemo Ersedo,,female,braam_flowers.dep_scouting,TRUE,2010-01-25,TRUE,2,6,1982,base.main_partner,partner98
+l10_plant_114,Bethelehme Zeleke Gedebo,,female,braam_flowers.dep_scouting,TRUE,2009-08-07,TRUE,9,1,1984,base.main_partner,partner99
+l10_plant_115,Aynalem Hemiro Daka,,female,braam_flowers.dep_scouting,TRUE,2009-08-31,TRUE,28,2,1985,base.main_partner,partner100
+l10_plant_117,Takelche Tafesse Haile,ታከለች ታፈሰ ሃይሌ,female,braam_flowers.dep_scouting,TRUE,2010-03-25,TRUE,20,11,1983,base.main_partner,partner101
+l10_plant_118,Yayish Dagnachew,ያይሽ ዳኛቸው,female,braam_flowers.dep_scouting,TRUE,2010-12-01,TRUE,19,8,1979,base.main_partner,partner102
+l10_plant_119,Ofole Kiriko,,female,braam_flowers.dep_scouting,TRUE,2010-12-18,TRUE,7,12,1982,base.main_partner,partner103
+l10_plant_121,Ayu Aurgesa,,female,braam_flowers.dep_scouting,TRUE,2011-01-08,TRUE,15,8,1985,base.main_partner,partner104
+l10_plant_122,Genitu Abedla,ገኒቱ አብደላ,female,braam_flowers.dep_scouting,TRUE,2011-08-12,TRUE,20,1,1980,base.main_partner,partner105
+l10_plant_123,Ruqiya Guye,,female,braam_flowers.dep_scouting,TRUE,2011-10-07,TRUE,10,7,1981,base.main_partner,partner106
+l10_plant_124,Ababe Kedir,አባቤ ከድር,female,braam_flowers.dep_scouting,FALSE,2012-02-17,TRUE,8,9,1980,base.main_partner,partner107
+l10_plant_126,Demekech Dejene,,female,braam_flowers.dep_l10_plant,FALSE,2013-04-04,TRUE,6,6,1984,base.main_partner,partner108
+l10_plant_127,Mesert Madebo,,female,braam_flowers.dep_l10_plant,FALSE,2013-04-04,TRUE,18,7,1982,base.main_partner,partner109
+l10_plant_128,Masho Kedir,,female,braam_flowers.dep_l10_plant,FALSE,2013-04-04,TRUE,21,5,1984,base.main_partner,partner110
+l10_plant_129,Genet Kuma,ገነት ኩማ,female,braam_flowers.dep_l10_plant,FALSE,2013-04-04,TRUE,25,4,1982,base.main_partner,partner111
+l10_plant_130,Alimaze Wolede,,female,braam_flowers.dep_l10_plant,FALSE,2013-04-11,TRUE,8,7,1985,base.main_partner,partner112
+l10_plant_131,Elifenesh Dikeso,,female,braam_flowers.dep_l10_plant,FALSE,2013-04-16,TRUE,15,2,1982,base.main_partner,partner113
+l10_plant_132,Meskrem Pawulos,መስከረም ጳውሎስ,female,braam_flowers.dep_l10_plant,FALSE,2013-04-21,TRUE,17,2,1985,base.main_partner,partner114
+l10_plant_133,Zenbech Yonas,ዘነበች ዮናስ,female,braam_flowers.dep_l10_plant,FALSE,2013-04-24,TRUE,21,2,1985,base.main_partner,partner115
+l10_plant_134,Tigist Basa,ትግስት ባሳ,female,braam_flowers.dep_l10_plant,FALSE,2013-05-02,TRUE,1,5,1983,base.main_partner,partner116
+l10_plant_135,Marta Boditi,,female,braam_flowers.dep_l10_plant,FALSE,2013-05-02,TRUE,14,5,1982,base.main_partner,partner117
+l10_plant_136,Tarekech Tadiwos,,female,braam_flowers.dep_l10_plant,FALSE,2013-05-08,TRUE,25,12,1981,base.main_partner,partner118
+l10_plant_137,Demekech Susamo,,female,braam_flowers.dep_l10_plant,FALSE,2013-05-21,TRUE,12,1,1984,base.main_partner,partner119
+l10_plant_138,Amarech Sorisa,,female,braam_flowers.dep_l10_plant,FALSE,2013-05-21,TRUE,24,2,1982,base.main_partner,partner120
+l10_plant_139,Mesret Mamo,መሰረት ማሞ,female,braam_flowers.dep_scouting,FALSE,2010-11-10,TRUE,5,8,1980,base.main_partner,partner121
+l10_plant_140,Aberash Itore,,female,braam_flowers.dep_scouting,FALSE,2011-06-18,TRUE,20,2,1981,base.main_partner,partner122
+l10_grade_1,Fasika Kasay Neguse,ፋሲካ ካሳዬ ንጉሴ,female,braam_flowers.dep_l10_grade,TRUE,2010-01-25,TRUE,8,8,1980,base.main_partner,partner123
+l10_grade_2,Bezunesh Abure Jofy,,female,braam_flowers.dep_l10_grade,TRUE,2009-07-24,TRUE,8,3,1984,base.main_partner,partner124
+l10_grade_3,Robedu Tebeso Qewati,,female,braam_flowers.dep_l10_grade,TRUE,2009-08-19,TRUE,6,1,1984,base.main_partner,partner125
+l10_grade_4,Hanna Birhanu Alero,,female,braam_flowers.dep_l10_grade,TRUE,2009-10-05,TRUE,8,3,1984,base.main_partner,partner126
+l10_grade_5,Bekelech Girma  Demisse,,female,braam_flowers.dep_l10_grade,TRUE,2009-10-05,TRUE,8,3,1983,base.main_partner,partner127
+l10_grade_6,Alemaz Amede Ali,,female,braam_flowers.dep_l10_grade,TRUE,2009-12-24,TRUE,20,2,1960,base.main_partner,partner128
+l10_grade_7,Chali Kemela Mohammed,,female,braam_flowers.dep_l10_grade,TRUE,2010-01-22,TRUE,8,3,1983,base.main_partner,partner129
+l10_grade_8,Kidist Tekelu Debo,,female,braam_flowers.dep_l10_grade,TRUE,2010-01-22,TRUE,8,3,1985,base.main_partner,partner130
+l10_grade_9,Asenaqche Yosefe Ayel,,female,braam_flowers.dep_l10_grade,TRUE,2010-03-27,TRUE,21,4,1983,base.main_partner,partner131
+l10_grade_10,Fanaye Osa Genebo,,female,braam_flowers.dep_l10_grade,TRUE,2010-03-27,TRUE,8,1,1983,base.main_partner,partner132
+l10_grade_12,Mareyama Chernte,,female,braam_flowers.dep_l10_grade,TRUE,2010-10-01,TRUE,2,6,1985,base.main_partner,partner133
+l10_grade_13,Kidist Lemesa,,female,braam_flowers.dep_l10_grade,TRUE,2011-01-03,TRUE,1,6,1986,base.main_partner,partner134
+l10_grade_14,Enatnsh Tesfay,አናትነሽ ተስፋዬ,female,braam_flowers.dep_l10_grade,TRUE,2011-02-05,TRUE,8,3,1974,base.main_partner,partner135
+l10_grade_15,Mesret Lea,,female,braam_flowers.dep_l10_grade,TRUE,2011-09-21,TRUE,21,4,1980,base.main_partner,partner136
+l10_grade_16,Haymanot Shifraw,ሃይማኖት ሽፈራው,female,braam_flowers.dep_l10_grade,TRUE,2011-09-21,TRUE,8,7,1984,base.main_partner,partner137
+l10_grade_17,Denekensh Deke,,female,braam_flowers.dep_l10_grade,TRUE,2011-11-28,TRUE,8,3,1983,base.main_partner,partner138
+l10_grade_18,Meherte Getachew,,female,braam_flowers.dep_l10_grade,TRUE,2011-12-07,TRUE,8,7,1985,base.main_partner,partner139
+l10_grade_19,Zenebech Tesfaye,ዘነበች ተስፋዬ,female,braam_flowers.dep_l10_grade,TRUE,2012-03-01,TRUE,6,9,1983,base.main_partner,partner140
+l10_grade_20,Tadelech Geneta,,female,braam_flowers.dep_l10_grade,TRUE,2012-03-01,TRUE,8,3,1981,base.main_partner,partner141
+l10_grade_21,Chaltu Kurkura,,female,braam_flowers.dep_l10_grade,TRUE,2012-03-01,TRUE,8,3,1984,base.main_partner,partner142
+l10_grade_22,Hana Sebehat,ሃና ሰብሃት,female,braam_flowers.dep_l10_grade,TRUE,2012-03-01,TRUE,27,2,1985,base.main_partner,partner143
+l10_grade_23,Britane Thomas,,female,braam_flowers.dep_l10_grade,TRUE,2012-04-23,TRUE,12,10,1978,base.main_partner,partner144
+l10_grade_25,Abiwot Muluneh,አብዮት ሙሉነህ,female,braam_flowers.dep_l10_grade,TRUE,2012-05-08,TRUE,2,8,1980,base.main_partner,partner145
+l10_grade_26,Yesh Asemare,,female,braam_flowers.dep_l10_grade,FALSE,2012-11-07,TRUE,20,6,1985,base.main_partner,partner146
+l10_grade_27,Tarikua Dagne,,female,braam_flowers.dep_l10_grade,FALSE,2012-11-07,TRUE,21,1,1983,base.main_partner,partner147
+l10_grade_28,Tamenech Henok,ታመነች ዬኖክ,female,braam_flowers.dep_l10_grade,FALSE,2012-11-07,TRUE,6,7,1982,base.main_partner,partner148
+l10_grade_29,Fate Negeo,,female,braam_flowers.dep_l10_grade,FALSE,2012-12-08,TRUE,26,12,1980,base.main_partner,partner149
+l10_grade_30,Wedenesh Aberham,ውድነሽ አብረሃም,female,braam_flowers.dep_l10_grade,FALSE,2012-12-08,TRUE,11,2,1986,base.main_partner,partner150
+l10_grade_31,Hilen Demese ,,female,braam_flowers.dep_l10_grade,FALSE,2013-01-10,TRUE,7,1,1980,base.main_partner,partner151
+l10_grade_32,Beshadu Midekisa,,female,braam_flowers.dep_l10_grade,FALSE,2013-01-12,TRUE,21,8,1982,base.main_partner,partner152
+l10_grade_33,Meskerem Wegeso,,female,braam_flowers.dep_l10_grade,FALSE,2013-01-31,TRUE,1,6,1982,base.main_partner,partner153
+l10_grade_34,Werke Uke,,female,braam_flowers.dep_l10_grade,FALSE,2013-01-31,TRUE,20,8,1985,base.main_partner,partner154
+l10_grade_35,Mimi Mengesha,ሚሚ መንገሻ,female,braam_flowers.dep_l10_grade,FALSE,2013-02-05,TRUE,26,10,1984,base.main_partner,partner155
+l10_grade_36,Gefit Hailu,,female,braam_flowers.dep_l10_grade,FALSE,2013-02-07,TRUE,18,1,1984,base.main_partner,partner156
+l10_grade_39,Fantu Tsegaye,,female,braam_flowers.dep_l10_grade,FALSE,2013-03-01,TRUE,21,3,1983,base.main_partner,partner157
+l10_grade_40,Terefu Seyum G/Tsadik,,female,braam_flowers.dep_l10_grade,FALSE,2009-05-05,TRUE,12,2,1983,base.main_partner,partner158
+l10_grade_41,Rebeka Zeweg,ረብቃ ዘውገ,female,braam_flowers.dep_l10_grade,FALSE,2013-04-04,TRUE,12,2,1986,base.main_partner,partner159
+l10_grade_42,Zenash Data,,female,braam_flowers.dep_l10_grade,FALSE,2013-04-04,TRUE,25,12,1986,base.main_partner,partner160
+l10_grade_43,Buzayehu Asegede,,female,braam_flowers.dep_l10_grade,FALSE,2013-04-04,TRUE,14,1,1985,base.main_partner,partner161
+l10_grade_44,Fate Aliy,,female,braam_flowers.dep_l10_grade,FALSE,2013-04-21,TRUE,28,8,1985,base.main_partner,partner162
+l10_grade_45,Amarech Qolche,,female,braam_flowers.dep_l10_grade,FALSE,2011-07-19,TRUE,12,12,1984,base.main_partner,partner163
+l10_grade_46,Adise Daniel,,female,braam_flowers.dep_l10_grade,FALSE,2012-04-20,TRUE,18,2,1982,base.main_partner,partner164
+l10_grade_47,Fatuma Deme,,female,braam_flowers.dep_l10_grade,FALSE,2013-05-13,TRUE,20,11,1985,base.main_partner,partner165
+l10_irrig_1,Tariku Shale,ታሪኩ ሻሌ,male,braam_flowers.dep_l10_irrig,TRUE,2010-09-06,TRUE,6,9,1982,base.main_partner,partner166
+l10_irrig_2,Kumelachew Seyume,ቁምላቸው ስዩም,male,braam_flowers.dep_l10_irrig,TRUE,2012-03-09,TRUE,21,2,1980,base.main_partner,partner167
+l10_irrig_3,Temesgen Dawit,ተመስገን ዳዊት,male,braam_flowers.dep_l10_irrig,TRUE,2012-06-01,TRUE,2,12,1980,base.main_partner,partner168
+l10_irrig_4,Shemeket Tamirat,,male,braam_flowers.dep_l10_irrig,FALSE,2012-07-05,TRUE,2,1,1985,base.main_partner,partner169
+l10_irrig_5,Mihertu Abera,,male,braam_flowers.dep_l10_irrig,FALSE,2012-10-11,TRUE,16,8,1982,base.main_partner,partner170
+l10_irrig_6,Dawit chirko,,male,braam_flowers.dep_l10_irrig,FALSE,2013-10-11,TRUE,20,2,1980,base.main_partner,partner171
+l10_irrig_7,Derje Deporia,,male,braam_flowers.dep_l10_irrig,FALSE,2012-11-05,TRUE,17,12,1983,base.main_partner,partner172
+l10_irrig_8,Tilahun Bokla,,male,braam_flowers.dep_l10_irrig,FALSE,2012-12-01,TRUE,21,10,1985,base.main_partner,partner173
+l10_irrig_9,Sisay Yitayew,ሲሳይ ይታየው,male,braam_flowers.dep_l10_irrig,FALSE,2012-12-12,TRUE,12,8,1985,base.main_partner,partner174
+l10_irrig_10,Hussen Haji,ሁሴን ሃጂ,male,braam_flowers.dep_l10_irrig,FALSE,2012-12-12,TRUE,18,2,1982,base.main_partner,partner175
+l10_irrig_11,Merhun Mammo,,male,braam_flowers.dep_l10_irrig,FALSE,2012-12-12,TRUE,19,7,1980,base.main_partner,partner176
+l10_irrig_14,Aserat Adisu,አስራት አዲሱ,male,braam_flowers.dep_l10_irrig,FALSE,2013-02-04,TRUE,22,1,1982,base.main_partner,partner177
+l10_irrig_15,Mohammade Fanu,ሙሃመድ ፋኑ,male,braam_flowers.dep_l10_irrig,FALSE,2013-02-07,TRUE,7,6,1985,base.main_partner,partner178
+l10_irrig_16,Tesfaye Gelicha,,male,braam_flowers.dep_l10_irrig,FALSE,2013-03-18,TRUE,2,1,1980,base.main_partner,partner179
+l10_irrig_17,Aberham Samuel,አብረሃም ሳሙኤል,male,braam_flowers.dep_l10_irrig,FALSE,2013-03-23,TRUE,20,2,1985,base.main_partner,partner180
+l10_irrig_18,Mohammade Mieso,,male,braam_flowers.dep_l10_irrig,FALSE,2013-03-23,TRUE,10,1,1980,base.main_partner,partner181
+l10_irrig_22,Sisay Acamo,ሲሳይ አካሞ,male,braam_flowers.dep_l10_irrig,TRUE,2012-06-01,TRUE,1,6,1985,base.main_partner,partner182
+l10_irrig_23,Temesgen Denisa,ተመስገን ደኒሳ,male,braam_flowers.dep_l10_irrig,TRUE,2012-06-13,TRUE,14,5,1981,base.main_partner,partner183
+l10_irrig_24,Matusala Shege,,male,braam_flowers.dep_l10_irrig,FALSE,2013-04-11,TRUE,21,1,1980,base.main_partner,partner184
+l10_irrig_25,Tulu Tuse,,male,braam_flowers.dep_l10_irrig,FALSE,2013-04-11,TRUE,12,4,1983,base.main_partner,partner185
+cleaning_1,Hailu Abebe Robi,ሃይሉ አበበ ሮቢ,male,braam_flowers.dep_l10_cleaning,TRUE,2009-04-12,TRUE,1,10,1965,base.main_partner,partner186
+cleaning_2,Kedir Nura,ከድር ኑራ,male,braam_flowers.dep_l10_cleaning,TRUE,2009-09-13,TRUE,22,4,1965,base.main_partner,partner187
+cleaning_3,Feyisa Dejene Adem,,male,braam_flowers.dep_l10_cleaning,TRUE,2012-08-20,TRUE,22,1,1978,base.main_partner,partner188
+cleaning_4,Dejene Abure,,male,braam_flowers.dep_l10_cleaning,TRUE,2012-03-02,TRUE,18,2,1985,base.main_partner,partner189
+cleaning_5,Kedir Mohammed,ከድር ሙሃመድ,male,braam_flowers.dep_l10_cleaning,TRUE,2012-12-02,TRUE,15,3,1982,base.main_partner,partner190
+cleaning_6,Matusala Matiwos,,male,braam_flowers.dep_l10_cleaning,TRUE,2012-12-23,TRUE,21,8,1982,base.main_partner,partner191
+cleaning_7,Biru Bude,,male,braam_flowers.dep_l10_cleaning,TRUE,2012-10-01,TRUE,2,1,1985,base.main_partner,partner192
+cleaning_8,Yohanes Dereje,,male,braam_flowers.dep_l10_cleaning,TRUE,2013-02-04,TRUE,12,11,1980,base.main_partner,partner193
+cleaning_9,Adisu Temesgen,አዲሱ ተመስገን,male,braam_flowers.dep_l10_cleaning,TRUE,2012-02-04,TRUE,,,,base.main_partner,partner194
+cleaning_10,Mikias Samuel,ሚኪያስ ሳሙኤል,male,braam_flowers.dep_l10_cleaning,TRUE,2013-02-07,TRUE,26,1,1983,base.main_partner,partner195
+cleaning_11,Wado Abu,,male,braam_flowers.dep_l10_cleaning,TRUE,2013-03-04,TRUE,8,7,1984,base.main_partner,partner196
+cleaning_12,Zubeyda Hussen,ዙበይዳ ሁሴን,female,braam_flowers.dep_l10_cleaning,TRUE,2009-11-30,TRUE,2,8,1979,base.main_partner,partner197
+l10push_1,Solomon Olda,ሰለሞን ኦልዳ,male,braam_flowers.dep_l10_push,TRUE,2010-02-08,TRUE,8,3,1979,base.main_partner,partner198
+l10push_2,Shambel Hirpo,ሻምበል ሂርፖ,male,braam_flowers.dep_l10_push,TRUE,2010-12-01,TRUE,10,2,1977,base.main_partner,partner199
+l10push_3,Ermias Elias,ኤርሚያስ ኤልያስ,male,braam_flowers.dep_l10_push,TRUE,2011-01-04,TRUE,20,1,1985,base.main_partner,partner200
+l10push_4,Jemal Tusa,ጀማል ቱሳ,male,braam_flowers.dep_l10_push,TRUE,2011-03-12,TRUE,8,6,1984,base.main_partner,partner201
+l10push_6,Eferem Chere,,male,braam_flowers.dep_l10_push,TRUE,2011-08-05,TRUE,8,3,1983,base.main_partner,partner202
+l10push_7,Asfaw Albamo,,male,braam_flowers.dep_l10_push,TRUE,2011-10-03,TRUE,20,12,1980,base.main_partner,partner203
+l10push_8,Alemayhu Gebeyhu,,male,braam_flowers.dep_l10_push,TRUE,2011-10-14,TRUE,28,8,1975,base.main_partner,partner204
+l10push_10,Lemancho Handebo,,male,braam_flowers.dep_l10_push,TRUE,2013-02-28,TRUE,12,3,1982,base.main_partner,partner205
+l10push_11,Derse Deha ,,male,braam_flowers.dep_l10_push,TRUE,2013-02-28,TRUE,20,8,1970,base.main_partner,partner206
+l10push_14,Siraji Muhamed,,male,braam_flowers.dep_l10_push,TRUE,2013-05-01,TRUE,1,12,1980,base.main_partner,partner207
+l10push_15,Adem Shaku,,male,braam_flowers.dep_l10_push,TRUE,2013-05-21,TRUE,2,2,1980,base.main_partner,partner208
+maint_1,Endashaw Getachew,,male,braam_flowers.dep_maint,FALSE,2010-08-02,TRUE,5,12,1978,base.main_partner,partner209
+maint_2,Merga Kedir,መርጋ ከድር,male,braam_flowers.dep_maint,FALSE,2010-09-11,TRUE,,,,base.main_partner,partner210
+maint_4,Tsegaye Robena,,male,braam_flowers.dep_maint,TRUE,2011-04-28,TRUE,30,2,1980,base.main_partner,partner211
+maint_5,Mohamed Borja,,male,braam_flowers.dep_maint,TRUE,2011-10-10,TRUE,10,10,1982,base.main_partner,partner212
+maint_8,Abedurhaman Mohammed,አብዱራህማን ሙሃመድ,male,braam_flowers.dep_maint,TRUE,2013-02-22,TRUE,10,10,1986,base.main_partner,partner213
+maint_9,Temesgen Bekele,ተመስገን በቀለ,male,braam_flowers.dep_maint,TRUE,2013-02-22,TRUE,8,1,1983,base.main_partner,partner214
+maint_10,Kasim Kedir,ቃሲም ከድር,male,braam_flowers.dep_maint,TRUE,2013-03-01,TRUE,2,12,1985,base.main_partner,partner215
+maint_11,Aredo Tekuru,,male,braam_flowers.dep_maint,TRUE,2013-03-01,TRUE,20,1,1984,base.main_partner,partner216
+maint_14,Kamsur Bedaso,,male,braam_flowers.dep_maint,TRUE,2013-04-09,TRUE,17,5,1983,base.main_partner,partner217
+maint_15,Beriso Haile,በሪሶ ሃይሌ,male,braam_flowers.dep_maint,TRUE,2013-04-09,TRUE,25,8,1985,base.main_partner,partner218
+l10protect_1,Asela Anjelo,አሰላ አንጀሎ,male,braam_flowers.dep_l10_protect,TRUE,2010-10-01,TRUE,16,2,1975,base.main_partner,partner219
+l10protect_2,Tariku Birhanu,ታሪኩ ብርሃኑ,male,braam_flowers.dep_l10_protect,TRUE,2011-10-14,TRUE,8,12,1980,base.main_partner,partner220
+l10protect_3,Mirkehene Guja,,male,braam_flowers.dep_l10_protect,FALSE,2012-10-16,TRUE,19,6,1982,base.main_partner,partner221
+l10protect_4,Eirmias Selase,ኤርሚያስ ስላሴ,male,braam_flowers.dep_l10_protect,FALSE,2012-02-07,TRUE,20,12,1975,base.main_partner,partner222
+l10protect_6,Gudeta Gudero,,male,braam_flowers.dep_l10_protect,FALSE,2012-12-24,TRUE,28,1,1980,base.main_partner,partner223
+l10protect_7,Enderias Basa,እንድሪያስ ባሳ,male,braam_flowers.dep_l10_protect,FALSE,2012-03-09,TRUE,10,9,1984,base.main_partner,partner224
+l10protect_8,Takele Doda,ታከለ ዶዳ,male,braam_flowers.dep_l10_protect,FALSE,2013-02-01,TRUE,2,4,1975,base.main_partner,partner225
+l10protect_10,Abebe Daniel,አበበ ዳንኤል,male,braam_flowers.dep_l10_protect,FALSE,2013-02-28,TRUE,25,4,1974,base.main_partner,partner226
+l10protect_12,Abera Aysa Galaso,,male,braam_flowers.dep_l10_protect,TRUE,2010-04-24,TRUE,12,5,1970,base.main_partner,partner227
+l10protect_13,Desalegne Dana,ደሳለኝ ዳሳ,male,braam_flowers.dep_l10_protect,FALSE,2013-04-05,TRUE,5,5,1982,base.main_partner,partner228
+l10protect_14,Abedela Bedaso,አብደላ በዳሶ,male,braam_flowers.dep_l10_protect,FALSE,2013-04-09,TRUE,25,8,1980,base.main_partner,partner229
+l10protect_15,Takele Midakisa,,male,braam_flowers.dep_l10_protect,FALSE,2013-04-09,TRUE,15,4,1983,base.main_partner,partner230
+l10_cold_1,Ermias Esatu,,male,braam_flowers.dep_l10_cold,TRUE,2009-08-24,TRUE,2,6,1980,base.main_partner,partner231
+l10_cold_2,Kedir Hussen Salemon,,male,braam_flowers.dep_l10_cold,TRUE,2009-09-26,TRUE,9,3,1970,base.main_partner,partner232
+l10_cold_3,Tesfahun Desalgn,ተስፋሁን ደሳለኝ,male,braam_flowers.dep_l10_cold,TRUE,2010-01-11,TRUE,22,2,1980,base.main_partner,partner233
+l10_cold_4,Jemal Gebyew,,male,braam_flowers.dep_l10_cold,TRUE,2010-10-12,TRUE,12,6,1984,base.main_partner,partner234
+l10_cold_5,Shumi Beriso,ሹሚ በሪሶ,male,braam_flowers.dep_l10_cold,TRUE,2010-10-27,TRUE,26,1,1984,base.main_partner,partner235
+l10_cold_6,Zerihun Mekuriya,,male,braam_flowers.dep_l10_cold,TRUE,2011-01-11,TRUE,2,8,1983,base.main_partner,partner236
+l10_cold_7,Sisay Temesgen,ሲሳይ ተመስገን,male,braam_flowers.dep_l10_cold,TRUE,2011-05-04,TRUE,8,5,1984,base.main_partner,partner237
+l10_cold_8,Getachew Negash,ጌታችው ነጋሽ,male,braam_flowers.dep_l10_cold,TRUE,2011-05-09,TRUE,2,1,1965,base.main_partner,partner238
+l10_cold_9,Merehune Menta Anamo,,male,braam_flowers.dep_l10_cold,FALSE,2009-08-10,TRUE,26,12,1980,base.main_partner,partner239
+l10_cold_10,Yohanse Zelalem Girma,ዮሃንስ ዘላለም ግርማ,male,braam_flowers.dep_l10_cold,FALSE,2009-08-12,TRUE,12,1,1980,base.main_partner,partner240
+l10_cold_11,Fekadu Lukase,,male,braam_flowers.dep_l10_cold,TRUE,2010-10-01,TRUE,20,3,1983,base.main_partner,partner241
+l10_cold_12,Musetfa Feyesa,ሙስጠፋ ፈይሳ,male,braam_flowers.dep_l10_cold,TRUE,2011-09-09,TRUE,24,2,1985,base.main_partner,partner242
+l10_cold_13,Gemdo Hirpo,,male,braam_flowers.dep_l10_cold,TRUE,2010-12-01,TRUE,15,2,1980,base.main_partner,partner243
+l10_cold_14,Derje Bati,,male,braam_flowers.dep_l10_cold,TRUE,2012-02-07,TRUE,10,9,1976,base.main_partner,partner244
+security_1,Usman Reshed,,male,braam_flowers.dep_security,TRUE,2009-04-01,TRUE,2,12,1940,base.main_partner,partner245
+security_2,Feyessa Chemer,,male,braam_flowers.dep_security,TRUE,2009-04-01,TRUE,20,2,1968,base.main_partner,partner246
+security_3,Bedane Shafie,,male,braam_flowers.dep_security,TRUE,2009-04-01,TRUE,2,12,1968,base.main_partner,partner247
+security_4,Deresema Kebede,,male,braam_flowers.dep_security,TRUE,2009-04-20,TRUE,18,6,1970,base.main_partner,partner248
+security_5,Fasil Sheferaw,,male,braam_flowers.dep_security,TRUE,2009-05-25,TRUE,21,11,1945,base.main_partner,partner249
+security_6,Shemelese Arage,,male,braam_flowers.dep_security,TRUE,2009-06-24,TRUE,8,4,1975,base.main_partner,partner250
+security_7,Alemitu Berberu,,female,braam_flowers.dep_security,TRUE,2009-06-24,TRUE,20,2,1970,base.main_partner,partner251
+security_8,Gorfae Asefaw,,female,braam_flowers.dep_security,TRUE,2009-11-09,TRUE,8,3,1962,base.main_partner,partner252
+security_9,Bedaso Wario,,male,braam_flowers.dep_security,TRUE,2009-12-05,TRUE,6,7,1960,base.main_partner,partner253
+security_10,Degitu Mohemmed,,female,braam_flowers.dep_security,TRUE,2010-03-23,TRUE,28,12,1965,base.main_partner,partner254
+security_11,Leulsgde Asefa,,male,braam_flowers.dep_security,TRUE,2010-04-24,TRUE,20,1,1958,base.main_partner,partner255
+security_12,Mohamed Saied,,male,braam_flowers.dep_security,FALSE,2011-05-08,TRUE,20,11,1965,base.main_partner,partner256
+security_13,Midakesa Gemechu ,,male,braam_flowers.dep_security,FALSE,2012-12-10,TRUE,9,1,1973,base.main_partner,partner257
+security_14,Berhanu Negeo,,male,braam_flowers.dep_security,FALSE,2012-12-10,TRUE,26,11,1973,base.main_partner,partner258
+security_16,Bunini Bedane,,male,braam_flowers.dep_security,FALSE,2012-12-10,TRUE,1,9,1955,base.main_partner,partner259
+security_17,Berhane Negasa,,female,braam_flowers.dep_security,TRUE,2010-10-01,TRUE,,,,base.main_partner,partner260
+security_18,Abebe Fasho,,male,braam_flowers.dep_security,FALSE,2012-09-08,TRUE,,,,base.main_partner,partner261
+security_19,Hufayise Dafa,,female,braam_flowers.dep_security,TRUE,,TRUE,,,,base.main_partner,partner262
+security_20,Kidane Muktar Buche,,male,braam_flowers.dep_security,TRUE,2009-06-24,TRUE,8,3,1977,base.main_partner,partner263
+security_21,Birbirsa Diro,,male,braam_flowers.dep_security,TRUE,2009-09-17,TRUE,1,5,1979,base.main_partner,partner264
+security_22,Adnew Kaweye,,male,braam_flowers.dep_security,TRUE,2011-02-23,TRUE,20,4,1975,base.main_partner,partner265
+security_23,Kemem Dametwe,,female,braam_flowers.dep_security,TRUE,2011-05-26,TRUE,21,6,1970,base.main_partner,partner266
+security_24,Birara Adane,,male,braam_flowers.dep_security,TRUE,2011-06-10,TRUE,12,2,1970,base.main_partner,partner267
+security_25,Ayenalem Tamagne,,male,braam_flowers.dep_security,TRUE,2011-06-22,TRUE,8,3,1960,base.main_partner,partner268
+security_26,Jida Kebebe,,male,braam_flowers.dep_security,TRUE,2011-07-05,TRUE,28,6,1978,base.main_partner,partner269
+security_27,Temesgen Feten,,male,braam_flowers.dep_security,TRUE,2011-07-05,TRUE,12,3,1975,base.main_partner,partner270
+security_28,Kedir Belda,,male,braam_flowers.dep_security,TRUE,2011-10-11,TRUE,20,4,1959,base.main_partner,partner271
+security_29,Demisash Wendemu,,male,braam_flowers.dep_security,TRUE,2011-12-02,TRUE,16,12,1970,base.main_partner,partner272
+security_30,Shufer Tebeso,,male,braam_flowers.dep_security,TRUE,2012-12-10,TRUE,20,8,1975,base.main_partner,partner273
+security_31,Meharu Ayantu ,,male,braam_flowers.dep_security,TRUE,,TRUE,26,11,1975,base.main_partner,partner274
+security_32,Enanu Daniel,እናኑ ዳንኤል,female,braam_flowers.dep_security,TRUE,2009-07-04,TRUE,8,6,1984,base.main_partner,partner275
+security_33,Abaye Gangule Asfaw,አባይ ጓንጉል አስፋው,male,braam_flowers.dep_security,TRUE,2013-02-01,TRUE,17,2,1960,base.main_partner,partner276
+security_34,Babiyo Gure,,male,braam_flowers.dep_security,TRUE,,TRUE,27,2,1978,base.main_partner,partner277
+security_35,Merega Gadisa,,male,braam_flowers.dep_security,FALSE,2013-04-15,TRUE,18,1,1976,base.main_partner,partner278
+security_36,Bekele Balicha,,male,braam_flowers.dep_security,FALSE,2011-05-20,TRUE,21,5,1935,base.main_partner,partner279
+security_37,Teshale Bedada,,male,braam_flowers.dep_security,FALSE,2013-05-08,TRUE,29,4,1970,base.main_partner,partner280
+security_39,Garada Edeo,,male,braam_flowers.dep_security,TRUE,2013-03-16,TRUE,1,2,1977,base.main_partner,partner281
+security_40,Deyasu Firomisa,,male,braam_flowers.dep_security,TRUE,2013-04-15,FALSE,12,7,1975,base.main_partner,partner282
+admin_1,Ben Braam,ቤን ብራም,male,braam_flowers.dep_office,FALSE,2011-01-01,FALSE,,,,base.main_partner,partner283
+admin_2,Arie Braam,አሪ ብራም,male,braam_flowers.dep_office,FALSE,,FALSE,,,,base.main_partner,partner284
+admin_3,Mekedes H/Giorgis,መቅደስ ሃ/ጊዮርጊስ,female,braam_flowers.dep_office,FALSE,2009-12-03,TRUE,,,,base.main_partner,partner285
+admin_4,Kuribachew Dawit,ኩሪባቸው ዳዊት,female,braam_flowers.dep_office,FALSE,2009-06-09,TRUE,,,,base.main_partner,partner286
+admin_5,Duresa Elias,ዱሬሳ ኤልያስ,male,braam_flowers.dep_hr,FALSE,2010-04-09,TRUE,,,,base.main_partner,partner287
+admin_6,Teobesta Getachew,,female,braam_flowers.dep_office,FALSE,2011-10-13,TRUE,,,,base.main_partner,partner288
+admin_7,Kedir Mohammed,ከድር ሙሃመድ,male,braam_flowers.dep_office,FALSE,2012-11-01,TRUE,,,,base.main_partner,partner289
+admin_8,Daliyo Bati,ዳሊዮ ባቲ,male,braam_flowers.dep_office,FALSE,2012-11-01,TRUE,,,,base.main_partner,partner290
+admin_9,Tilahune Teshom,ጥላሁን ተሾመ,male,braam_flowers.dep_hr,FALSE,2011-01-11,TRUE,,,,base.main_partner,partner291
+admin_10,Edan Kidane,ኤደን ኪዳኔ,female,braam_flowers.dep_office,FALSE,2012-12-01,TRUE,,,,base.main_partner,partner292
+admin_11,Kedija Awele,ከዲጃ አወል,female,braam_flowers.dep_office,FALSE,2010-12-19,TRUE,,,,base.main_partner,partner293
+admin_12,Alemegna Mangistu,አለምገና መንግስቱ,female,braam_flowers.dep_hr,TRUE,2010-08-09,TRUE,5,1,1984,base.main_partner,partner294
+admin_14,Temesgen Denisa,ተመስገን ደኒሳ,male,braam_flowers.dep_office,TRUE,2012-06-03,TRUE,8,2,1983,base.main_partner,partner295
+admin_15,Dawit Gemchu,ዳዊት ገመቹ,male,braam_flowers.dep_office,TRUE,2011-01-11,TRUE,22,10,1986,base.main_partner,partner296
+admin_16,Surafel Sisay,ሱራፌል ሲሳይ,male,braam_flowers.dep_hr,TRUE,2011-11-07,TRUE,2,2,1983,base.main_partner,partner297
+admin_17,Kedir Bokena,,male,braam_flowers.dep_hr,TRUE,2011-10-03,TRUE,8,7,1979,base.main_partner,partner298
+admin_18,Samson Abate,ሳምሶን አባተ,male,braam_flowers.dep_office,FALSE,2012-12-01,TRUE,,,,base.main_partner,partner299
+admin_19,Meskerem Abebe,መስከረም አበበ,female,braam_flowers.dep_office,FALSE,2013-02-28,TRUE,8,1,1985,base.main_partner,partner300
+l31_plant_1,Almaze Ereso Sewaro,,female,braam_flowers.dep_l31_plant,TRUE,2009-06-26,TRUE,2,5,1982,base.main_partner,partner301
+l31_plant_2,Mehert Milkiyas,,female,braam_flowers.dep_l31_plant,TRUE,2009-07-07,TRUE,28,1,1982,base.main_partner,partner302
+l31_plant_3,Tamenech Ankebo,,female,braam_flowers.dep_l31_plant,TRUE,2009-08-08,TRUE,6,7,1985,base.main_partner,partner303
+l31_plant_4,Teshay Feji Tesemo,,female,braam_flowers.dep_l31_plant,TRUE,2009-08-13,TRUE,20,2,1980,base.main_partner,partner304
+l31_plant_5,Birtukan Bogal,,female,braam_flowers.dep_l31_plant,TRUE,2009-08-31,TRUE,8,1,1980,base.main_partner,partner305
+l31_plant_6,Fatuma Bula,ፋጡማ ቡላ,female,braam_flowers.dep_l31_plant,TRUE,2009-09-08,TRUE,14,2,1981,base.main_partner,partner306
+l31_plant_7,Asmeret Mekebo,,female,braam_flowers.dep_l31_plant,TRUE,2009-10-03,TRUE,14,11,1979,base.main_partner,partner307
+l31_plant_8,Aslefch Hanqebo,,female,braam_flowers.dep_l31_plant,TRUE,2009-10-14,TRUE,29,2,1982,base.main_partner,partner308
+l31_plant_9,Fatuma Waqo,,female,braam_flowers.dep_l31_plant,TRUE,2011-01-08,TRUE,8,6,1980,base.main_partner,partner309
+l31_plant_10,Shila Bule,,female,braam_flowers.dep_l31_plant,TRUE,2011-01-08,TRUE,10,11,1980,base.main_partner,partner310
+l31_plant_11,Meko Boru,,female,braam_flowers.dep_l31_plant,TRUE,2011-01-08,TRUE,18,8,1981,base.main_partner,partner311
+l31_plant_13,Mesrte Bekel,,female,braam_flowers.dep_l31_plant,TRUE,2011-01-08,TRUE,2,2,1970,base.main_partner,partner312
+l31_plant_14,Buze Dadi,,female,braam_flowers.dep_l31_plant,TRUE,2011-01-08,TRUE,24,6,1981,base.main_partner,partner313
+l31_plant_15,Demitu Gebe,,female,braam_flowers.dep_l31_plant,TRUE,2011-01-08,TRUE,20,10,1985,base.main_partner,partner314
+l31_plant_16,Ashu Weyama,,female,braam_flowers.dep_l31_plant,TRUE,2011-01-11,TRUE,22,1,1982,base.main_partner,partner315
+l31_plant_17,Lemlem Denqa,,female,braam_flowers.dep_l31_plant,TRUE,2011-01-11,TRUE,19,9,1979,base.main_partner,partner316
+l31_plant_18,Almaz Anejlo,,female,braam_flowers.dep_l31_plant,TRUE,2011-01-11,TRUE,28,6,1980,base.main_partner,partner317
+l31_plant_19,Denqnshe Milkiyas,,female,braam_flowers.dep_l31_plant,TRUE,2011-01-11,TRUE,22,7,1978,base.main_partner,partner318
+l31_plant_21,Werqinsh Mena,,female,braam_flowers.dep_l31_plant,TRUE,2011-01-21,TRUE,25,1,1983,base.main_partner,partner319
+l31_plant_22,Amarche Tesfaye,,female,braam_flowers.dep_l31_plant,TRUE,2011-01-21,TRUE,12,12,1979,base.main_partner,partner320
+l31_plant_23,Werkensh Zelalme,,female,braam_flowers.dep_l31_plant,TRUE,2011-01-21,TRUE,2,7,1983,base.main_partner,partner321
+l31_plant_24,Asenakche Zewde,,female,braam_flowers.dep_l31_plant,TRUE,2011-02-05,TRUE,20,3,1983,base.main_partner,partner322
+l31_plant_25,Zemzem Jemal,ዘምዘም ጀማል,female,braam_flowers.dep_l31_plant,TRUE,2011-02-11,TRUE,30,1,1980,base.main_partner,partner323
+l31_plant_26,Senayte Behailu,ሰናይት በሃይሉ,female,braam_flowers.dep_l31_plant,TRUE,2011-02-11,TRUE,30,1,1980,base.main_partner,partner324
+l31_plant_27,Gente Buta,,female,braam_flowers.dep_l31_plant,TRUE,2011-02-11,TRUE,18,8,1980,base.main_partner,partner325
+l31_plant_28,Hiko Obesa,,female,braam_flowers.dep_l31_plant,TRUE,2011-02-11,TRUE,6,6,1977,base.main_partner,partner326
+l31_plant_29,Adanche Kebede,አዳነች ከበደ,female,braam_flowers.dep_l31_plant,TRUE,2011-03-01,TRUE,2,8,1984,base.main_partner,partner327
+l31_plant_30,Mesret Felke,,female,braam_flowers.dep_l31_plant,TRUE,2011-04-07,TRUE,26,12,1980,base.main_partner,partner328
+l31_plant_31,Felekch Zelke,,female,braam_flowers.dep_l31_plant,TRUE,2011-04-11,TRUE,15,1,1981,base.main_partner,partner329
+l31_plant_32,Meskrem Kebed,,female,braam_flowers.dep_l31_plant,TRUE,2011-04-11,TRUE,1,8,1980,base.main_partner,partner330
+l31_plant_33,Wedinesh Silashi,,female,braam_flowers.dep_l31_plant,TRUE,2011-05-07,TRUE,2,1,1980,base.main_partner,partner331
+l31_plant_34,Yenenesh Dawit,የኔነሽ ዳዊት,female,braam_flowers.dep_l31_plant,TRUE,2011-05-18,TRUE,7,8,1983,base.main_partner,partner332
+l31_plant_35,Shitay Fukre,,female,braam_flowers.dep_l31_plant,TRUE,2011-05-18,TRUE,28,9,1982,base.main_partner,partner333
+l31_plant_36,Teyiba Useman,,female,braam_flowers.dep_l31_plant,TRUE,2011-05-18,TRUE,2,1,1983,base.main_partner,partner334
+l31_plant_37,Mulu Gore,,female,braam_flowers.dep_l31_plant,TRUE,2011-05-18,TRUE,3,4,1978,base.main_partner,partner335
+l31_plant_39,Chaltu Deriba,ቻልቱ ደሪባ,female,braam_flowers.dep_l31_plant,TRUE,2011-06-08,TRUE,10,6,1960,base.main_partner,partner336
+l31_plant_40,Desta Fantaye,ደስታ ፋንታዬ,female,braam_flowers.dep_l31_plant,TRUE,2011-06-08,TRUE,20,2,1982,base.main_partner,partner337
+l31_plant_41,Kebensh Senamo,,female,braam_flowers.dep_l31_plant,TRUE,2011-06-08,TRUE,18,10,1983,base.main_partner,partner338
+l31_plant_42,Medina Mohamed,,female,braam_flowers.dep_l31_plant,TRUE,2011-06-16,TRUE,1,12,1980,base.main_partner,partner339
+l31_plant_43,Radiya Sado,,female,braam_flowers.dep_l31_plant,TRUE,2011-06-16,TRUE,10,5,1985,base.main_partner,partner340
+l31_plant_44,Meskerm Amogne,,female,braam_flowers.dep_l31_plant,TRUE,2011-06-18,TRUE,20,1,1978,base.main_partner,partner341
+l31_plant_45,Aberash Itore,,female,braam_flowers.dep_l31_plant,TRUE,2011-06-18,TRUE,20,8,1977,base.main_partner,partner342
+l31_plant_46,Bezunsh Abushe,,female,braam_flowers.dep_l31_plant,TRUE,2011-06-18,TRUE,15,3,1983,base.main_partner,partner343
+l31_plant_47,Chanko Sigebo,,female,braam_flowers.dep_l31_plant,TRUE,2011-06-18,TRUE,19,11,1982,base.main_partner,partner344
+l31_plant_48,Alima weyma,,female,braam_flowers.dep_l31_plant,TRUE,2011-06-18,TRUE,1,8,1984,base.main_partner,partner345
+l31_plant_49,Aregash Mukete,,female,braam_flowers.dep_l31_plant,TRUE,2011-07-06,TRUE,12,1,1980,base.main_partner,partner346
+l31_plant_50,Mesret Asefaw,መሰረት አስፋው,female,braam_flowers.dep_l31_plant,TRUE,2011-07-06,TRUE,9,12,1984,base.main_partner,partner347
+l31_plant_51,Abaynsh  Deha,,female,braam_flowers.dep_l31_plant,TRUE,2011-07-13,TRUE,16,3,1980,base.main_partner,partner348
+l31_plant_52,Deneknesh Degfa,,female,braam_flowers.dep_l31_plant,TRUE,2011-08-12,TRUE,18,2,1984,base.main_partner,partner349
+l31_plant_53,Hufayse Tadiwos,,female,braam_flowers.dep_l31_plant,TRUE,2011-09-01,TRUE,8,8,1980,base.main_partner,partner350
+l31_plant_54,Zenbech Lukase,,female,braam_flowers.dep_l31_plant,TRUE,2011-09-01,TRUE,25,9,1981,base.main_partner,partner351
+l31_plant_55,Birtukan Godebo,,female,braam_flowers.dep_l31_plant,TRUE,2011-09-07,TRUE,6,1,1980,base.main_partner,partner352
+l31_plant_56,Bifetu Gemechu,,female,braam_flowers.dep_l31_plant,TRUE,2011-09-07,TRUE,18,7,1982,base.main_partner,partner353
+l31_plant_57,Meslche Eleka,,female,braam_flowers.dep_l31_plant,TRUE,2011-09-07,TRUE,6,2,1980,base.main_partner,partner354
+l31_plant_58,Zeynba Mohamed,,female,braam_flowers.dep_l31_plant,TRUE,2011-09-14,TRUE,20,1,1980,base.main_partner,partner355
+l31_plant_59,Soresa Hadicha,,female,braam_flowers.dep_l31_plant,TRUE,2011-09-14,TRUE,18,12,1983,base.main_partner,partner356
+l31_plant_60,Ayelech Ledamo,,female,braam_flowers.dep_l31_plant,TRUE,2011-09-14,TRUE,30,4,1979,base.main_partner,partner357
+l31_plant_61,Tigist Demese,,female,braam_flowers.dep_l31_plant,TRUE,2011-10-11,TRUE,23,9,1980,base.main_partner,partner358
+l31_plant_62,Feyine Denbo,,female,braam_flowers.dep_l31_plant,TRUE,2011-10-18,TRUE,15,4,1981,base.main_partner,partner359
+l31_plant_63,Amarech Wamiso,,female,braam_flowers.dep_l31_plant,TRUE,2011-10-18,TRUE,22,9,1985,base.main_partner,partner360
+l31_plant_64,Marta Dako Tuka,,female,braam_flowers.dep_l31_plant,TRUE,2011-11-01,TRUE,5,8,1978,base.main_partner,partner361
+l31_plant_65,Rahele Lalago,,female,braam_flowers.dep_l31_plant,TRUE,2011-12-03,TRUE,28,8,1985,base.main_partner,partner362
+l31_plant_66,Tesfansh Chufmo,,female,braam_flowers.dep_l31_plant,TRUE,2011-12-03,TRUE,11,2,1985,base.main_partner,partner363
+l31_plant_67,Wedenesh Tomas,,female,braam_flowers.dep_l31_plant,TRUE,2011-12-19,TRUE,26,1,1980,base.main_partner,partner364
+l31_plant_68,Asenaqech Otoro,,female,braam_flowers.dep_l31_plant,TRUE,2011-12-19,TRUE,8,1,1984,base.main_partner,partner365
+l31_plant_69,Almitu Data,,female,braam_flowers.dep_l31_plant,TRUE,2011-12-19,TRUE,2,1,1983,base.main_partner,partner366
+l31_plant_71,Berahash Shireko,,female,braam_flowers.dep_l31_plant,TRUE,2012-01-09,TRUE,20,7,1980,base.main_partner,partner367
+l31_plant_72,Tirenego Faneta,,female,braam_flowers.dep_l31_plant,TRUE,2012-01-09,TRUE,19,5,1985,base.main_partner,partner368
+l31_plant_73,Mulunesh Muse,,female,braam_flowers.dep_l31_plant,TRUE,2012-02-07,TRUE,28,3,1983,base.main_partner,partner369
+l31_plant_74,Berkenesh Mengestu,,female,braam_flowers.dep_l31_plant,TRUE,2012-02-07,TRUE,1,5,1981,base.main_partner,partner370
+l31_plant_75,Bosha Tunani,,female,braam_flowers.dep_l31_plant,TRUE,2012-02-07,TRUE,26,1,1980,base.main_partner,partner371
+l31_plant_76,Genet Desta,,female,braam_flowers.dep_l31_plant,TRUE,2012-02-07,TRUE,7,4,1982,base.main_partner,partner372
+l31_plant_77,Adanech Sugamo,,female,braam_flowers.dep_l31_plant,TRUE,2012-02-07,TRUE,9,9,1980,base.main_partner,partner373
+l31_plant_78,Eresume Simamo,,female,braam_flowers.dep_l31_plant,TRUE,2012-02-07,TRUE,2,10,1985,base.main_partner,partner374
+l31_plant_79,Meslche Worku,,female,braam_flowers.dep_l31_plant,TRUE,2012-02-17,TRUE,8,6,1983,base.main_partner,partner375
+l31_plant_80,Lebenshe Bunedaso,,female,braam_flowers.dep_l31_plant,TRUE,2012-02-17,TRUE,25,7,1975,base.main_partner,partner376
+l31_plant_81,Berehan Beta,,female,braam_flowers.dep_l31_plant,TRUE,2012-02-17,TRUE,21,7,1985,base.main_partner,partner377
+l31_plant_82,Bezunshe Benecha,,female,braam_flowers.dep_l31_plant,TRUE,2012-02-17,TRUE,8,8,1985,base.main_partner,partner378
+l31_plant_83,Abeba Hliso,,female,braam_flowers.dep_l31_plant,TRUE,2012-03-09,TRUE,2,9,1985,base.main_partner,partner379
+l31_plant_84,Delebeme Letabo,,female,braam_flowers.dep_l31_plant,TRUE,2012-04-02,TRUE,26,1,1980,base.main_partner,partner380
+l31_plant_85,Hufayse Wendemu,,female,braam_flowers.dep_l31_plant,TRUE,2012-04-23,TRUE,3,6,1984,base.main_partner,partner381
+l31_plant_86,Mehret Tesfaye,,female,braam_flowers.dep_l31_plant,TRUE,2012-05-22,TRUE,22,7,1984,base.main_partner,partner382
+l31_plant_87,Amarech Ajilo,,female,braam_flowers.dep_l31_plant,TRUE,2012-05-22,TRUE,24,2,1980,base.main_partner,partner383
+l31_plant_88,Amina Gelegelu,,female,braam_flowers.dep_l31_plant,TRUE,2012-05-22,TRUE,11,10,1983,base.main_partner,partner384
+l31_plant_89,Mulu Tamirat,ሙሉ ታምራት,female,braam_flowers.dep_l31_plant,TRUE,2012-06-01,TRUE,12,11,1982,base.main_partner,partner385
+l31_plant_90,Aregash Abebe,አረጋሽ አበበ,female,braam_flowers.dep_l31_plant,TRUE,2012-06-01,TRUE,26,9,1980,base.main_partner,partner386
+l31_plant_91,Shumeba Benti,,female,braam_flowers.dep_l31_plant,TRUE,2012-06-01,TRUE,26,12,1983,base.main_partner,partner387
+l31_plant_92,Nehema Jeba Jegere,,female,braam_flowers.dep_l31_plant,TRUE,2012-06-06,TRUE,28,1,1983,base.main_partner,partner388
+l31_plant_93,Birtukan Mena,,female,braam_flowers.dep_l31_plant,FALSE,2012-08-04,TRUE,8,4,1985,base.main_partner,partner389
+l31_plant_94,Hana Worku Mata,,female,braam_flowers.dep_l31_plant,FALSE,2012-08-20,TRUE,1,2,1984,base.main_partner,partner390
+l31_plant_95,Tino Midekesa,,female,braam_flowers.dep_l31_plant,FALSE,2012-09-03,TRUE,18,7,1983,base.main_partner,partner391
+l31_plant_96,Tsehayenesh Wobeshet,,female,braam_flowers.dep_l31_plant,FALSE,2012-09-03,TRUE,20,3,1982,base.main_partner,partner392
+l31_plant_97,Robedu Edasa,,female,braam_flowers.dep_l31_plant,FALSE,2012-09-03,TRUE,1,11,1980,base.main_partner,partner393
+l31_plant_98,Amarech Guja,አማረች ጉጃ,female,braam_flowers.dep_l31_plant,FALSE,2012-09-15,TRUE,23,2,1983,base.main_partner,partner394
+l31_plant_99,Kebebush Denek,,female,braam_flowers.dep_l31_plant,FALSE,2012-10-02,TRUE,13,3,1983,base.main_partner,partner395
+l31_plant_100,Wayeme Haji,,female,braam_flowers.dep_l31_plant,FALSE,2012-10-02,TRUE,26,9,1982,base.main_partner,partner396
+l31_plant_101,Buze Jisa,,female,braam_flowers.dep_l31_plant,FALSE,2012-10-02,TRUE,21,11,1978,base.main_partner,partner397
+l31_plant_102,Asenkech Demise,,female,braam_flowers.dep_l31_plant,FALSE,2012-10-03,TRUE,3,5,1960,base.main_partner,partner398
+l31_plant_103,Ayelech Jambo,አየለች ጃምቦ,female,braam_flowers.dep_l31_plant,FALSE,2012-10-06,TRUE,21,1,1980,base.main_partner,partner399
+l31_plant_104,Meseret Shewicho,,female,braam_flowers.dep_l31_plant,FALSE,2012-10-06,TRUE,28,9,1982,base.main_partner,partner400
+l31_plant_105,Dinkenesh Sama,,female,braam_flowers.dep_l31_plant,FALSE,2012-10-13,TRUE,8,10,1983,base.main_partner,partner401
+l31_plant_106,Tamenech Tadess,,female,braam_flowers.dep_l31_plant,FALSE,2012-10-13,TRUE,1,2,1984,base.main_partner,partner402
+l31_plant_107,Rehel Soka,,female,braam_flowers.dep_l31_plant,FALSE,2012-11-01,TRUE,26,7,1985,base.main_partner,partner403
+l31_plant_108,Mashu Shumbure,,female,braam_flowers.dep_l31_plant,FALSE,2012-11-01,TRUE,24,8,1980,base.main_partner,partner404
+l31_plant_109,Amane Gelgelu,,female,braam_flowers.dep_l31_plant,FALSE,2012-11-01,TRUE,9,2,1983,base.main_partner,partner405
+l31_plant_110,Abayenesh Mulatu,,female,braam_flowers.dep_l31_plant,FALSE,2012-11-01,TRUE,1,5,1985,base.main_partner,partner406
+l31_plant_111,Gichame Ayele,,female,braam_flowers.dep_l31_plant,FALSE,2012-11-01,TRUE,6,2,1980,base.main_partner,partner407
+l31_plant_112,Hana Gatiso,,female,braam_flowers.dep_l31_plant,FALSE,2012-11-01,TRUE,27,6,1981,base.main_partner,partner408
+l31_plant_113,Ayelech Langana,,female,braam_flowers.dep_l31_plant,FALSE,2012-11-01,TRUE,20,12,1982,base.main_partner,partner409
+l31_plant_114,Beshadu Gonfa,,female,braam_flowers.dep_l31_plant,FALSE,2012-11-05,TRUE,19,11,1960,base.main_partner,partner410
+l31_plant_115,Birtukan Morka,,female,braam_flowers.dep_l31_plant,FALSE,2012-11-09,TRUE,16,1,1975,base.main_partner,partner411
+l31_plant_116,Edatu Guye,,female,braam_flowers.dep_l31_plant,FALSE,2012-11-13,TRUE,20,4,1975,base.main_partner,partner412
+l31_plant_117,Shumba Kediro,,female,braam_flowers.dep_l31_plant,FALSE,2012-11-13,TRUE,12,3,1981,base.main_partner,partner413
+l31_plant_118,Momina Uka,,female,braam_flowers.dep_l31_plant,FALSE,2012-11-13,TRUE,17,8,1980,base.main_partner,partner414
+l31_plant_119,Amarech Arba,አማረች አርባ,female,braam_flowers.dep_l31_plant,FALSE,2012-11-13,TRUE,21,2,1982,base.main_partner,partner415
+l31_plant_120,Selamawit Nuramo,,female,braam_flowers.dep_l31_plant,FALSE,2012-12-01,TRUE,18,9,1982,base.main_partner,partner416
+l31_plant_121,Bikenesh Digeso,,female,braam_flowers.dep_l31_plant,FALSE,2012-12-01,TRUE,15,12,1981,base.main_partner,partner417
+l31_plant_123,Tesfanesh Tadese,ተስፋነሽ ታደ,female,braam_flowers.dep_l31_plant,FALSE,2012-12-18,TRUE,12,8,1983,base.main_partner,partner418
+l31_plant_124,Enatenesh Ersado,,female,braam_flowers.dep_l31_plant,FALSE,2012-12-18,TRUE,28,4,1982,base.main_partner,partner419
+l31_plant_125,Almitu Bedada,,female,braam_flowers.dep_l31_plant,FALSE,2012-12-24,TRUE,11,1,1981,base.main_partner,partner420
+l31_plant_126,Asha Hameya,,female,braam_flowers.dep_l31_plant,FALSE,2013-01-04,TRUE,12,9,1980,base.main_partner,partner421
+l31_plant_127,Tigist Harkiso,ትግስት ሃርኪሶ,female,braam_flowers.dep_l31_plant,FALSE,2013-01-04,TRUE,2,7,1981,base.main_partner,partner422
+l31_plant_128,Shora Haji,,female,braam_flowers.dep_l31_plant,FALSE,2013-01-04,TRUE,16,1,1980,base.main_partner,partner423
+l31_plant_129,Hamesale Adisu,,female,braam_flowers.dep_l31_plant,FALSE,2013-01-09,TRUE,19,12,1982,base.main_partner,partner424
+l31_plant_130,Miherat Eyasu,,female,braam_flowers.dep_l31_plant,FALSE,2013-01-09,TRUE,28,6,1981,base.main_partner,partner425
+l31_plant_131,Elesabet Kefle,,female,braam_flowers.dep_l31_plant,FALSE,2013-01-09,TRUE,25,1,1980,base.main_partner,partner426
+l31_plant_132,Merab Tefera,,female,braam_flowers.dep_l31_plant,FALSE,2013-01-14,TRUE,13,2,1986,base.main_partner,partner427
+l31_plant_133,Kedija Debe,,female,braam_flowers.dep_l31_plant,FALSE,2013-01-16,TRUE,18,1,1980,base.main_partner,partner428
+l31_plant_134,Berite Teha,,female,braam_flowers.dep_l31_plant,FALSE,2013-01-21,TRUE,20,8,1981,base.main_partner,partner429
+l31_plant_135,Meselech Gatiso,መሰለች ጋቲሶ,female,braam_flowers.dep_l31_plant,FALSE,2013-01-21,TRUE,21,6,1982,base.main_partner,partner430
+l31_plant_136,Zinash Argaw,,female,braam_flowers.dep_l31_plant,FALSE,2013-01-31,TRUE,26,1,1980,base.main_partner,partner431
+l31_plant_137,Bekelech Maza,,female,braam_flowers.dep_l31_plant,FALSE,2013-01-31,TRUE,16,2,1982,base.main_partner,partner432
+l31_plant_138,Demekech Lalago,,female,braam_flowers.dep_l31_plant,FALSE,2013-01-31,TRUE,27,1,1983,base.main_partner,partner433
+l31_plant_139,Kibenesh Abosa,,female,braam_flowers.dep_l31_plant,FALSE,2013-01-31,TRUE,28,2,1980,base.main_partner,partner434
+l31_plant_140,Meseret Beyen,,female,braam_flowers.dep_l31_plant,FALSE,2013-01-31,TRUE,12,11,1981,base.main_partner,partner435
+l31_plant_142,Halo Godana,,female,braam_flowers.dep_l31_plant,FALSE,2013-02-02,TRUE,16,7,1984,base.main_partner,partner436
+l31_plant_143,Ayinalem Tama,,female,braam_flowers.dep_l31_plant,FALSE,2013-02-02,TRUE,19,7,1982,base.main_partner,partner437
+l31_plant_144,Genet Dawit,ገነት ዳዊት,female,braam_flowers.dep_l31_plant,FALSE,2013-02-02,TRUE,29,2,1981,base.main_partner,partner438
+l31_plant_145,Misira Abdi,,female,braam_flowers.dep_l31_plant,FALSE,2013-02-04,TRUE,28,8,1982,base.main_partner,partner439
+l31_plant_146,Tadelech Nuramo,ታደለች ኑራሞ,female,braam_flowers.dep_l31_plant,FALSE,2013-02-04,TRUE,2,12,1980,base.main_partner,partner440
+l31_plant_147,Demekech Deremo,,female,braam_flowers.dep_l31_plant,FALSE,2013-02-04,TRUE,8,8,1984,base.main_partner,partner441
+l31_plant_148,Maza Madebo,,female,braam_flowers.dep_l31_plant,FALSE,2013-02-04,TRUE,23,9,1983,base.main_partner,partner442
+l31_plant_150,Meselech Koyisha,,female,braam_flowers.dep_l31_plant,FALSE,2013-02-04,TRUE,2,4,1980,base.main_partner,partner443
+l31_plant_151,Etalem Tekele,,female,braam_flowers.dep_l31_plant,FALSE,2013-02-04,TRUE,5,9,1985,base.main_partner,partner444
+l31_plant_152,Marta Bushura,,female,braam_flowers.dep_l31_plant,FALSE,2013-02-12,TRUE,25,7,1983,base.main_partner,partner445
+l31_plant_153,Chaltu Gemechu,ጫልቱ ገመቹ,female,braam_flowers.dep_l31_plant,FALSE,2013-02-12,TRUE,17,1,1985,base.main_partner,partner446
+l31_plant_154,Berhanesh Banchu,,female,braam_flowers.dep_l31_plant,FALSE,2013-02-12,TRUE,9,8,1985,base.main_partner,partner447
+l31_plant_155,Destanesh Data,,female,braam_flowers.dep_l31_plant,FALSE,2013-02-12,TRUE,30,11,1985,base.main_partner,partner448
+l31_plant_158,Aberash Danga,አበራሽ ዳንጋ,female,braam_flowers.dep_l31_plant,FALSE,2013-02-28,TRUE,20,12,1980,base.main_partner,partner449
+l31_plant_159,Aregash Abera,,female,braam_flowers.dep_l31_plant,FALSE,2013-02-28,TRUE,9,6,1980,base.main_partner,partner450
+l31_plant_160,Kila Kurkure,,female,braam_flowers.dep_l31_plant,FALSE,2013-02-28,TRUE,16,12,1984,base.main_partner,partner451
+l31_plant_162,Birtukan Torgo,,female,braam_flowers.dep_l31_plant,FALSE,2013-02-28,TRUE,2,4,1980,base.main_partner,partner452
+l31_plant_164,Genet Yakob,,female,braam_flowers.dep_l31_plant,FALSE,2013-03-05,TRUE,26,11,1982,base.main_partner,partner453
+l31_plant_165,Konjit Tigiro,,female,braam_flowers.dep_l31_plant,FALSE,2013-03-05,TRUE,1,4,1981,base.main_partner,partner454
+l31_plant_166,Mesret Mehen ,,female,braam_flowers.dep_l31_plant,FALSE,2013-03-05,TRUE,8,6,1982,base.main_partner,partner455
+l31_plant_167,Atekelt Demese,,female,braam_flowers.dep_l31_plant,FALSE,2013-03-05,TRUE,20,2,1982,base.main_partner,partner456
+l31_plant_168,Abeba Wendemu,,female,braam_flowers.dep_l31_plant,FALSE,2013-03-13,TRUE,1,4,1980,base.main_partner,partner457
+l31_plant_170,Elisabet Zekarias,,female,braam_flowers.dep_l31_plant,FALSE,2013-03-13,TRUE,9,1,1982,base.main_partner,partner458
+l31_plant_172,Adanech Lara,,female,braam_flowers.dep_l31_plant,FALSE,2013-03-17,TRUE,2,6,1981,base.main_partner,partner459
+l31_plant_173,Tesfanesh Baza,,female,braam_flowers.dep_l31_plant,FALSE,2013-03-17,TRUE,8,1,1982,base.main_partner,partner460
+l31_plant_175,Semegne Kagne ,,female,braam_flowers.dep_l31_plant,FALSE,2013-03-17,TRUE,,,,base.main_partner,partner461
+l31_plant_176,Meskerem Alemayew,,female,braam_flowers.dep_l31_plant,FALSE,2013-03-31,TRUE,,,,base.main_partner,partner462
+l31_plant_177,Konjit Shugute,,female,braam_flowers.dep_l31_plant,FALSE,2013-04-01,TRUE,,,,base.main_partner,partner463
+l31_plant_178,Adanech Haji,,female,braam_flowers.dep_l31_plant,FALSE,2013-04-04,TRUE,,,,base.main_partner,partner464
+l31_plant_179,Denkenesh Dado,,female,braam_flowers.dep_l31_plant,FALSE,2013-04-04,TRUE,,,,base.main_partner,partner465
+l31_plant_180,Aregash Bekele ,,female,braam_flowers.dep_l31_plant,FALSE,2013-04-04,TRUE,,,,base.main_partner,partner466
+l31_plant_181,Denekenesh Demese,,female,braam_flowers.dep_l31_plant,FALSE,2013-04-04,TRUE,,,,base.main_partner,partner467
+l31_plant_182,Kuri Girma,,female,braam_flowers.dep_l31_plant,FALSE,2013-04-04,TRUE,,,,base.main_partner,partner468
+l31_plant_183,Meselech Anjulo,,female,braam_flowers.dep_l31_plant,FALSE,2013-04-04,TRUE,,,,base.main_partner,partner469
+l31_plant_184,Mastawot Yohanis,,female,braam_flowers.dep_l31_plant,FALSE,2013-04-04,TRUE,,,,base.main_partner,partner470
+l31_plant_185,Denkenesh Dijamo,,female,braam_flowers.dep_l31_plant,FALSE,2013-04-11,TRUE,,,,base.main_partner,partner471
+l31_plant_186,Adanech Daka,,female,braam_flowers.dep_l31_plant,FALSE,2013-04-24,TRUE,,,,base.main_partner,partner472
+l31_plant_187,Tadelech Alemu,,female,braam_flowers.dep_l31_plant,FALSE,2013-05-01,TRUE,,,,base.main_partner,partner473
+l31_plant_188,Genet Seta,,female,braam_flowers.dep_l31_plant,FALSE,2013-05-02,TRUE,,,,base.main_partner,partner474
+l31_plant_189,Tadelech Kasa,,female,braam_flowers.dep_l31_plant,FALSE,2013-05-08,TRUE,,,,base.main_partner,partner475
+l31_plant_190,Kebebush Huylo,,female,braam_flowers.dep_l31_plant,FALSE,2013-05-21,TRUE,,,,base.main_partner,partner476
+l31_grade_1,Abeba Gelata ,,female,braam_flowers.dep_l31_grade,TRUE,2009-10-24,TRUE,2,7,1983,base.main_partner,partner477
+l31_grade_2,Webit Kebede ,,female,braam_flowers.dep_l31_grade,TRUE,2009-12-28,TRUE,8,8,1984,base.main_partner,partner478
+l31_grade_3,Lemaye Arfecho,,female,braam_flowers.dep_l31_grade,TRUE,2010-03-25,TRUE,,,,base.main_partner,partner479
+l31_grade_4,Teshalech Ermias Jofe,,female,braam_flowers.dep_l31_grade,TRUE,2010-04-08,TRUE,20,2,1985,base.main_partner,partner480
+l31_grade_5,Chal Feyisa,ቻል ፈይሳ,female,braam_flowers.dep_l31_grade,TRUE,2011-04-28,TRUE,20,1,1977,base.main_partner,partner481
+l31_grade_6,Sisay Leta,,female,braam_flowers.dep_l31_grade,TRUE,2011-06-08,TRUE,20,10,1982,base.main_partner,partner482
+l31_grade_7,Tebeltse Girma,,female,braam_flowers.dep_l31_grade,TRUE,2011-06-08,TRUE,6,6,1983,base.main_partner,partner483
+l31_grade_8,Helen Mengestu,ሄለን መንግስቱ,female,braam_flowers.dep_l31_grade,TRUE,2011-10-03,TRUE,8,3,1984,base.main_partner,partner484
+l31_grade_9,Meskerem Bekele,መስከረም በቀ,female,braam_flowers.dep_l31_grade,TRUE,2011-10-03,TRUE,8,3,1985,base.main_partner,partner485
+l31_grade_10,Yeshi Meteku,የሺ ምትኩ,female,braam_flowers.dep_l31_grade,TRUE,2011-10-14,TRUE,12,4,1977,base.main_partner,partner486
+l31_grade_11,Alem Berhanu,ዓለም ብርሃኑ,female,braam_flowers.dep_l31_grade,TRUE,2011-10-14,TRUE,18,7,1979,base.main_partner,partner487
+l31_grade_12,Adanech Cheleso,,female,braam_flowers.dep_l31_grade,TRUE,2011-10-18,TRUE,20,5,1983,base.main_partner,partner488
+l31_grade_13,Felkech Girma,ፈለቀች ግርማ,female,braam_flowers.dep_l31_grade,TRUE,2011-10-18,TRUE,8,1,1985,base.main_partner,partner489
+l31_grade_14,Adanech Eirmiyas,,female,braam_flowers.dep_l31_grade,TRUE,2011-10-18,TRUE,12,7,1980,base.main_partner,partner490
+l31_grade_15,Tesfanesh Dea,,female,braam_flowers.dep_l31_grade,TRUE,2011-10-18,TRUE,8,3,1980,base.main_partner,partner491
+l31_grade_16,Hana Getent,,female,braam_flowers.dep_l31_grade,TRUE,2011-11-01,TRUE,11,3,1980,base.main_partner,partner492
+l31_grade_17,Besa Ukete,,female,braam_flowers.dep_l31_grade,TRUE,2011-11-01,TRUE,8,4,1980,base.main_partner,partner493
+l31_grade_18,Tagaye Bihongne,,female,braam_flowers.dep_l31_grade,TRUE,2011-11-01,TRUE,2,5,1981,base.main_partner,partner494
+l31_grade_19,Manalebesh Abebe,ማንአለብሽ አበበ,female,braam_flowers.dep_l31_grade,TRUE,2011-11-01,TRUE,8,3,1970,base.main_partner,partner495
+l31_grade_20,Zemenesh Petros,,female,braam_flowers.dep_l31_grade,TRUE,2011-11-01,TRUE,8,9,1970,base.main_partner,partner496
+l31_grade_21,Rahel Chekole,,female,braam_flowers.dep_l31_grade,TRUE,2011-11-01,TRUE,5,12,1983,base.main_partner,partner497
+l31_grade_22,Selamawit Matiwos,,female,braam_flowers.dep_l31_grade,TRUE,2011-11-01,TRUE,8,3,1984,base.main_partner,partner498
+l31_grade_23,Alemitu Dogiso,,female,braam_flowers.dep_l31_grade,TRUE,2011-11-01,TRUE,8,3,1983,base.main_partner,partner499
+l31_grade_24,Bezunesh Abemo,,female,braam_flowers.dep_l31_grade,TRUE,2011-11-29,TRUE,10,8,1985,base.main_partner,partner500
+l31_grade_25,Felagote Arga,,female,braam_flowers.dep_l31_grade,TRUE,2011-11-29,TRUE,1,12,1980,base.main_partner,partner501
+l31_grade_26,Besa Jamebo,,female,braam_flowers.dep_l31_grade,TRUE,2011-11-29,TRUE,8,1,1983,base.main_partner,partner502
+l31_grade_27,Metewabe Tesfay,,female,braam_flowers.dep_l31_grade,TRUE,2012-01-09,TRUE,8,3,1985,base.main_partner,partner503
+l31_grade_28,Megertu Ferja,,female,braam_flowers.dep_l31_grade,TRUE,2012-01-10,TRUE,8,3,1984,base.main_partner,partner504
+l31_grade_29,Hawa Mohamede,,female,braam_flowers.dep_l31_grade,TRUE,2012-02-07,TRUE,8,11,1975,base.main_partner,partner505
+l31_grade_30,Sayelet Kedir,,female,braam_flowers.dep_l31_grade,TRUE,2012-02-07,TRUE,22,12,1982,base.main_partner,partner506
+l31_grade_31,Tewabech Haneqebo,,female,braam_flowers.dep_l31_grade,TRUE,2012-03-01,TRUE,30,2,1985,base.main_partner,partner507
+l31_grade_32,Sadeya Beriso,,female,braam_flowers.dep_l31_grade,TRUE,2012-03-01,TRUE,6,8,1985,base.main_partner,partner508
+l31_grade_33,Lomi Ambesa,ሎሚ አምበሳ,female,braam_flowers.dep_l31_grade,TRUE,2012-04-23,TRUE,9,2,1985,base.main_partner,partner509
+l31_grade_34,Werkensh Genore,,female,braam_flowers.dep_l31_grade,TRUE,2012-04-23,TRUE,17,8,1982,base.main_partner,partner510
+l31_grade_35,Makida Gemechu,,female,braam_flowers.dep_l31_grade,TRUE,2012-04-23,TRUE,21,9,1982,base.main_partner,partner511
+l31_grade_36,Medina Kedir,መዲና ከድር,female,braam_flowers.dep_l31_grade,TRUE,2012-04-23,TRUE,20,1,1981,base.main_partner,partner512
+l31_grade_37,Zenebech Nuna,,female,braam_flowers.dep_l31_grade,TRUE,2012-04-23,TRUE,2,9,1981,base.main_partner,partner513
+l31_grade_38,Zenebech Demese,,female,braam_flowers.dep_l31_grade,TRUE,2012-06-06,TRUE,20,10,1984,base.main_partner,partner514
+l31_grade_39,Tizita Temesegen,,female,braam_flowers.dep_l31_grade,TRUE,2012-06-06,TRUE,1,12,1983,base.main_partner,partner515
+l31_grade_40,Asenakech Lukas,,female,braam_flowers.dep_l31_grade,FALSE,2012-07-05,TRUE,21,1,1984,base.main_partner,partner516
+l31_grade_41,Mareyame Birhane,,female,braam_flowers.dep_l31_grade,FALSE,2012-08-08,TRUE,29,8,1980,base.main_partner,partner517
+l31_grade_42,Amaru Tamiru,,female,braam_flowers.dep_l31_grade,FALSE,2012-10-01,TRUE,6,12,1985,base.main_partner,partner518
+l31_grade_43,lili Mammo,,female,braam_flowers.dep_l31_grade,FALSE,2012-10-03,TRUE,19,2,1983,base.main_partner,partner519
+l31_grade_44,Gente Kedir,,female,braam_flowers.dep_l31_grade,FALSE,2012-11-05,TRUE,30,8,1982,base.main_partner,partner520
+l31_grade_45,Sintayew Zeleke,,female,braam_flowers.dep_l31_grade,FALSE,2012-11-05,TRUE,21,1,1985,base.main_partner,partner521
+l31_grade_46,Meskerem G/medin,,female,braam_flowers.dep_l31_grade,FALSE,2012-11-05,TRUE,20,7,1980,base.main_partner,partner522
+l31_grade_47,Amane Juda,,female,braam_flowers.dep_l31_grade,FALSE,2013-01-06,TRUE,28,2,1985,base.main_partner,partner523
+l31_grade_48,Firhewot Desalgne,,female,braam_flowers.dep_l31_grade,FALSE,2013-01-31,TRUE,15,6,1984,base.main_partner,partner524
+l31_grade_49,Tigist Walde,,female,braam_flowers.dep_l31_grade,FALSE,2013-02-07,TRUE,28,2,1985,base.main_partner,partner525
+l31_grade_50,Dese Eliso,,female,braam_flowers.dep_l31_grade,FALSE,2013-02-28,TRUE,17,7,1984,base.main_partner,partner526
+l31_grade_51,Marta Derore,,female,braam_flowers.dep_l31_grade,FALSE,2013-02-28,TRUE,26,1,1983,base.main_partner,partner527
+l31_grade_52,Tigist Bekele,,female,braam_flowers.dep_l31_grade,FALSE,2013-02-28,TRUE,9,8,1983,base.main_partner,partner528
+l31_grade_53,Fate Kasim,,female,braam_flowers.dep_l31_grade,FALSE,2013-03-05,TRUE,25,6,1980,base.main_partner,partner529
+l31_grade_54,Desalch Esatu,,female,braam_flowers.dep_l31_grade,FALSE,2009-09-14,TRUE,18,10,1983,base.main_partner,partner530
+l31_grade_55,Demqche Denesa Seyte,,female,braam_flowers.dep_l31_grade,FALSE,2010-04-06,TRUE,20,12,1980,base.main_partner,partner531
+l31_grade_56,Midagedu Welyi,,female,braam_flowers.dep_l31_grade,FALSE,2011-01-08,TRUE,12,5,1981,base.main_partner,partner532
+l31_grade_57,Belayenesh Birhane,,female,braam_flowers.dep_l31_grade,FALSE,2012-10-12,TRUE,8,6,1982,base.main_partner,partner533
+l31_grade_58,Tseganesh Lebiso ,,female,braam_flowers.dep_l31_grade,FALSE,2013-05-21,TRUE,17,12,1985,base.main_partner,partner534
+l31_irrig_1,Mesfin Salu,,male,braam_flowers.dep_l31_irrig,TRUE,2011-01-11,TRUE,26,1,1983,base.main_partner,partner535
+l31_irrig_2,Getu Werqu,,male,braam_flowers.dep_l31_irrig,TRUE,2011-09-14,TRUE,,,,base.main_partner,partner536
+l31_irrig_3,Gudeta Gemchu,,male,braam_flowers.dep_l31_irrig,TRUE,2011-09-14,TRUE,6,7,1982,base.main_partner,partner537
+l31_irrig_4,Aman Bude,,male,braam_flowers.dep_l31_irrig,TRUE,2012-03-09,TRUE,26,9,1975,base.main_partner,partner538
+l31_irrig_5,Mohamed Abedela,,male,braam_flowers.dep_l31_irrig,TRUE,2012-03-14,TRUE,18,11,1970,base.main_partner,partner539
+l31_irrig_6,Peteros Maleko,,male,braam_flowers.dep_l31_irrig,TRUE,2012-03-23,TRUE,20,12,1980,base.main_partner,partner540
+l31_irrig_7,Samuel Sadebo,,male,braam_flowers.dep_l31_irrig,TRUE,2012-04-01,TRUE,2,1,1980,base.main_partner,partner541
+l31_irrig_8,Berehanu Melese,,male,braam_flowers.dep_l31_irrig,TRUE,2012-04-01,TRUE,26,8,1983,base.main_partner,partner542
+l31_irrig_9,Takele Tesfaye,,male,braam_flowers.dep_l31_irrig,TRUE,2012-04-23,TRUE,1,2,1984,base.main_partner,partner543
+l31_irrig_10,Habebe Ereso,,male,braam_flowers.dep_l31_irrig,TRUE,2012-05-09,TRUE,6,11,1980,base.main_partner,partner544
+l31_irrig_11,Tariku Tateke,ታሪኩ ታጠቅ,male,braam_flowers.dep_l31_irrig,TRUE,2012-08-04,TRUE,18,9,1978,base.main_partner,partner545
+l31_irrig_12,Ashenafe Geleto,,male,braam_flowers.dep_l31_irrig,TRUE,2012-08-04,TRUE,20,10,1983,base.main_partner,partner546
+l31_irrig_13,Tadele Abute Foche,,male,braam_flowers.dep_l31_irrig,TRUE,2012-08-20,TRUE,12,12,1982,base.main_partner,partner547
+l31_irrig_14,Agede Enaro,,male,braam_flowers.dep_l31_irrig,TRUE,2012-10-01,TRUE,18,6,1970,base.main_partner,partner548
+l31_irrig_15,Niguse Siyum,,male,braam_flowers.dep_l31_irrig,TRUE,2012-10-12,TRUE,8,7,1982,base.main_partner,partner549
+l31_irrig_16,Iberahem Hailu,,male,braam_flowers.dep_l31_irrig,TRUE,2012-10-13,TRUE,19,2,1984,base.main_partner,partner550
+l31_irrig_17,Adesu Anja,,male,braam_flowers.dep_l31_irrig,TRUE,2012-12-01,TRUE,28,9,1982,base.main_partner,partner551
+l31_irrig_18,Meiso Kedir,,male,braam_flowers.dep_l31_irrig,TRUE,2013-01-14,TRUE,16,6,1983,base.main_partner,partner552
+l31_irrig_19,Dawit Elias,ዳዊት ኤልያስ,male,braam_flowers.dep_l31_irrig,TRUE,2013-01-21,TRUE,2,12,1982,base.main_partner,partner553
+l31_irrig_20,Amanuel Abera,አማኑኤል አበራ,male,braam_flowers.dep_l31_irrig,TRUE,2013-02-01,TRUE,7,2,1983,base.main_partner,partner554
+l31_irrig_21,Tehir Nura,,male,braam_flowers.dep_l31_irrig,TRUE,2013-02-13,TRUE,8,6,1980,base.main_partner,partner555
+l31_irrig_22,Lema Gehtane,,male,braam_flowers.dep_l31_irrig,TRUE,2013-02-13,TRUE,15,7,1975,base.main_partner,partner556
+l31_irrig_23,Desta Bulbula,ደስታ ቡልቡላ,male,braam_flowers.dep_l31_irrig,TRUE,2013-02-28,TRUE,18,1,1984,base.main_partner,partner557
+l31_irrig_25,Tufa Negeso,,male,braam_flowers.dep_l31_irrig,TRUE,2013-03-13,TRUE,2,7,1985,base.main_partner,partner558
+l31_irrig_27,Aychilum Tsigie,,male,braam_flowers.dep_l31_irrig,TRUE,2010-10-26,TRUE,12,5,1981,base.main_partner,partner559
+l31_irrig_28,Tarkegne Sebemo,,male,braam_flowers.dep_l31_irrig,TRUE,2013-04-16,TRUE,,,,base.main_partner,partner560
+l31_irrig_29,Gemechu Waritu,,male,braam_flowers.dep_l31_irrig,TRUE,2013-04-22,TRUE,,,,base.main_partner,partner561
+l31_irrig_30,Fikre W/semayat,,male,braam_flowers.dep_l31_irrig,TRUE,2013-05-10,TRUE,,,,base.main_partner,partner562
+l31_push_1,Solemon Aberha,,male,braam_flowers.dep_l31_push,TRUE,2011-02-09,TRUE,5,10,1980,base.main_partner,partner563
+l31_push_2,Kenenisa Ayito,,male,braam_flowers.dep_l31_push,TRUE,2013-03-10,TRUE,1,3,1980,base.main_partner,partner564
+l31_push_3,Feyisa Tufa,ፈይሳ ቱፋ,male,braam_flowers.dep_l31_push,TRUE,2011-08-03,TRUE,18,4,1980,base.main_partner,partner565
+l31_push_4,Mulatu Muse,ሙላቱ ሙሴ,male,braam_flowers.dep_l31_push,TRUE,2011-09-12,TRUE,21,11,1977,base.main_partner,partner566
+l31_push_5,Adisu Tesma,አዲሱ ተሰማ,male,braam_flowers.dep_l31_push,TRUE,2011-10-14,TRUE,21,11,1984,base.main_partner,partner567
+l31_push_6,Bekele Abit,,male,braam_flowers.dep_l31_push,TRUE,2012-03-19,TRUE,16,1,1985,base.main_partner,partner568
+l31_push_9,Ferenjo Gudedo,,male,braam_flowers.dep_l31_push,TRUE,2012-03-09,TRUE,7,1,1980,base.main_partner,partner569
+l31_push_10,Gerema Wade,,male,braam_flowers.dep_l31_push,TRUE,2012-04-01,TRUE,8,12,1980,base.main_partner,partner570
+l31_push_11,Lami Kebede,ላሚ ከበደ,male,braam_flowers.dep_l31_push,TRUE,2013-01-09,TRUE,1,7,1985,base.main_partner,partner571
+l31_push_12,Mengestu Kumala,,male,braam_flowers.dep_l31_push,TRUE,2013-03-05,TRUE,2,3,1984,base.main_partner,partner572
+l31_push_13,Hameda Bule,,male,braam_flowers.dep_l31_push,TRUE,2013-03-05,TRUE,9,1,1979,base.main_partner,partner573
+l31_push_14,Gemechu Bedaso,,male,braam_flowers.dep_l31_push,TRUE,2013-03-31,TRUE,12,5,1985,base.main_partner,partner574
+l31_push_15,Chernet Mabiso,,male,braam_flowers.dep_l31_push,TRUE,2013-05-01,TRUE,17,8,1975,base.main_partner,partner575
+l31_push_16,Budash Gelgelu,,male,braam_flowers.dep_l31_push,TRUE,2013-05-06,TRUE,18,9,1983,base.main_partner,partner576
+l31_push_17,Tadiwos Terech,,male,braam_flowers.dep_l31_push,TRUE,2013-05-07,TRUE,12,8,1977,base.main_partner,partner577
+l31_protect_1,Mehamud Hule,,male,braam_flowers.dep_l31_protect,TRUE,2011-01-10,TRUE,8,3,1975,base.main_partner,partner578
+l31_protect_2,Abera Mena,,male,braam_flowers.dep_l31_protect,TRUE,2011-01-10,TRUE,26,6,1983,base.main_partner,partner579
+l31_protect_3,Germewe Muki,,male,braam_flowers.dep_l31_protect,TRUE,2011-06-24,TRUE,18,8,1980,base.main_partner,partner580
+l31_protect_4,Kedir Uli,ከድር ኡሊ,male,braam_flowers.dep_l31_protect,TRUE,2011-07-25,TRUE,8,3,1980,base.main_partner,partner581
+l31_protect_5,Mulugeta Tufa,ሙሉጌታ ቱፋ,male,braam_flowers.dep_l31_protect,TRUE,2011-09-20,TRUE,8,8,1975,base.main_partner,partner582
+l31_protect_8,Jula Obesa,ጁላ ኦቤሳ,male,braam_flowers.dep_l31_protect,TRUE,2012-02-17,TRUE,20,1,1975,base.main_partner,partner583
+l31_protect_9,Aserat Bencha,,male,braam_flowers.dep_l31_protect,TRUE,2012-06-11,TRUE,16,2,1983,base.main_partner,partner584
+l31_protect_10,Semon Degesa,,male,braam_flowers.dep_l31_protect,TRUE,2012-12-10,TRUE,19,10,1983,base.main_partner,partner585
+l31_protect_11,Bereket Abebe,በረከት አበበ,male,braam_flowers.dep_l31_protect,TRUE,2012-05-09,TRUE,20,12,1978,base.main_partner,partner586
+l31_protect_12,Tekelu W/Michael,,male,braam_flowers.dep_l31_protect,TRUE,2011-01-10,TRUE,1,6,1983,base.main_partner,partner587
+l31_protect_13,Melese Welede Lemecha,,male,braam_flowers.dep_l31_protect,TRUE,2012-07-22,TRUE,15,8,1982,base.main_partner,partner588
+l31_protect_14,Aserat Alemu Chemesa,,male,braam_flowers.dep_l31_protect,TRUE,2012-07-16,TRUE,8,2,1978,base.main_partner,partner589
+l31_protect_15,Merkene Ermias,,male,braam_flowers.dep_l31_protect,TRUE,2013-01-31,TRUE,6,1,1980,base.main_partner,partner590
+l31_protect_16,Mesfen Halancho,መስፍን ሃላንቾ,male,braam_flowers.dep_l31_protect,TRUE,2013-02-04,TRUE,27,2,1984,base.main_partner,partner591
+l31_protect_17,Feleke Munin,ፈለቀ ሙኒን,male,braam_flowers.dep_l31_protect,TRUE,2013-02-13,TRUE,1,9,1982,base.main_partner,partner592
+l31_protect_18,Habibi Tinesho,,male,braam_flowers.dep_l31_protect,TRUE,2012-03-01,TRUE,2,11,1980,base.main_partner,partner593
+l31_protect_19,Iyob Berhanu,,male,braam_flowers.dep_l31_protect,TRUE,2013-05-19,TRUE,25,4,1984,base.main_partner,partner594
+l31_cold_1,Degefa Habete G/Mesekel,,male,braam_flowers.dep_l31_cold,TRUE,2009-05-27,TRUE,8,3,1981,base.main_partner,partner595
+l31_cold_2,Abaynhe Menecho Anjelo,,male,braam_flowers.dep_l31_cold,TRUE,2009-07-02,TRUE,8,8,1980,base.main_partner,partner596
+l31_cold_3,Data Dana Herboro,,male,braam_flowers.dep_l31_cold,TRUE,2009-08-09,TRUE,26,1,1980,base.main_partner,partner597
+l31_cold_4,Habtamu Mensha Tura,,male,braam_flowers.dep_l31_cold,TRUE,2009-08-10,TRUE,8,3,1980,base.main_partner,partner598
+l31_cold_5,Desalgne Bekele Aneshebo,,male,braam_flowers.dep_l31_cold,TRUE,2009-08-12,TRUE,1,7,1975,base.main_partner,partner599
+l31_cold_6,Kemal Beriso,ከማል በሪሶ,male,braam_flowers.dep_l31_cold,TRUE,2009-09-16,TRUE,20,11,1980,base.main_partner,partner600
+l31_cold_7,Melaku Fasile,መላኩ ፋሲል,male,braam_flowers.dep_l31_cold,TRUE,2010-04-24,TRUE,21,2,1980,base.main_partner,partner601
+l31_cold_8,Tesfaye Abayene,,male,braam_flowers.dep_l31_cold,TRUE,2011-09-01,TRUE,8,2,1983,base.main_partner,partner602
+l31_cold_9,Abiy Kedir,አብይ ከድር,male,braam_flowers.dep_l31_cold,TRUE,2011-09-02,TRUE,1,12,1985,base.main_partner,partner603
+l31_cold_10,Girma Tesfaye,ግርማ ተስፋዬ,male,braam_flowers.dep_l31_cold,TRUE,2011-11-03,TRUE,18,4,1980,base.main_partner,partner604
+l31_cold_11,Zemedekun Ademasu,ዘመድኩን አድማሱ,male,braam_flowers.dep_l31_cold,TRUE,2011-11-07,TRUE,18,4,1980,base.main_partner,partner605
+l31_cold_12,Asefa Eshete,አሰፋ እሸቴ,male,braam_flowers.dep_l31_cold,TRUE,2011-11-09,TRUE,30,4,1980,base.main_partner,partner606
+l31_cold_13,Getachew Mulugeta,ጌታቸው ሙሉጌታ,male,braam_flowers.dep_l31_cold,TRUE,2012-12-01,TRUE,8,3,1985,base.main_partner,partner607
+l31_cold_14,Furi Bifetu,,male,braam_flowers.dep_l31_cold,TRUE,2012-01-01,TRUE,3,8,1975,base.main_partner,partner608
+l31_cold_15,Ashagere Game,,male,braam_flowers.dep_l31_cold,TRUE,2012-02-01,TRUE,6,7,1975,base.main_partner,partner609
+l31_cold_16,Marqos Bununi,ማርቆስ ቡኒኒ,male,braam_flowers.dep_l31_cold,TRUE,2011-09-20,TRUE,16,3,1980,base.main_partner,partner610
+l31_cold_17,Abu Roba,አቡ ሮባ,male,braam_flowers.dep_l31_cold,TRUE,2011-10-14,TRUE,12,2,1984,base.main_partner,partner611

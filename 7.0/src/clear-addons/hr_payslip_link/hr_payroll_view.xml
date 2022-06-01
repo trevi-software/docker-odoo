@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+		<!-- Re-define our own action because the defined ones in hr_holiday are confusing. -->
+        <record id="view_requested_holidays" model="ir.actions.act_window">
+            <field name="name">Leave Request from Pay Slip</field>
+            <field name="res_model">hr.holidays</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id"></field>
+            <field name="context">{'default_type': 'remove'}</field>
+            <field name="domain">[('type','=','remove')]</field>
+            <field name="search_view_id" ref="hr_holidays.view_hr_holidays_filter"/>
+        </record>
+
+        <record id="view_payslip_form" model="ir.ui.view">
+            <field name="name">hr.payslip.stats.inherit</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='oe_right oe_button_box']" position="inside">
+                    <button name="get_attendances_from_payslip"
+                        type="object"
+                        string="Attendances">
+                    </button>
+                    <button name="get_holidays_from_payslip"
+                        type="object"
+                        string="Leaves">
+                    </button>
+                </xpath>
+            </field>
+        </record>
+	
+	</data>
+</openerp>

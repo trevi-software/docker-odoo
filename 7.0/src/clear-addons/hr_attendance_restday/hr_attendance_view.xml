@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_hr_attendance_weekly_form" model="ir.ui.view">
+            <field name="name">hr.attendance.weekly.restday.form</field>
+            <field name="model">hr.attendance.weekly</field>
+            <field name="inherit_id" ref="hr_attendance_batch_entry.view_hr_attendance_weekly_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="/form/group/group/field/tree/field[@name='employee_id']" position="replace">
+                        <field name="employee_id" domain="['|',('department_id','=',parent.department_id),('saved_department_id','=',parent.department_id)]" on_change="onchange_employee(employee_id, parent.id)"/>
+                    </xpath>
+                    <xpath expr="/form/group/group/field[@name='ot_ids']/tree/field[@name='weekly_id']" position="after">
+                        <field name="off1"/>
+                        <field name="off2"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        
+        <record id="view_weekly_ot_tree" model="ir.ui.view">
+            <field name="name">hr.attendance.weekly.ot.restday.tree</field>
+            <field name="model">hr.attendance.weekly.ot</field>
+            <field name="inherit_id" ref="hr_attendance_batch_entry.view_weekly_ot_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='employee_id']" position="replace">
+                        <field name="employee_id" domain="['|',('department_id','=',parent.department_id),('saved_department_id','=',parent.department_id)]" on_change="onchange_employee(employee_id, parent.id)"/>
+                    </xpath>
+                    <xpath expr="//field[@name='weekly_id']" position="after">
+                        <field name="off1"/>
+                        <field name="off2"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    
+    </data>
+</openerp>

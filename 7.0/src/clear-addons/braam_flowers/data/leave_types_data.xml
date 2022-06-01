@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        
+        <!-- Leave Types -->
+        
+        <record model="hr.holidays.status" id="holiday_status_annual">
+            <field name="name">Annual Leave</field>
+            <field name="code">LVANNUAL</field>
+            <field name="limit" eval="False"/>
+            <field name="color_name">lightgreen</field>
+        </record>
+        
+    </data>
+</openerp>

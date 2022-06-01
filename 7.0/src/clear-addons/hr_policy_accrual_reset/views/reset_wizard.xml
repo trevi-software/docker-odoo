@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		
+		<record id="view_reset_wizard_form" model="ir.ui.view">
+			<field name="name">Policy Accrual Reset Wizard</field>
+			<field name="model">hr.policy.accrual.reset.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Policy Accrual Reset Wizard" version="7.0">
+					<header>
+						<button name="do_recalc" type="object" class="oe_highlight" string="Apply"/>
+					</header>
+					<group>
+						<group>
+							<field name="accrual_policy_id" on_change="onchange_accrual_policy(accrual_policy_id)"/>
+							<field name="accrual_policy_line_id"/>
+						</group>
+						<group>
+                            <field name="delete"/>
+                        </group>
+					</group>
+					<group string="Employees">
+						<field name="employee_ids" nolabel="1"/>
+					</group>
+				</form>
+			</field>
+		</record>
+        
+        <record id="open_reset_wizard" model="ir.actions.act_window">
+            <field name="name">Re-calculate Accrual</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.policy.accrual.reset.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="menu_reset_wizard"
+            action="open_reset_wizard"
+            parent="hr.menu_hr_configuration"
+            groups="base.group_hr_manager"
+            sequence="1"/>
+		
+	</data>
+</openerp>
